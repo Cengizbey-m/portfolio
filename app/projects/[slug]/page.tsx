@@ -5,13 +5,19 @@ import { readProjectMdx } from "@/lib/content";
 import { renderMdx } from "@/lib/mdx";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { SectionHeader } from "@/components/SectionHeader";
+import { ExternalLink, Github } from "lucide-react";
 
 export async function generateStaticParams() {
   return projectSlugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
   return {
@@ -23,10 +29,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default async function ProjectCaseStudyPage({
   params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
+}: PageProps) {
+  const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
@@ -57,29 +61,43 @@ export default async function ProjectCaseStudyPage({
           </div>
         ) : null}
 
-        <div className="flex flex-wrap gap-2 pt-2">
-          {project.links.liveDemo ? (
-            <Button asChild>
-              <a href={project.links.liveDemo} target="_blank" rel="noreferrer">
-                Live demo
-              </a>
+        <div className="pt-4">
+          <SectionHeader title="Links" description="Public links and a quick deployment note." />
+          <div className="mt-3 flex flex-wrap gap-2">
+            {project.links.liveDemo ? (
+              <Button asChild>
+                <a href={project.links.liveDemo} target="_blank" rel="noreferrer">
+                  <ExternalLink className="h-4 w-4" /> Live demo
+                </a>
+              </Button>
+            ) : null}
+            {project.links.github ? (
+              <Button variant="secondary" asChild>
+                <a href={project.links.github} target="_blank" rel="noreferrer">
+                  <Github className="h-4 w-4" /> GitHub
+                </a>
+              </Button>
+            ) : null}
+            <Button variant="ghost" asChild>
+              <Link href="/projects">Back to projects</Link>
             </Button>
+          </div>
+          {project.deployment ? (
+            <p className="mt-2 text-sm text-muted-foreground">
+              Deployment: <span className="font-medium text-foreground">{project.deployment}</span>
+            </p>
           ) : null}
-          {project.links.github ? (
-            <Button variant="secondary" asChild>
-              <a href={project.links.github} target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-            </Button>
-          ) : null}
-          <Button variant="ghost" asChild>
-            <Link href="/projects">Back to projects</Link>
-          </Button>
         </div>
       </div>
 
       <div className="mt-10 space-y-4">
         {mdx}
+      </div>
+
+      <div className="mt-10">
+        <Button variant="outline" asChild>
+          <Link href="/projects">Back to projects</Link>
+        </Button>
       </div>
     </article>
   );

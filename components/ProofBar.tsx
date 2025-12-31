@@ -3,9 +3,7 @@ import { Badge } from "@/components/ui/badge";
 export function ProofBar() {
   return (
     <div className="rounded-xl border border-border bg-card p-5">
-      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-        Proof bar (scan in 10 seconds)
-      </p>
+      <p className="text-sm font-medium tracking-tight">Quick highlights</p>
       <div className="mt-4 flex flex-wrap gap-2">
         <Badge>SDNE • Sheridan</Badge>
         <Badge>Networking • CCNA Subnetting (Exam Prep)</Badge>
@@ -15,9 +13,9 @@ export function ProofBar() {
         <Badge>Linux/UNIX</Badge>
       </div>
       <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-        <li>- Built client-facing web experiences with privacy constraints</li>
-        <li>- Documented architecture + deployment pipelines</li>
-        <li>- Comfortable across web + networks + security fundamentals</li>
+        <li>Built client-facing web experiences with privacy constraints</li>
+        <li>Comfortable shipping across web, networks, and data fundamentals</li>
+        <li>Write documentation that helps others deploy and maintain</li>
       </ul>
     </div>
   );
