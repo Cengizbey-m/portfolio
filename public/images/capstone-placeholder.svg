@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#0b0b0f"/>
+  <rect x="60" y="60" width="1080" height="555" rx="24" fill="#101018" stroke="#2a2a33"/>
+  <text x="120" y="190" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="44" fill="#ffffff" font-weight="700">
+    Capstone — Screenshot Placeholder
+  </text>
+  <text x="120" y="260" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" font-size="22" fill="#94a3b8">
+    Add charts or UI screens (public-safe).
+  </text>
+</svg>
+
+

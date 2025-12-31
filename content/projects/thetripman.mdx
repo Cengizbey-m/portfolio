@@ -1,0 +1,75 @@
+# TheTripMan (Client)
+
+## Problem & users
+
+The client needed a fast, mobile-friendly website that converts visitors into bookings/leads without exposing operational details. Users are customers looking for transportation services and a simple way to request availability and pricing.
+
+## My role & responsibilities
+
+- Full‑stack implementation and delivery (UI + integration patterns)
+- Defined safe, public demo boundaries (dummy data, no secrets)
+- Deployment setup and production hardening checklist
+- Security/privacy constraints for a paying client project
+
+## Key features
+
+- Service catalog + conversion-focused landing sections
+- Booking/request flow with validation and clear confirmation states
+- Admin-friendly content updates (copy, pricing notes, contact routing)
+- Accessibility and performance basics (fast LCP, predictable layout)
+
+## Tech stack
+
+- Next.js (App Router) + TypeScript
+- Tailwind CSS
+- CI/CD (GitHub Actions)
+- Hosting: Vercel (prod) / preview deploys
+
+## Architecture (high level)
+
+```mermaid
+flowchart TD
+  U[User (Web / Mobile)] -->|HTTPS| FE[Next.js App (Vercel)]
+  FE -->|Server Actions / API routes| API[Backend API Layer]
+  API --> DB[(Postgres / Neon or Supabase)]
+  API --> OBJ[(Object Storage: screenshots/files)]
+  API --> EMAIL[Email provider (Resend)]
+```
+
+## Security & privacy considerations
+
+**Confidentiality:** production code remains private. This case study describes architecture decisions and includes a safe demo/prototype repo with dummy data and no secrets.
+
+- No client credentials in the repo (use environment variables)
+- Least-privilege access for any admin endpoints
+- Basic abuse controls (rate limit, bot mitigation where appropriate)
+- Avoid exposing internal identifiers or operational data in the UI
+
+## Deployment pipeline (CI/CD + hosting)
+
+- PRs: Vercel preview deploy for quick review
+- Main branch: production deployment after checks
+- Quality gates (recommended): typecheck, lint, basic smoke test
+
+## Database / data layer
+
+Production can use Postgres (Neon/Supabase) for:
+
+- booking requests (status, timestamps, service type)
+- audit trail of contact submissions
+- admin content metadata (optional)
+
+Public demo uses **fake data only**.
+
+## Challenges & what I learned
+
+- Designing a public demo that proves engineering without violating confidentiality
+- Keeping the UI conversion-focused while maintaining clean structure and performance
+
+## Next steps
+
+- Add automated end-to-end checks for the booking flow
+- Add operational visibility (error monitoring + simple dashboards)
+- Replace placeholders with measurable metrics (conversion rate, lead response time)
+
+
