@@ -4,7 +4,7 @@ Production-quality portfolio site built with **Next.js (App Router) + TypeScript
 
 Goals:
 - Load fast and feel modern
-- “Proof in 30 seconds” recruiter scanning
+- Clear case studies that are easy to understand quickly
 - Case studies with **MDX + Mermaid** architecture diagrams
 - Optional **House Mode** (fast SVG navigation)
 

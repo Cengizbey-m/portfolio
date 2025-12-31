@@ -4,6 +4,7 @@ export type ProjectLinks = {
   caseStudy: string;
   liveDemo?: string;
   github?: string;
+  deployment?: string;
 };
 
 export type Project = {
@@ -14,9 +15,11 @@ export type Project = {
   problem: string;
   role: string;
   stack: string[];
+  features: string[];
   impact: string[];
   links: ProjectLinks;
   confidentialityNote?: string;
+  deployment?: string;
 };
 
 export const projects: Project[] = [
@@ -25,7 +28,7 @@ export const projects: Project[] = [
     slug: "thetripman",
     tags: ["Web", "Networking"],
     short:
-      "Transportation booking + sales website built for a paying client. Production code private; safe demo/prototype is public.",
+      "Transportation booking + sales website built for a paying client. Production code is private; a safe demo/prototype is public.",
     problem:
       "Client needed a fast way for customers to browse services, request bookings, and convert leads without exposing operational details.",
     role:
@@ -36,6 +39,11 @@ export const projects: Project[] = [
       "Tailwind",
       "REST APIs",
       "CI/CD (GitHub Actions)",
+    ],
+    features: [
+      "Conversion-focused landing + service pages",
+      "Booking/request flow with validation",
+      "Clear privacy boundary (public demo vs. private production)",
     ],
     impact: [
       "Placeholder: reduce booking friction by X% (track via form drop‑off / analytics)",
@@ -48,18 +56,24 @@ export const projects: Project[] = [
     },
     confidentialityNote:
       "Production code is private due to client confidentiality. This page describes the architecture and shows a safe demo/prototype.",
+    deployment: "Vercel (prod + preview deploys)",
   },
   {
     title: "Capstone (Team) — AI Finance Prediction App",
     slug: "capstone-ai-finance",
     tags: ["AI/ML", "Web"],
     short:
-      "Team capstone building an AI-assisted finance prediction workflow with clear evaluation, safeguards, and a web UI.",
+      "Team capstone building a finance prediction workflow with evaluation, guardrails, and a simple web UI.",
     problem:
       "Users wanted a simple UI for exploring signals and predictions with transparent evaluation and limits on overconfident outputs.",
     role:
       "Team contributor: owned ML evaluation + API contract; implemented feature work end‑to‑end and documented trade‑offs.",
     stack: ["Python", "Pandas", "Model evaluation", "Next.js", "TypeScript"],
+    features: [
+      "Repeatable preprocessing + evaluation",
+      "Clear baselines and metrics",
+      "UI for running and reviewing predictions",
+    ],
     impact: [
       "Placeholder: model metrics (MAE/RMSE) + baseline comparison",
       "Placeholder: reduced analysis time by X% via one‑click reports",
@@ -69,18 +83,24 @@ export const projects: Project[] = [
       liveDemo: "https://PLACEHOLDER-LIVE-DEMO",
       github: "https://github.com/Cengizbey-m",
     },
+    deployment: "Vercel (UI) + service hosting (TBD)",
   },
   {
     title: "Formally (Prototype) — Fitness + Personal Development Platform",
     slug: "formally-prototype",
     tags: ["Web"],
     short:
-      "Public UI/UX prototype (fake data) for a future fitness + personal development platform. Core repo private.",
+      "Public UI/UX prototype (fake data) for a future fitness + personal development platform. Core product code is private.",
     problem:
       "Needed a clean onboarding + habit flow that keeps users focused on next actions, not configuration.",
     role:
       "Product + engineering: UX flows, component library, and front-end architecture that can evolve into a full system.",
     stack: ["Next.js", "TypeScript", "Tailwind", "Component design"],
+    features: [
+      "Onboarding flow with sensible defaults",
+      "Today-focused task/habit views",
+      "Reusable UI patterns for future expansion",
+    ],
     impact: [
       "Placeholder: usability test notes + iteration count",
       "Placeholder: task completion time improvements",
@@ -90,6 +110,7 @@ export const projects: Project[] = [
       liveDemo: "https://PLACEHOLDER-LIVE-DEMO",
       github: "https://github.com/Cengizbey-m",
     },
+    deployment: "Vercel (prototype)",
   },
 ];
 

@@ -15,7 +15,7 @@ export default function AboutPage() {
           description="Junior software developer (full‑stack) with SDNE depth — shipping-focused and proof-first."
         />
         <p className="leading-7 text-muted-foreground">
-          I’m Muhammed “Cengiz” Cengiz, an SDNE student at Sheridan College (Oakville/GTA),
+          I’m Muhammed Cengiz (I go by Cengiz), an SDNE student at Sheridan College (Oakville/GTA),
           graduating in ~7–8 months. I like roles where I can build product features end‑to‑end:
           UI/UX, APIs, data, deployment, and practical security.
         </p>

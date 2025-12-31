@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Cengiz",
   },
   description:
-    "Portfolio for Muhammed “Cengiz” Cengiz — SDNE student at Sheridan College (Oakville/GTA). Proof-first case studies across full-stack web, AI/ML, networking, security, and databases.",
+    "Portfolio for Muhammed Cengiz — SDNE student at Sheridan College (Oakville/GTA). Case studies across full-stack web, AI/ML, networking, security, and databases.",
   openGraph: {
     type: "website",
     title: "Cengiz — Full‑stack Developer (SDNE @ Sheridan)",

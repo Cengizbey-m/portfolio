@@ -2,8 +2,10 @@ import Link from "next/link";
 import { HouseModeToggle } from "@/components/HouseModeToggle";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HouseModeGate } from "@/components/HouseModeGate";
+import { hasResumePdf } from "@/lib/resume";
 
 export function Header() {
+  const showResume = hasResumePdf();
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <div className="container-max flex h-14 items-center justify-between">
@@ -18,9 +20,11 @@ export function Header() {
             <Link href="/about" className="hover:text-foreground">
               About
             </Link>
-            <Link href="/resume" className="hover:text-foreground">
-              Resume
-            </Link>
+            {showResume ? (
+              <Link href="/resume" className="hover:text-foreground">
+                Resume
+              </Link>
+            ) : null}
             <Link href="/contact" className="hover:text-foreground">
               Contact
             </Link>
