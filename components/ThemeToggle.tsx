@@ -19,6 +19,7 @@ export function ThemeToggle() {
       type="button"
       variant="ghost"
       size="sm"
+      className="normal-case tracking-normal font-medium"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label="Toggle theme"
     >

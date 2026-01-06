@@ -5,13 +5,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-foreground",
+  "inline-flex items-center rounded-sm border border-border px-2 py-0.5 text-[11px] font-semibold tracking-[0.1em] uppercase",
   {
     variants: {
       variant: {
-        default: "bg-muted",
-        secondary: "bg-secondary text-secondary-foreground",
-        outline: "bg-transparent",
+        default:
+          "bg-white/5 text-foreground ring-1 ring-white/10",
+        secondary:
+          "bg-[hsl(var(--steam-panel-2))] text-foreground ring-1 ring-white/10",
+        outline: "bg-transparent text-muted-foreground",
       },
     },
     defaultVariants: { variant: "default" },

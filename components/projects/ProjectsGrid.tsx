@@ -21,6 +21,7 @@ export function ProjectsGrid({ projects }: { projects: Project[] }) {
         <Button
           size="sm"
           variant={active === "All" ? "default" : "outline"}
+          className="normal-case tracking-normal font-medium"
           onClick={() => setActive("All")}
         >
           All
@@ -30,6 +31,7 @@ export function ProjectsGrid({ projects }: { projects: Project[] }) {
             key={t}
             size="sm"
             variant={active === t ? "default" : "outline"}
+            className="normal-case tracking-normal font-medium"
             onClick={() => setActive(t)}
           >
             {t}

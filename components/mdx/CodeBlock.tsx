@@ -25,7 +25,7 @@ export function CodeBlock({
   }
 
   return (
-    <pre className="overflow-x-auto rounded-lg border border-border bg-card p-4">
+    <pre className="overflow-x-auto rounded-sm border border-border bg-black/20 p-4 ring-1 ring-white/5">
       <code className={cn("text-xs leading-5", className)}>{children}</code>
     </pre>
   );

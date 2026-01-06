@@ -4,8 +4,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { HouseModeProvider } from "@/components/HouseModeProvider";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { SteamShell } from "@/components/steam/SteamShell";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,11 +55,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <HouseModeProvider>
-            <div className="min-h-dvh">
-              <Header />
-              <main className="container-max py-10">{children}</main>
-              <Footer />
-            </div>
+            <SteamShell>{children}</SteamShell>
           </HouseModeProvider>
         </ThemeProvider>
         <Analytics />
