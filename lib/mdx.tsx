@@ -7,13 +7,13 @@ const mdxComponents = {
   pre: Pre,
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
-      className="mt-10 scroll-mt-24 text-xl font-semibold tracking-tight"
+      className="mt-10 scroll-mt-24 text-lg font-semibold tracking-[0.12em] uppercase text-foreground"
       {...props}
     />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      className="mt-8 scroll-mt-24 text-lg font-semibold tracking-tight"
+      className="mt-8 scroll-mt-24 text-base font-semibold tracking-tight text-foreground"
       {...props}
     />
   ),
@@ -27,7 +27,7 @@ const mdxComponents = {
     <ol className="mt-3 list-decimal space-y-2 pl-5 text-muted-foreground" {...props} />
   ),
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    <a className="underline underline-offset-4 hover:opacity-80" {...props} />
+    <a className="underline underline-offset-4 hover:opacity-90" {...props} />
   ),
 };
 

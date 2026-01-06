@@ -23,6 +23,16 @@ export function ProjectCard({
       className={cn(className)}
     >
       <Card className="h-full transition-colors hover:bg-white/5">
+        {project.coverImage ? (
+          <div className="overflow-hidden rounded-t-md border-b border-border bg-black/15">
+            <img
+              src={project.coverImage}
+              alt=""
+              className="h-32 w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        ) : null}
         <CardHeader>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((t) => (

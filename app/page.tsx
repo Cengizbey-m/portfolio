@@ -4,12 +4,19 @@ import { projects } from "@/data/projects";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ProfileHeader } from "@/components/steam/ProfileHeader";
+import { FavoriteProjectPanel } from "@/components/steam/FavoriteProjectPanel";
+import { BadgesPanel } from "@/components/steam/BadgesPanel";
 
 export default function Home() {
   const featured = projects.slice(0, 3);
   return (
     <div className="space-y-6">
       <ProfileHeader />
+
+      <section className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
+        <FavoriteProjectPanel />
+        <BadgesPanel />
+      </section>
 
       <section className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
         <div className="space-y-3">

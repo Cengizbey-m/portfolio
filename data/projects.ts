@@ -15,6 +15,7 @@ export type Project = {
   role: string;
   stack: string[];
   impact: string[];
+  coverImage?: string;
   links: ProjectLinks;
   confidentialityNote?: string;
 };
@@ -41,9 +42,9 @@ export const projects: Project[] = [
       "Placeholder: reduce booking friction by X% (track via form drop‑off / analytics)",
       "Placeholder: improve lead response time by X minutes (process metric)",
     ],
+    coverImage: "/images/thetripman-placeholder.svg",
     links: {
       caseStudy: "/projects/thetripman",
-      liveDemo: "https://PLACEHOLDER-LIVE-DEMO",
       github: "https://github.com/Cengizbey-m",
     },
     confidentialityNote:
@@ -64,9 +65,9 @@ export const projects: Project[] = [
       "Placeholder: model metrics (MAE/RMSE) + baseline comparison",
       "Placeholder: reduced analysis time by X% via one‑click reports",
     ],
+    coverImage: "/images/capstone-placeholder.svg",
     links: {
       caseStudy: "/projects/capstone-ai-finance",
-      liveDemo: "https://PLACEHOLDER-LIVE-DEMO",
       github: "https://github.com/Cengizbey-m",
     },
   },
@@ -85,9 +86,9 @@ export const projects: Project[] = [
       "Placeholder: usability test notes + iteration count",
       "Placeholder: task completion time improvements",
     ],
+    coverImage: "/images/formally-placeholder.svg",
     links: {
       caseStudy: "/projects/formally-prototype",
-      liveDemo: "https://PLACEHOLDER-LIVE-DEMO",
       github: "https://github.com/Cengizbey-m",
     },
   },

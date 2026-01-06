@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HouseModeToggle } from "@/components/HouseModeToggle";
+import { MobileNav } from "@/components/steam/MobileNav";
+import { profile } from "@/data/profile";
 
 const nav = [
   { href: "/", label: "PROFILE" },
@@ -31,8 +33,9 @@ export function SteamTopNav() {
               <span className="inline-flex h-7 w-7 items-center justify-center rounded bg-gradient-to-b from-white/10 to-black/10 ring-1 ring-white/10">
                 C
               </span>
-              <span className="hidden sm:inline">Cengiz</span>
+              <span className="hidden sm:inline">{profile.displayName}</span>
             </Link>
+            <MobileNav />
             <nav className="hidden items-center gap-1 md:flex">
               {nav.map((item) => {
                 const active = isActive(pathname, item.href);
