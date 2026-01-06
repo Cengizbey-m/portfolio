@@ -22,7 +22,7 @@ export function ProjectCard({
       transition={{ duration: 0.35 }}
       className={cn(className)}
     >
-      <Card className="h-full transition-shadow hover:shadow-md">
+      <Card className="h-full transition-colors hover:bg-white/5">
         <CardHeader>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((t) => (

@@ -11,7 +11,9 @@ export function SectionHeader({
 }) {
   return (
     <div className={cn("space-y-1", className)}>
-      <h2 className="text-lg font-semibold tracking-tight">{title}</h2>
+      <h2 className="text-sm font-semibold tracking-[0.14em] uppercase text-foreground">
+        {title}
+      </h2>
       {description ? (
         <p className="text-sm text-muted-foreground">{description}</p>
       ) : null}
