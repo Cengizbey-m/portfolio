@@ -31,14 +31,20 @@ export default async function ProjectCaseStudyPage({
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
-  let source: string;
+  let mdx: React.ReactNode = null;
   try {
-    source = await readProjectMdx(slug);
+    const source = await readProjectMdx(slug);
+    mdx = await renderMdx(source);
   } catch {
-    notFound();
+    mdx = (
+      <div className="space-y-3">
+        <p className="text-sm leading-6 text-muted-foreground">
+          A longer write-up is coming soon. For now, you can review the overview below and use the links
+          to see the live project or repository.
+        </p>
+      </div>
+    );
   }
-
-  const mdx = await renderMdx(source);
 
   return (
     <article className="space-y-6">
@@ -93,6 +99,62 @@ export default async function ProjectCaseStudyPage({
             </Button>
           </div>
         </CardHeader>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <p className="text-xs font-semibold tracking-[0.14em] uppercase text-muted-foreground">
+            Overview
+          </p>
+        </CardHeader>
+        <CardContent className="pt-4 space-y-4">
+          {project.coverImage ? (
+            <div className="overflow-hidden rounded-sm border border-border bg-black/15 ring-1 ring-white/5">
+              <img
+                src={project.coverImage}
+                alt=""
+                className="h-56 w-full object-cover md:h-72"
+                loading="lazy"
+              />
+            </div>
+          ) : null}
+
+          <div className="grid gap-3 md:grid-cols-2">
+            <div className="rounded-sm border border-border bg-white/5 p-3 ring-1 ring-white/10">
+              <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-muted-foreground">
+                Problem
+              </p>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">{project.problem}</p>
+            </div>
+            <div className="rounded-sm border border-border bg-white/5 p-3 ring-1 ring-white/10">
+              <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-muted-foreground">
+                My role
+              </p>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">{project.role}</p>
+            </div>
+          </div>
+
+          <div className="grid gap-3 md:grid-cols-2">
+            <div className="rounded-sm border border-border bg-white/5 p-3 ring-1 ring-white/10">
+              <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-muted-foreground">
+                Stack
+              </p>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                {project.stack.join(" • ")}
+              </p>
+            </div>
+            <div className="rounded-sm border border-border bg-white/5 p-3 ring-1 ring-white/10">
+              <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-muted-foreground">
+                Highlights
+              </p>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                {project.impact.slice(0, 4).map((x) => (
+                  <li key={x}>{x}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </CardContent>
       </Card>
 
       <Card>

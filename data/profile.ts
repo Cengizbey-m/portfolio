@@ -1,6 +1,6 @@
 export const profile = {
   displayName: "Cengiz",
-  realName: "Muhammed “Cengiz” Cengiz",
+  realName: "Muhammed Cengiz",
   headline: "SDNE student • Full‑stack + Networking",
   location: "Oakville / GTA",
   country: "Canada",
@@ -10,8 +10,8 @@ export const profile = {
     accent: "offline" as const,
   },
   level: 22,
-  avatarUrl: "/steam/avatar.svg",
-  bannerUrl: "/steam/banner.svg",
+  avatarUrl: "/steam/avatar.jpg",
+  bannerUrl: "/steam/banner.jpg",
   links: {
     github: "https://github.com/Cengizbey-m",
     linkedin: "https://www.linkedin.com/in/muhammed-cengiz-005aa0278/?locale=en_US",
@@ -23,9 +23,9 @@ export const profile = {
     { label: "Grad", value: "~7–8 mo" },
   ],
   sideStats: [
-    { label: "Games", value: "145" },
-    { label: "Badges", value: "25" },
-    { label: "Screenshots", value: "56" },
+    { label: "Projects", value: "3" },
+    { label: "Languages", value: "4" },
+    { label: "Certs", value: "4" },
   ],
   featuredProjectSlug: "thetripman",
 } as const;

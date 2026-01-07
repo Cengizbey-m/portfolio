@@ -22,7 +22,7 @@ export default function Home() {
         <div className="space-y-3">
           <SectionHeader
             title="Quick actions"
-            description="Recruiter shortcuts (fast to scan, fast to click)."
+            description="Quick links."
           />
           <div className="flex flex-wrap gap-2">
             <Button asChild>

@@ -19,7 +19,7 @@ export default function ContactPage() {
         <CardHeader>
           <SectionHeader
             title="Contact"
-            description="Best: email or LinkedIn. Form works if Resend is configured."
+            description="Email or LinkedIn work best."
           />
         </CardHeader>
         <CardContent className="space-y-4 pt-4">
@@ -39,10 +39,6 @@ export default function ContactPage() {
           </div>
 
           <ContactForm />
-
-          <p className="text-xs text-muted-foreground">
-            Note: update your email anywhere you prefer recruiters to contact you.
-          </p>
         </CardContent>
       </Card>
     </div>

@@ -32,7 +32,7 @@ export function BadgesPanel() {
       <CardHeader className="flex flex-row items-end justify-between gap-3">
         <SectionHeader
           title="Badges"
-          description="Fast trust signals (skills & focus areas)."
+          description="Skills and focus areas."
         />
         <p className="text-xs font-semibold tracking-[0.14em] uppercase text-muted-foreground">
           {badges.length}

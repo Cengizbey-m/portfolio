@@ -1,5 +1,7 @@
 # TheTripMan (Client)
 
+**Live site:** https://www.thetripman.com
+
 ## Problem & users
 
 The client needed a fast, mobile-friendly website that converts visitors into bookings/leads without exposing operational details. Users are customers looking for transportation services and a simple way to request availability and pricing.
@@ -38,7 +40,7 @@ flowchart TD
 
 ## Security & privacy considerations
 
-**Confidentiality:** production code remains private. This case study describes architecture decisions and includes a safe demo/prototype repo with dummy data and no secrets.
+**Confidentiality:** production code remains private. This case study focuses on architecture decisions and delivery work without exposing business-sensitive details.
 
 - No client credentials in the repo (use environment variables)
 - Least-privilege access for any admin endpoints
@@ -59,8 +61,6 @@ Production can use Postgres (Neon/Supabase) for:
 - audit trail of contact submissions
 - admin content metadata (optional)
 
-Public demo uses **fake data only**.
-
 ## Challenges & what I learned
 
 - Designing a public demo that proves engineering without violating confidentiality
@@ -70,6 +70,6 @@ Public demo uses **fake data only**.
 
 - Add automated end-to-end checks for the booking flow
 - Add operational visibility (error monitoring + simple dashboards)
-- Replace placeholders with measurable metrics (conversion rate, lead response time)
+- Track conversion/lead metrics to quantify impact over time
 
 

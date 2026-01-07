@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -21,6 +22,7 @@ function isActive(pathname: string, href: string) {
 export function SteamSidebar() {
   const pathname = usePathname();
   const level = profile.level ?? 1;
+  const [avatarSrc, setAvatarSrc] = React.useState<string>(profile.avatarUrl);
 
   return (
     <aside className="lg:sticky lg:top-[5.5rem]">
@@ -30,10 +32,11 @@ export function SteamSidebar() {
           <div className="flex items-center gap-3">
             <div className="relative h-12 w-12 overflow-hidden rounded bg-black/20 ring-1 ring-white/10">
               <img
-                src={profile.avatarUrl}
+                src={avatarSrc}
                 alt=""
                 className="h-full w-full object-cover"
                 loading="lazy"
+                onError={() => setAvatarSrc("/steam/avatar.svg")}
               />
             </div>
             <div className="min-w-0">

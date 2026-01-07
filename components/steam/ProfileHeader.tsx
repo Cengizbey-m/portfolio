@@ -1,10 +1,13 @@
 "use client";
 
+import * as React from "react";
 import { profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
 export function ProfileHeader({ className }: { className?: string }) {
   const level = profile.level ?? 1;
+  const [bannerSrc, setBannerSrc] = React.useState<string>(profile.bannerUrl);
+  const [avatarSrc, setAvatarSrc] = React.useState<string>(profile.avatarUrl);
   return (
     <section
       className={cn(
@@ -13,12 +16,17 @@ export function ProfileHeader({ className }: { className?: string }) {
       )}
     >
       <div className="relative h-32 w-full md:h-40">
-        <img
-          src={profile.bannerUrl}
-          alt=""
-          className="h-full w-full object-cover"
-          loading="lazy"
-        />
+        {bannerSrc ? (
+          <img
+            src={bannerSrc}
+            alt=""
+            className="h-full w-full object-cover"
+            loading="lazy"
+            onError={() => setBannerSrc("")}
+          />
+        ) : (
+          <div className="h-full w-full bg-[radial-gradient(900px_260px_at_20%_10%,rgba(102,192,244,0.18),transparent_55%),linear-gradient(180deg,rgba(23,26,33,0.8),rgba(27,40,56,0.8))]" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-transparent" />
       </div>
 
@@ -26,10 +34,11 @@ export function ProfileHeader({ className }: { className?: string }) {
         <div className="flex items-center gap-4">
           <div className="h-16 w-16 overflow-hidden rounded bg-black/20 ring-1 ring-white/10 md:h-20 md:w-20">
             <img
-              src={profile.avatarUrl}
+              src={avatarSrc}
               alt=""
               className="h-full w-full object-cover"
               loading="lazy"
+              onError={() => setAvatarSrc("/steam/avatar.svg")}
             />
           </div>
           <div className="min-w-0">

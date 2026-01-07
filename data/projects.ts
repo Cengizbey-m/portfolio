@@ -26,7 +26,7 @@ export const projects: Project[] = [
     slug: "thetripman",
     tags: ["Web", "Networking"],
     short:
-      "Transportation booking + sales website built for a paying client. Production code private; safe demo/prototype is public.",
+      "Transportation booking + sales website built for a paying client. Production code is private due to business confidentiality.",
     problem:
       "Client needed a fast way for customers to browse services, request bookings, and convert leads without exposing operational details.",
     role:
@@ -39,13 +39,13 @@ export const projects: Project[] = [
       "CI/CD (GitHub Actions)",
     ],
     impact: [
-      "Placeholder: reduce booking friction by X% (track via form drop‑off / analytics)",
-      "Placeholder: improve lead response time by X minutes (process metric)",
+      "Built and deployed a conversion-focused marketing + booking experience with clear CTAs and service pages.",
+      "Implemented a reliable request/booking flow with validation and production-ready UX polish.",
     ],
     coverImage: "/images/thetripman-placeholder.svg",
     links: {
       caseStudy: "/projects/thetripman",
-      github: "https://github.com/Cengizbey-m",
+      liveDemo: "https://www.thetripman.com",
     },
     confidentialityNote:
       "Production code is private due to client confidentiality. This page describes the architecture and shows a safe demo/prototype.",
@@ -62,13 +62,13 @@ export const projects: Project[] = [
       "Team contributor: owned ML evaluation + API contract; implemented feature work end‑to‑end and documented trade‑offs.",
     stack: ["Python", "Pandas", "Model evaluation", "Next.js", "TypeScript"],
     impact: [
-      "Placeholder: model metrics (MAE/RMSE) + baseline comparison",
-      "Placeholder: reduced analysis time by X% via one‑click reports",
+      "Owned the evaluation approach (baselines + metrics) and translated results into clear UI-friendly outputs.",
+      "Defined and implemented the API contract between model code and the web UI for predictable integrations.",
     ],
     coverImage: "/images/capstone-placeholder.svg",
     links: {
       caseStudy: "/projects/capstone-ai-finance",
-      github: "https://github.com/Cengizbey-m",
+      github: "https://github.com/Cengizbey-m/Feather-Capstone",
     },
   },
   {
@@ -76,20 +76,19 @@ export const projects: Project[] = [
     slug: "formally-prototype",
     tags: ["Web"],
     short:
-      "Public UI/UX prototype (fake data) for a future fitness + personal development platform. Core repo private.",
+      "Early-stage product prototype exploring onboarding, habit flows, and clean UI patterns. Codebase is private while the product is in development.",
     problem:
       "Needed a clean onboarding + habit flow that keeps users focused on next actions, not configuration.",
     role:
       "Product + engineering: UX flows, component library, and front-end architecture that can evolve into a full system.",
     stack: ["Next.js", "TypeScript", "Tailwind", "Component design"],
     impact: [
-      "Placeholder: usability test notes + iteration count",
-      "Placeholder: task completion time improvements",
+      "Designed onboarding and habit flows focused on clarity and low cognitive load.",
+      "Built reusable UI patterns that can evolve into a full product design system.",
     ],
     coverImage: "/images/formally-placeholder.svg",
     links: {
       caseStudy: "/projects/formally-prototype",
-      github: "https://github.com/Cengizbey-m",
     },
   },
 ];
