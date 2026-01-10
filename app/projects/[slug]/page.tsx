@@ -6,13 +6,18 @@ import { renderMdx } from "@/lib/mdx";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { ProjectMedia } from "@/components/projects/ProjectMedia";
 
 export async function generateStaticParams() {
   return projectSlugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
   return {
@@ -25,9 +30,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default async function ProjectCaseStudyPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
@@ -90,6 +95,11 @@ export default async function ProjectCaseStudyPage({
                 </a>
               </Button>
             ) : null}
+            {!project.links.github && !project.links.liveDemo ? (
+              <p className="text-sm text-muted-foreground">
+                Links will be shared when available.
+              </p>
+            ) : null}
             <Button
               variant="ghost"
               asChild
@@ -100,6 +110,8 @@ export default async function ProjectCaseStudyPage({
           </div>
         </CardHeader>
       </Card>
+
+      <ProjectMedia gallery={project.gallery} demoVideo={project.demoVideo} />
 
       <Card>
         <CardHeader>

@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { HouseModeToggle } from "@/components/HouseModeToggle";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { HouseModeGate } from "@/components/HouseModeGate";
 
 export function Header() {
   return (
@@ -28,10 +26,8 @@ export function Header() {
         </div>
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <HouseModeToggle />
         </div>
       </div>
-      <HouseModeGate />
     </header>
   );
 }

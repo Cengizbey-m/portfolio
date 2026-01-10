@@ -51,7 +51,7 @@ export function BadgesPanel() {
                   <Icon className="h-4 w-4 text-[hsl(var(--steam-link))]" />
                 </div>
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-semibold text-foreground">
+                  <p className="text-sm font-semibold leading-5 text-foreground break-words">
                     {b.label}
                   </p>
                   <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-muted-foreground">

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { HouseModeToggle } from "@/components/HouseModeToggle";
 import { MobileNav } from "@/components/steam/MobileNav";
 import { profile } from "@/data/profile";
 
@@ -29,7 +28,10 @@ export function SteamTopNav() {
       <div className="steam-container">
         <div className="flex h-14 items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight text-foreground">
+            <Link
+              href="/"
+              className="flex items-center gap-2 font-semibold tracking-tight text-[hsl(var(--steam-topbar-foreground))]"
+            >
               <span className="inline-flex h-7 w-7 items-center justify-center rounded bg-gradient-to-b from-white/10 to-black/10 ring-1 ring-white/10">
                 C
               </span>
@@ -44,9 +46,9 @@ export function SteamTopNav() {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "rounded px-3 py-2 text-xs font-semibold tracking-[0.12em] text-muted-foreground transition-colors hover:text-foreground",
+                      "rounded px-3 py-2 text-xs font-semibold tracking-[0.12em] text-[hsl(var(--steam-topbar-muted))] transition-colors hover:text-[hsl(var(--steam-topbar-foreground))]",
                       active &&
-                        "bg-white/5 text-foreground ring-1 ring-white/10"
+                        "bg-white/5 text-[hsl(var(--steam-topbar-foreground))] ring-1 ring-white/10"
                     )}
                   >
                     {item.label}
@@ -58,7 +60,6 @@ export function SteamTopNav() {
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <HouseModeToggle />
           </div>
         </div>
       </div>

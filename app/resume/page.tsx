@@ -14,7 +14,7 @@ export default function ResumePage() {
         <CardHeader className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <SectionHeader
             title="Resume"
-            description="Add your PDF at /public/resume.pdf (then this page will show it)."
+            description="Download or view the PDF."
           />
           <Button asChild className="normal-case tracking-normal font-medium">
             <a href="/resume.pdf" download>

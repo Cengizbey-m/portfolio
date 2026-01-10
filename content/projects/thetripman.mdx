@@ -2,74 +2,27 @@
 
 **Live site:** https://www.thetripman.com
 
-## Problem & users
+## Summary
 
-The client needed a fast, mobile-friendly website that converts visitors into bookings/leads without exposing operational details. Users are customers looking for transportation services and a simple way to request availability and pricing.
+Production scheduling microsite for a premium transportation business. Built to be fast, mobile-first, and conversion-focused with a reliable booking flow.
 
-## My role & responsibilities
+## What I shipped
 
-- Full‑stack implementation and delivery (UI + integration patterns)
-- Defined safe, public demo boundaries (dummy data, no secrets)
-- Deployment setup and production hardening checklist
-- Security/privacy constraints for a paying client project
+- One-page booking experience: service selection → schedule → details → confirmation
+- Two scheduling modes (embed + custom calendar) to match business needs
+- Transactional email notifications (confirmations + calendar invites)
+- Admin workflow for managing bookings (access-controlled)
 
-## Key features
+## Tech snapshot
 
-- Service catalog + conversion-focused landing sections
-- Booking/request flow with validation and clear confirmation states
-- Admin-friendly content updates (copy, pricing notes, contact routing)
-- Accessibility and performance basics (fast LCP, predictable layout)
+- Next.js 15 + TypeScript
+- Tailwind + shadcn/ui
+- Postgres (Neon) + Prisma
+- Scheduling: Cal.com/Calendly + FullCalendar + Google Calendar
+- Resend email • GA4 • Vercel
 
-## Tech stack
+## Notes
 
-- Next.js (App Router) + TypeScript
-- Tailwind CSS
-- CI/CD (GitHub Actions)
-- Hosting: Vercel (prod) / preview deploys
-
-## Architecture (high level)
-
-```mermaid
-flowchart TD
-  U[User (Web / Mobile)] -->|HTTPS| FE[Next.js App (Vercel)]
-  FE -->|Server Actions / API routes| API[Backend API Layer]
-  API --> DB[(Postgres / Neon or Supabase)]
-  API --> OBJ[(Object Storage: screenshots/files)]
-  API --> EMAIL[Email provider (Resend)]
-```
-
-## Security & privacy considerations
-
-**Confidentiality:** production code remains private. This case study focuses on architecture decisions and delivery work without exposing business-sensitive details.
-
-- No client credentials in the repo (use environment variables)
-- Least-privilege access for any admin endpoints
-- Basic abuse controls (rate limit, bot mitigation where appropriate)
-- Avoid exposing internal identifiers or operational data in the UI
-
-## Deployment pipeline (CI/CD + hosting)
-
-- PRs: Vercel preview deploy for quick review
-- Main branch: production deployment after checks
-- Quality gates (recommended): typecheck, lint, basic smoke test
-
-## Database / data layer
-
-Production can use Postgres (Neon/Supabase) for:
-
-- booking requests (status, timestamps, service type)
-- audit trail of contact submissions
-- admin content metadata (optional)
-
-## Challenges & what I learned
-
-- Designing a public demo that proves engineering without violating confidentiality
-- Keeping the UI conversion-focused while maintaining clean structure and performance
-
-## Next steps
-
-- Add automated end-to-end checks for the booking flow
-- Add operational visibility (error monitoring + simple dashboards)
-- Track conversion/lead metrics to quantify impact over time
+The production repository is private due to business confidentiality.
 
 

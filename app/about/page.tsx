@@ -33,7 +33,7 @@ export default function AboutPage() {
 
       <Card>
         <CardHeader id="skills" className="scroll-mt-24">
-          <SectionHeader title="Strengths" description="What I’m good at (no fluff)." />
+          <SectionHeader title="Strengths" description="Areas I work in most often." />
         </CardHeader>
         <CardContent className="pt-4 space-y-4">
           <div className="flex flex-wrap gap-2">
@@ -69,7 +69,7 @@ export default function AboutPage() {
 
       <Card>
         <CardHeader id="certificates" className="scroll-mt-24">
-          <SectionHeader title="Certificates" description="Quick trust signals." />
+          <SectionHeader title="Certificates" description="Credentials and training." />
         </CardHeader>
         <CardContent className="pt-4">
           <ul className="list-disc space-y-2 pl-5 text-sm text-muted-foreground">
@@ -83,7 +83,7 @@ export default function AboutPage() {
 
       <Card>
         <CardHeader>
-          <SectionHeader title="Timeline" description="Sheridan SDNE → internship/co-op and junior roles." />
+          <SectionHeader title="Timeline" description="Where I’m at and what’s next." />
         </CardHeader>
         <CardContent className="pt-4">
           <ol className="list-decimal space-y-2 pl-5 text-sm text-muted-foreground">

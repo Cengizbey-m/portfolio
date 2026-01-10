@@ -115,6 +115,18 @@ export function SteamSidebar() {
                   Email
                 </a>
               ) : null}
+              <Link
+                className="rounded bg-white/5 px-2 py-1 text-xs text-foreground ring-1 ring-white/10 hover:bg-white/10"
+                href="/resume"
+              >
+                Resume
+              </Link>
+              <Link
+                className="rounded bg-white/5 px-2 py-1 text-xs text-foreground ring-1 ring-white/10 hover:bg-white/10"
+                href="/contact"
+              >
+                Contact
+              </Link>
             </div>
           </div>
 
@@ -132,6 +144,23 @@ export function SteamSidebar() {
               </div>
             </div>
           ) : null}
+        </div>
+
+        {/* Recruiter module */}
+        <div className="rounded-md border border-border bg-[linear-gradient(180deg,hsla(0,0%,100%,0.06),transparent_38%),hsl(var(--steam-panel))] p-3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
+          <p className="px-2 pb-2 text-[11px] font-semibold tracking-[0.14em] uppercase text-muted-foreground">
+            Recruiter info
+          </p>
+          <div className="space-y-2 px-2 text-sm text-muted-foreground">
+            <div className="flex items-center justify-between gap-3">
+              <span>Availability</span>
+              <span className="text-foreground">{profile.status?.label ?? "-"}</span>
+            </div>
+            <div className="flex items-center justify-between gap-3">
+              <span>Location</span>
+              <span className="text-foreground">{profile.location}</span>
+            </div>
+          </div>
         </div>
       </div>
     </aside>
