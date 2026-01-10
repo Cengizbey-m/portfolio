@@ -2,7 +2,12 @@ import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const raw = (process.env.NEXT_PUBLIC_SITE_URL ?? "").trim();
+  const base = raw
+    ? raw.startsWith("http://") || raw.startsWith("https://")
+      ? raw.replace(/\/$/, "")
+      : `https://${raw.replace(/\/$/, "")}`
+    : "http://localhost:3000";
 
   return [
     { url: `${base}/`, changeFrequency: "weekly", priority: 1 },

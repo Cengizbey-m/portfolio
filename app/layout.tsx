@@ -5,6 +5,21 @@ import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { SteamShell } from "@/components/steam/SteamShell";
 
+function normalizeSiteUrl(input?: string) {
+  const raw = (input ?? "").trim();
+  if (!raw) return "http://localhost:3000";
+  // Vercel users often set this as "my-site.vercel.app" (no scheme). Normalize it.
+  const withScheme = raw.startsWith("http://") || raw.startsWith("https://") ? raw : `https://${raw}`;
+  try {
+    // Ensure it's a valid absolute URL
+    return new URL(withScheme).toString().replace(/\/$/, "");
+  } catch {
+    return "http://localhost:3000";
+  }
+}
+
+const SITE_URL = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -16,7 +31,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Cengiz — Full‑stack Developer (SDNE @ Sheridan)",
     template: "%s | Cengiz",
@@ -28,7 +43,7 @@ export const metadata: Metadata = {
     title: "Cengiz — Full‑stack Developer (SDNE @ Sheridan)",
     description:
       "Portfolio with projects across web, AI/ML, networking, security, and databases.",
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+    url: SITE_URL,
     siteName: "Cengiz Portfolio",
     images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Cengiz Portfolio" }],
   },
