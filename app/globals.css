@@ -27,6 +27,10 @@
   --steam-panel-2: 212 28% 22%;
   --steam-link: 206 83% 68%;
   --steam-green: 86 53% 44%; /* Steam-ish green */
+
+  /* Topbar-specific text colors (so Light mode remains readable) */
+  --steam-topbar-foreground: 206 28% 83%;
+  --steam-topbar-muted: 210 10% 75%;
 }
 
 /* Optional “light” theme (still Steam flavored) */
@@ -49,11 +53,16 @@
   --secondary: 215 25% 92%;
   --secondary-foreground: 220 20% 14%;
 
+  /* Keep the Steam topbar dark even in Light mode */
   --steam-topbar: 220 20% 18%;
   --steam-panel: 0 0% 100%;
   --steam-panel-2: 215 25% 92%;
   --steam-link: 206 83% 42%;
   --steam-green: 86 53% 36%;
+
+  /* Topbar-specific text colors for contrast on dark topbar */
+  --steam-topbar-foreground: 0 0% 98%;
+  --steam-topbar-muted: 210 10% 86%;
 }
 
 @theme inline {
@@ -106,18 +115,12 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  /* keep behind everything, but above the browser background */
+  z-index: -50;
   background:
     radial-gradient(1200px 600px at 20% 0%, color-mix(in oklab, theme(--color-primary) 18%, transparent), transparent 55%),
     radial-gradient(900px 500px at 80% 20%, color-mix(in oklab, theme(--color-primary) 10%, transparent), transparent 60%),
     linear-gradient(180deg, hsl(var(--steam-topbar)) 0%, theme(--color-background) 28%);
-}
-
-a {
-  color: hsl(var(--steam-link));
-}
-a:hover {
-  color: color-mix(in oklab, hsl(var(--steam-link)) 82%, white);
 }
 
 .steam-container {
@@ -126,3 +129,15 @@ a:hover {
   margin-inline: auto;
   padding-inline: 1.25rem;
 }
+
+/* Simple line clamping helpers (avoid Tailwind plugin dependency) */
+.clamp-2,
+.clamp-3,
+.clamp-4 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.clamp-2 { -webkit-line-clamp: 2; }
+.clamp-3 { -webkit-line-clamp: 3; }
+.clamp-4 { -webkit-line-clamp: 4; }

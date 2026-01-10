@@ -17,7 +17,7 @@ export default function ProjectsPage() {
         <CardHeader className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <SectionHeader
             title="Projects"
-            description="Designed for recruiter scanning: problem → role → stack → proof."
+            description="Case studies and shipped work."
           />
           <Button
             variant="secondary"

@@ -14,12 +14,12 @@ export default function AboutPage() {
         <CardHeader>
           <SectionHeader
             title="About"
-            description="Junior software developer (full‑stack) with SDNE depth — shipping-focused and proof-first."
+            description="Software developer with SDNE depth (networking, Linux, security, databases)."
           />
         </CardHeader>
         <CardContent className="pt-4 space-y-3">
           <p className="leading-7 text-muted-foreground">
-            I’m Muhammed “Cengiz” Cengiz, an SDNE student at Sheridan College (Oakville/GTA),
+            I’m Muhammed Cengiz, an SDNE student at Sheridan College (Oakville/GTA),
             graduating in ~7–8 months. I like roles where I can build product features end‑to‑end:
             UI/UX, APIs, data, deployment, and practical security.
           </p>
@@ -33,7 +33,7 @@ export default function AboutPage() {
 
       <Card>
         <CardHeader id="skills" className="scroll-mt-24">
-          <SectionHeader title="Strengths" description="What I’m good at (no fluff)." />
+          <SectionHeader title="Strengths" description="Areas I work in most often." />
         </CardHeader>
         <CardContent className="pt-4 space-y-4">
           <div className="flex flex-wrap gap-2">
@@ -69,7 +69,7 @@ export default function AboutPage() {
 
       <Card>
         <CardHeader id="certificates" className="scroll-mt-24">
-          <SectionHeader title="Certificates" description="Quick trust signals." />
+          <SectionHeader title="Certificates" description="Credentials and training." />
         </CardHeader>
         <CardContent className="pt-4">
           <ul className="list-disc space-y-2 pl-5 text-sm text-muted-foreground">
@@ -83,18 +83,17 @@ export default function AboutPage() {
 
       <Card>
         <CardHeader>
-          <SectionHeader title="Timeline" description="Sheridan SDNE → interviews before graduation." />
+          <SectionHeader title="Timeline" description="Where I’m at and what’s next." />
         </CardHeader>
         <CardContent className="pt-4">
           <ol className="list-decimal space-y-2 pl-5 text-sm text-muted-foreground">
             <li>
-              Now → Graduation: build interview-ready proof (case studies, demo repos, clean README,
-              deploys).
+              Now → Graduation: build and ship polished case studies, demos, and clean documentation.
             </li>
             <li>
               0–2 months: polish demos, add tests/monitoring basics, and prepare 2–3 tailored resume versions.
             </li>
-            <li>2–6 months: targeted applications + warm outreach; iterate based on recruiter feedback.</li>
+            <li>2–6 months: targeted applications + networking; iterate based on feedback.</li>
           </ol>
         </CardContent>
       </Card>

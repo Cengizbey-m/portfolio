@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { HouseModeProvider } from "@/components/HouseModeProvider";
 import { SteamShell } from "@/components/steam/SteamShell";
 
 const geistSans = Geist({
@@ -23,12 +22,12 @@ export const metadata: Metadata = {
     template: "%s | Cengiz",
   },
   description:
-    "Portfolio for Muhammed “Cengiz” Cengiz — SDNE student at Sheridan College (Oakville/GTA). Proof-first case studies across full-stack web, AI/ML, networking, security, and databases.",
+    "Portfolio for Muhammed Cengiz — SDNE student at Sheridan College (Oakville/GTA). Projects across full‑stack web, AI/ML prototyping, networking, security, and databases.",
   openGraph: {
     type: "website",
     title: "Cengiz — Full‑stack Developer (SDNE @ Sheridan)",
     description:
-      "Proof-first portfolio with shipped project case studies: web, AI/ML, networking, security, databases.",
+      "Portfolio with projects across web, AI/ML, networking, security, and databases.",
     url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
     siteName: "Cengiz Portfolio",
     images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Cengiz Portfolio" }],
@@ -37,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Cengiz — Full‑stack Developer (SDNE @ Sheridan)",
     description:
-      "Proof-first portfolio with shipped project case studies: web, AI/ML, networking, security, databases.",
+      "Portfolio with projects across web, AI/ML, networking, security, and databases.",
     images: ["/og.svg"],
   },
   alternates: { canonical: "/" },
@@ -54,9 +53,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <HouseModeProvider>
-            <SteamShell>{children}</SteamShell>
-          </HouseModeProvider>
+          <SteamShell>{children}</SteamShell>
         </ThemeProvider>
         <Analytics />
       </body>

@@ -28,13 +28,13 @@ export function FavoriteProjectPanel() {
         </Button>
       </CardHeader>
       <CardContent className="pt-4">
-        <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid gap-4 2xl:grid-cols-[1.1fr_0.9fr]">
           <div className="overflow-hidden rounded-sm border border-border bg-black/15 ring-1 ring-white/5">
             {featured.coverImage ? (
               <img
                 src={featured.coverImage}
                 alt=""
-                className="h-56 w-full object-cover md:h-64"
+                className="h-52 w-full object-cover md:h-64"
                 loading="lazy"
               />
             ) : (
@@ -44,7 +44,7 @@ export function FavoriteProjectPanel() {
             )}
           </div>
 
-          <div className="space-y-3">
+          <div className="min-w-0 space-y-3">
             <div className="flex flex-wrap gap-2">
               {featured.tags.map((t) => (
                 <Badge key={t}>{t}</Badge>
@@ -55,28 +55,29 @@ export function FavoriteProjectPanel() {
               <p className="text-xl font-semibold tracking-tight text-foreground">
                 {featured.title}
               </p>
-              <p className="text-sm leading-6 text-muted-foreground">
+              <p className="clamp-3 text-sm leading-6 text-muted-foreground">
                 {featured.short}
               </p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-sm border border-border bg-white/5 p-3 ring-1 ring-white/10">
-                <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-muted-foreground">
-                  My role
-                </p>
-                <p className="mt-1 text-sm text-foreground">{featured.role}</p>
-              </div>
-              <div className="rounded-sm border border-border bg-white/5 p-3 ring-1 ring-white/10">
-                <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-muted-foreground">
-                  Proof
-                </p>
-                <ul className="mt-1 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
-                  {(featured.impact ?? []).slice(0, 2).map((x) => (
-                    <li key={x}>{x}</li>
-                  ))}
-                </ul>
-              </div>
+            <div className="rounded-sm border border-border bg-white/5 p-3 ring-1 ring-white/10">
+              <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-muted-foreground">
+                My role
+              </p>
+              <p className="clamp-3 mt-1 text-sm leading-6 text-foreground">{featured.role}</p>
+            </div>
+
+            <div className="rounded-sm border border-border bg-white/5 p-3 ring-1 ring-white/10">
+              <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-muted-foreground">
+                Highlights
+              </p>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-muted-foreground">
+                {(featured.impact ?? []).slice(0, 2).map((x) => (
+                  <li key={x} className="clamp-2">
+                    {x}
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <div className="flex flex-wrap gap-2 pt-1">

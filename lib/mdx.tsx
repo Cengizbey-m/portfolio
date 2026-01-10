@@ -27,7 +27,10 @@ const mdxComponents = {
     <ol className="mt-3 list-decimal space-y-2 pl-5 text-muted-foreground" {...props} />
   ),
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    <a className="underline underline-offset-4 hover:opacity-90" {...props} />
+    <a
+      className="text-[hsl(var(--steam-link))] underline underline-offset-4 hover:opacity-90"
+      {...props}
+    />
   ),
 };
 

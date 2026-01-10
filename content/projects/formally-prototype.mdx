@@ -1,69 +1,25 @@
 # Formally — Fitness + Personal Development Platform (Prototype)
 
-## Problem & users
+## Summary
 
-I’m building Formally as a future business idea. The prototype focuses on UI/UX flows for onboarding, habits, and “next action” clarity — without real user data.
+Formally is an early-stage fitness + social platform. The goal is a clean experience for programs, progress tracking, and community features.
 
-## My role & responsibilities
+## What’s implemented
 
-- Product + engineering ownership (concept → flows → UI components)
-- Designed a public prototype repo with fake data only
-- Planned a production architecture that can scale (auth, data, payments)
+- Authentication + authorization (JWT + role-based access)
+- Programs, progress tracking, goals, notifications
+- Real-time messaging / group chats (Socket.io)
+- Admin panel and multi-language support (EN/TR)
 
-## Key features (prototype)
+## Tech snapshot
 
-- Onboarding flow with clear defaults
-- Habit/task views optimized for “today”
-- Mobile-friendly layout and reusable component patterns
+- React (frontend)
+- Node.js / Express (backend)
+- MongoDB (Mongoose)
+- Docker + testing setup
 
-## Tech stack
+## Notes
 
-- Next.js + TypeScript
-- Tailwind CSS
-- UI patterns that can evolve into a design system
-
-## Architecture (planned)
-
-```mermaid
-flowchart TD
-  U[User] --> FE[Next.js App]
-  FE --> AUTH[Auth (Clerk/NextAuth)]
-  FE --> API[Server Actions / API]
-  API --> DB[(Postgres: Supabase/Neon)]
-  API --> PAY[Payments (Stripe)]
-  API --> OBJ[(Object Storage)]
-```
-
-## Security & privacy considerations
-
-- Authentication + authorization boundaries (roles, ownership)
-- Minimal data retention; clear user controls
-- Secure payments (Stripe hosted checkout)
-
-## Deployment pipeline (CI/CD + hosting)
-
-- Vercel preview deploys for rapid iteration
-- Production deploy gated on checks (lint/typecheck)
-
-## Database / data layer
-
-Planned Postgres entities:
-
-- users, profiles
-- habits, check-ins, streaks
-- plans/programs, progress
-
-Prototype uses **fake data only**.
-
-## Challenges & what I learned
-
-- Designing “simple” UX requires ruthless scope control
-- Build components so they can scale into a real product later
-
-## Next steps
-
-- Usability testing (5–10 users) and iterate
-- Add auth + real persistence behind feature flags
-- Add basic telemetry to measure drop‑off (privacy-respecting)
+The repository is private while the product is under development. More links will be added when it’s ready to launch.
 
 

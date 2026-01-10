@@ -25,12 +25,20 @@ export function ContactForm() {
       </CardHeader>
       <CardContent>
         <form action={action} className="space-y-4">
+          {/* Honeypot (spam bots fill this; humans won't see it) */}
+          <div className="hidden">
+            <label>
+              Website
+              <input name="website" tabIndex={-1} autoComplete="off" />
+            </label>
+          </div>
+
           <div className="grid gap-4 md:grid-cols-2">
             <label className="space-y-1 text-sm">
               <span className="text-muted-foreground">Name</span>
               <Input
                 name="name"
-                placeholder="Cengiz"
+                placeholder="Your name"
               />
             </label>
             <label className="space-y-1 text-sm">
@@ -49,7 +57,7 @@ export function ContactForm() {
               name="message"
               required
               rows={6}
-              placeholder="Hi Cengiz — we’d like to chat about a junior developer role. Are you free this week?"
+              placeholder="Write your message here…"
             />
           </label>
 
