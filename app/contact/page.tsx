@@ -11,7 +11,7 @@ export const metadata = {
 export default function ContactPage() {
   const email = "muhammedcengiz2778@gmail.com";
   const linkedin =
-    "https://www.linkedin.com/in/muhammed-cengiz-005aa0278/?locale=en_US";
+    "https://www.linkedin.com/in/muhammed-cengiz/";
 
   return (
     <div className="space-y-6">

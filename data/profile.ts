@@ -20,7 +20,7 @@ export const profile = {
   },
   links: {
     github: "https://github.com/Cengizbey-m",
-    linkedin: "https://www.linkedin.com/in/muhammed-cengiz-005aa0278/?locale=en_US",
+    linkedin: "https://www.linkedin.com/in/muhammed-cengiz/",
     email: "muhammedcengiz2778@gmail.com",
   },
   stats: [
