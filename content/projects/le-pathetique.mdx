@@ -1,0 +1,40 @@
+# Le Pathétique (BearHacks 2026)
+
+**DevPost:** https://devpost.com/software/le-pathetique
+**GitHub:** https://github.com/Cengizbey-m/Le-Pathetique
+
+A pretentious AI French food critic that roasts your cooking out loud, then redeems you with three budget-tiered recipes. Built solo at BearHacks 2026 in one weekend.
+
+## The pitch
+
+You upload a photo of whatever sad meal you're staring at. The app analyzes it, then a French-accented voice critiques it like Gordon Ramsay's snobbier cousin — that tone hovering between disappointment and fury. Then it offers redemption: three recipes tagged **broke**, **decent**, and **fancy** so you can fix dinner at whatever budget you've got.
+
+## The pipeline
+
+1. **Photo upload** in the browser, no server upload yet.
+2. **Google Cloud Vision API** labels what's actually in the picture (so the AI doesn't hallucinate "bouillabaisse" when you're holding a granola bar).
+3. **Gemini Flash** takes the labels + the photo and writes the critique + three recipes in one multimodal pass.
+4. **ElevenLabs** synthesizes the critique with a French-accented voice.
+5. **Web Audio API** layers in in-browser SFX (no asset downloads).
+
+## What I'm proud of
+
+- **Offline mock mode.** Hackathon Wi-Fi is a coin flip. If Vision or Gemini fails (or a key gets revoked at 2 AM), the app falls back to canned-but-plausible critiques and recipes. The demo never goes blank on stage.
+- **Six personas, 13 easter eggs.** Repeat users find different critics with different voices and small hidden interactions. Built for replay value.
+- **Brutalist newspaper aesthetic.** Most hackathon UIs blur together — Tailwind defaults, soft shadows, gradient buttons. I went the opposite way: serif headlines, harsh borders, monochrome with one ink-red accent. Stood out on the judging table.
+- **Multimodal in one shot.** Gemini handles both the visual analysis *and* the creative writing in a single call, instead of chaining a separate vision model and an LLM.
+
+## Tech
+
+- **Next.js 16** (App Router), **React 19**, **TypeScript**, **Tailwind v4**
+- **Google Cloud Vision API** — image labeling
+- **Gemini Flash** — multimodal critique + recipe generation
+- **ElevenLabs** — text-to-speech with French accent
+- **Web Audio API** — sound effects, no audio assets
+- **Vercel** — hosting
+
+## Status
+
+- Hackathon: BearHacks 2026 · solo build
+- Vercel deployment exists but has known issues post-hackathon. DevPost link is the source of truth for now.
+- Source is open: [github.com/Cengizbey-m/Le-Pathetique](https://github.com/Cengizbey-m/Le-Pathetique).

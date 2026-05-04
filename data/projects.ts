@@ -1,4 +1,4 @@
-export type ProjectTag = "Web" | "AI/ML" | "Networking";
+export type ProjectTag = "Web" | "AI/ML" | "Networking" | "Hackathon";
 
 export type ProjectLinks = {
   caseStudy: string;
@@ -24,6 +24,48 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    title: "Le Pathétique (BearHacks 2026 — AI French Food Critic)",
+    slug: "le-pathetique",
+    tags: ["AI/ML", "Web", "Hackathon"],
+    short:
+      "Solo BearHacks 2026 build. Upload a photo of your sad cooking, get roasted out loud by a pretentious French AI critic, then redeemed with broke / decent / fancy recipes.",
+    problem:
+      "Hackathon prompt: ship something that uses multimodal AI in a way that's actually fun, not a demo with three buttons. Needed an interaction that survives a shaky Wi-Fi judging room and doesn't depend on warm API caches.",
+    role:
+      "Solo developer. Designed the persona, built the pipeline (Vision → Gemini → ElevenLabs), wrote the brutalist newspaper UI, wired the offline mock mode for demo resilience, hid 13 easter eggs across 6 personas.",
+    stack: [
+      "Next.js 16 (App Router)",
+      "React 19",
+      "TypeScript",
+      "Tailwind v4",
+      "Google Cloud Vision API (image labeling)",
+      "Gemini Flash (multimodal critique + recipe generation)",
+      "ElevenLabs (text-to-speech, French accent)",
+      "Web Audio API (in-browser SFX)",
+      "Vercel (hosting)",
+    ],
+    impact: [
+      "Shipped solo at BearHacks 2026 — concept to working multimodal demo in one weekend.",
+      "Built an offline mock mode so the app keeps working when the venue Wi-Fi or an API key dies mid-judging.",
+      "Designed 6 distinct critic personas with 13 hidden easter eggs to reward repeat use.",
+      "Brutalist newspaper aesthetic that stood out from the standard hackathon Tailwind look.",
+    ],
+    coverImage: "/images/le-pathetique/original.png",
+    gallery: [
+      "/images/le-pathetique/original.png",
+      "/images/le-pathetique/gallery.jpg",
+      "/images/le-pathetique/gallery-1.jpg",
+      "/images/le-pathetique/gallery-2.jpg",
+    ],
+    links: {
+      caseStudy: "/projects/le-pathetique",
+      github: "https://github.com/Cengizbey-m/Le-Pathetique",
+      liveDemo: "https://devpost.com/software/le-pathetique",
+    },
+    confidentialityNote:
+      "A Vercel deployment exists but has known issues being polished post-hackathon — DevPost link is the source of truth for now.",
+  },
   {
     title: "TheTripMan (Client • Transportation Booking + Sales)",
     slug: "thetripman",

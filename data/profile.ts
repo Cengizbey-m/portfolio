@@ -24,7 +24,7 @@ export const profile = {
     email: "muhammedcengiz2778@gmail.com",
   },
   stats: [
-    { label: "Projects", value: "3" },
+    { label: "Projects", value: "4" },
     { label: "Focus", value: "Web + Networks" },
     { label: "Grad", value: "~7–8 mo" },
   ],
@@ -33,7 +33,7 @@ export const profile = {
     { label: "Location", value: "GTA" },
     { label: "Stack", value: "Next.js" },
   ],
-  featuredProjectSlug: "thetripman",
+  featuredProjectSlug: "le-pathetique",
 } as const;
 
 

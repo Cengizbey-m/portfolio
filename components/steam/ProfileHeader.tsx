@@ -3,11 +3,31 @@
 import * as React from "react";
 import { profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
+import { LevelRing } from "@/components/steam/LevelRing";
+import { unlock } from "@/lib/achievements";
+import { fireConfetti } from "@/lib/confetti";
+import { sfx } from "@/lib/sound";
 
 export function ProfileHeader({ className }: { className?: string }) {
   const level = profile.level ?? 1;
   const [bannerSrc, setBannerSrc] = React.useState<string>(profile.bannerUrl);
   const [avatarSrc, setAvatarSrc] = React.useState<string>(profile.avatarUrl);
+  const clicks = React.useRef(0);
+  const last = React.useRef(0);
+
+  function handleAvatarClick() {
+    sfx.click();
+    const now = Date.now();
+    if (now - last.current > 1500) clicks.current = 0;
+    last.current = now;
+    clicks.current += 1;
+    if (clicks.current >= 10) {
+      clicks.current = 0;
+      fireConfetti(140);
+      unlock("avatar-spam");
+    }
+  }
+
   return (
     <section
       className={cn(
@@ -15,8 +35,9 @@ export function ProfileHeader({ className }: { className?: string }) {
         className
       )}
     >
-      <div className="relative h-32 w-full md:h-40">
+      <div className="relative h-32 w-full md:h-44">
         {bannerSrc ? (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={bannerSrc}
             alt=""
@@ -27,44 +48,48 @@ export function ProfileHeader({ className }: { className?: string }) {
         ) : (
           <div className="h-full w-full bg-[radial-gradient(900px_260px_at_20%_10%,rgba(102,192,244,0.18),transparent_55%),linear-gradient(180deg,rgba(23,26,33,0.8),rgba(27,40,56,0.8))]" />
         )}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/15 to-transparent" />
       </div>
 
       <div className="flex flex-col gap-4 p-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-4">
-          <div className="h-16 w-16 overflow-hidden rounded bg-black/20 ring-1 ring-white/10 md:h-20 md:w-20">
+          <button
+            type="button"
+            onClick={handleAvatarClick}
+            aria-label="Avatar"
+            className="group relative h-16 w-16 overflow-hidden rounded bg-black/20 ring-1 ring-white/10 md:h-20 md:w-20"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={avatarSrc}
               alt=""
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.04]"
               loading="lazy"
               onError={() => setAvatarSrc("/steam/avatar.svg")}
             />
-          </div>
+            <span className="absolute inset-x-0 bottom-0 grid h-5 place-items-center bg-black/60 text-[10px] font-semibold uppercase tracking-wider text-white opacity-0 transition-opacity group-hover:opacity-100">
+              Click me
+            </span>
+          </button>
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <p className="text-xl font-semibold tracking-tight text-foreground md:text-2xl">
                 {profile.displayName}
               </p>
-              <p className="text-xs text-muted-foreground">
-                {profile.realName}
-              </p>
+              <p className="text-xs text-muted-foreground">{profile.realName}</p>
             </div>
             <p className="text-sm text-muted-foreground">
               {profile.country ? `${profile.country} • ` : ""}
               {profile.headline} • {profile.location}
             </p>
             <div className="mt-2 flex items-center gap-3">
-              <div className="relative grid h-9 w-9 place-items-center rounded-full bg-black/25 ring-1 ring-white/10">
-                <div className="absolute inset-0 rounded-full ring-2 ring-[hsl(var(--steam-link))]/70" />
-                <span className="text-xs font-semibold text-foreground">{level}</span>
-              </div>
+              <LevelRing level={level} progress={0.62} size={44} />
               <div>
                 <p className="text-sm font-semibold text-foreground">
-                  {profile.status?.label ?? "Status"}
+                  Global Sentinel
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  {profile.status?.sublabel ?? ""}
+                  500 XP · {profile.status?.label ?? "Status"}
                 </p>
               </div>
             </div>
@@ -88,5 +113,3 @@ export function ProfileHeader({ className }: { className?: string }) {
     </section>
   );
 }
-
-

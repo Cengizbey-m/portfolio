@@ -26,14 +26,19 @@
   --steam-panel: 213 33% 16%;
   --steam-panel-2: 212 28% 22%;
   --steam-link: 206 83% 68%;
-  --steam-green: 86 53% 44%; /* Steam-ish green */
+  --steam-green: 86 53% 44%; /* online / available */
+  --steam-green-soft: 86 40% 56%;
+  --steam-gold: 41 78% 51%; /* achievements / badges */
+  --steam-orange: 22 90% 55%; /* alerts / sales */
+  --steam-purple: 269 64% 62%; /* rare items */
+  --steam-red: 0 73% 56%;
 
   /* Topbar-specific text colors (so Light mode remains readable) */
   --steam-topbar-foreground: 206 28% 83%;
   --steam-topbar-muted: 210 10% 75%;
 }
 
-/* Optional “light” theme (still Steam flavored) */
+/* Optional "light" theme (still Steam flavored) */
 .light {
   --background: 210 33% 96%;
   --foreground: 220 20% 14%;
@@ -59,6 +64,11 @@
   --steam-panel-2: 215 25% 92%;
   --steam-link: 206 83% 42%;
   --steam-green: 86 53% 36%;
+  --steam-green-soft: 86 40% 46%;
+  --steam-gold: 41 78% 44%;
+  --steam-orange: 22 90% 48%;
+  --steam-purple: 269 64% 52%;
+  --steam-red: 0 73% 48%;
 
   /* Topbar-specific text colors for contrast on dark topbar */
   --steam-topbar-foreground: 0 0% 98%;
@@ -91,6 +101,8 @@ body {
 body {
   background: theme(--color-background);
   color: theme(--color-foreground);
+  /* leave room for the bottom Steam status bar */
+  padding-bottom: 44px;
 }
 
 /* Smooth fonts + nicer selection */
@@ -105,7 +117,7 @@ body {
 /* A consistent max-width wrapper utility */
 .container-max {
   width: 100%;
-  max-width: 72rem; /* ~1152px */
+  max-width: 72rem;
   margin-inline: auto;
   padding-inline: 1.25rem;
 }
@@ -115,7 +127,6 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  /* keep behind everything, but above the browser background */
   z-index: -50;
   background:
     radial-gradient(1200px 600px at 20% 0%, color-mix(in oklab, theme(--color-primary) 18%, transparent), transparent 55%),
@@ -125,12 +136,20 @@ body::before {
 
 .steam-container {
   width: 100%;
-  max-width: 72rem; /* keep comfy; shell uses its own max too */
+  max-width: 72rem;
   margin-inline: auto;
   padding-inline: 1.25rem;
 }
 
-/* Simple line clamping helpers (avoid Tailwind plugin dependency) */
+/* Wider container for library/store pages */
+.steam-container-wide {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* Simple line clamping helpers */
 .clamp-2,
 .clamp-3,
 .clamp-4 {
@@ -141,3 +160,124 @@ body::before {
 .clamp-2 { -webkit-line-clamp: 2; }
 .clamp-3 { -webkit-line-clamp: 3; }
 .clamp-4 { -webkit-line-clamp: 4; }
+
+/* Online/offline status dot */
+.status-dot {
+  display: inline-block;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+}
+.status-dot--online { background: hsl(var(--steam-green)); box-shadow: 0 0 8px hsl(var(--steam-green) / 0.7), 0 0 0 2px rgba(0,0,0,0.3); }
+.status-dot--offline { background: hsl(var(--muted-foreground)); }
+.status-dot--away { background: hsl(var(--steam-gold)); }
+.status-dot--busy { background: hsl(var(--steam-red)); }
+.status-dot--in-game { background: hsl(var(--steam-green-soft)); box-shadow: 0 0 10px hsl(var(--steam-green-soft) / 0.6), 0 0 0 2px rgba(0,0,0,0.3); }
+
+/* Pulsing notification dot */
+.pulse-dot {
+  position: relative;
+}
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  background: hsl(var(--steam-green));
+  opacity: 0.7;
+  animation: pulse-ring 1.6s ease-out infinite;
+  z-index: -1;
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  80% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Steam-style glowing link */
+.steam-link {
+  color: hsl(var(--steam-link));
+  transition: color 150ms, text-shadow 150ms;
+}
+.steam-link:hover {
+  color: white;
+  text-shadow: 0 0 8px hsl(var(--steam-link) / 0.6);
+}
+
+/* Achievement toast slide-in */
+@keyframes achievement-slide {
+  0% { transform: translateX(110%); opacity: 0; }
+  10% { transform: translateX(0); opacity: 1; }
+  85% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(110%); opacity: 0; }
+}
+.achievement-toast {
+  animation: achievement-slide 5s ease-in-out forwards;
+}
+
+/* Confetti particle */
+@keyframes confetti-fall {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+.confetti-piece {
+  position: fixed;
+  top: 0;
+  width: 8px;
+  height: 14px;
+  z-index: 9999;
+  pointer-events: none;
+  animation: confetti-fall 3s linear forwards;
+}
+
+/* Counter pop */
+@keyframes count-pop {
+  0% { transform: scale(0.85); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.count-pop { animation: count-pop 0.6s ease-out backwards; }
+
+/* Marquee for download bar */
+@keyframes marquee {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 0; }
+}
+.download-bar {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    hsl(var(--steam-link) / 0.85) 0 10px,
+    hsl(var(--steam-link) / 0.55) 10px 20px
+  );
+  background-size: 40px 100%;
+  animation: marquee 1.2s linear infinite;
+}
+
+/* Game-card hover lift */
+.game-card {
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+.game-card:hover {
+  transform: translateY(-2px);
+  border-color: hsl(var(--steam-link) / 0.5);
+  box-shadow: 0 12px 28px -10px hsl(var(--steam-link) / 0.35), inset 0 1px 0 0 rgba(255,255,255,0.08);
+}
+
+/* Steam-style scrollbar inside library list */
+.steam-scroll::-webkit-scrollbar { width: 8px; }
+.steam-scroll::-webkit-scrollbar-track { background: transparent; }
+.steam-scroll::-webkit-scrollbar-thumb {
+  background: hsl(var(--steam-link) / 0.3);
+  border-radius: 4px;
+}
+.steam-scroll::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.6); }
+
+/* Reduced-motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .achievement-toast,
+  .pulse-dot::after,
+  .download-bar,
+  .count-pop,
+  .confetti-piece { animation: none !important; }
+}

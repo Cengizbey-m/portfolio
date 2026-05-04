@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { unlock } from "@/lib/achievements";
 
 type State =
   | { status: "idle" }
@@ -17,6 +18,10 @@ const initialState: State = { status: "idle" };
 
 export function ContactForm() {
   const [state, action, pending] = useActionState(sendContactEmail, initialState);
+
+  React.useEffect(() => {
+    if (state.status === "success") unlock("send-message");
+  }, [state.status]);
 
   return (
     <Card>

@@ -7,6 +7,12 @@ import { cn } from "@/lib/utils";
 
 const nav = [
   { href: "/", label: "Profile" },
+  { href: "/store", label: "Store" },
+  { href: "/library", label: "Library" },
+  { href: "/library/arcade", label: "Arcade" },
+  { href: "/inventory", label: "Inventory" },
+  { href: "/replay", label: "Year in Code 2025" },
+  { href: "/community", label: "Community" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
   { href: "/resume", label: "Resume" },
@@ -67,5 +73,3 @@ export function MobileNav() {
     </div>
   );
 }
-
-

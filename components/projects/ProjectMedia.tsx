@@ -10,9 +10,7 @@ export function ProjectMedia({
   gallery?: string[];
   demoVideo?: string;
 }) {
-  if ((!gallery || gallery.length === 0) && !demoVideo) return null;
-
-  const images = gallery ?? [];
+  const images = React.useMemo(() => gallery ?? [], [gallery]);
   const [openIdx, setOpenIdx] = React.useState<number | null>(null);
 
   const close = React.useCallback(() => setOpenIdx(null), []);
@@ -37,6 +35,8 @@ export function ProjectMedia({
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [openIdx, close, next, prev]);
+
+  if (images.length === 0 && !demoVideo) return null;
 
   return (
     <>

@@ -33,25 +33,25 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Cengiz — Full‑stack Developer (SDNE @ Sheridan)",
+    default: "Cengiz — Steam-themed portfolio",
     template: "%s | Cengiz",
   },
   description:
-    "Portfolio for Muhammed Cengiz — SDNE student at Sheridan College (Oakville/GTA). Projects across full‑stack web, AI/ML prototyping, networking, security, and databases.",
+    "Steam-themed portfolio for Muhammed Cengiz. Browse the library of shipped projects, play the arcade, check the store (he's hireable), and read the reviews.",
   openGraph: {
     type: "website",
-    title: "Cengiz — Full‑stack Developer (SDNE @ Sheridan)",
+    title: "Cengiz — Steam-themed portfolio",
     description:
-      "Portfolio with projects across web, AI/ML, networking, security, and databases.",
+      "Steam-themed dev portfolio: projects as games, mini-games in the arcade, hire-me store page.",
     url: SITE_URL,
     siteName: "Cengiz Portfolio",
     images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Cengiz Portfolio" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cengiz — Full‑stack Developer (SDNE @ Sheridan)",
+    title: "Cengiz — Steam-themed portfolio",
     description:
-      "Portfolio with projects across web, AI/ML, networking, security, and databases.",
+      "Steam-themed dev portfolio with arcade, store, and community.",
     images: ["/og.svg"],
   },
   alternates: { canonical: "/" },

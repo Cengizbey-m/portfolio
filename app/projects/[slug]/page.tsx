@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ProjectMedia } from "@/components/projects/ProjectMedia";
+import { ProjectStats } from "@/components/projects/ProjectStats";
+import { ProjectAchievements } from "@/components/projects/ProjectAchievements";
 
 export async function generateStaticParams() {
   return projectSlugs.map((slug) => ({ slug }));
@@ -111,7 +113,20 @@ export default async function ProjectCaseStudyPage({
         </CardHeader>
       </Card>
 
+      <Card>
+        <CardHeader>
+          <p className="text-xs font-semibold tracking-[0.14em] uppercase text-muted-foreground">
+            Game stats
+          </p>
+        </CardHeader>
+        <CardContent className="pt-4">
+          <ProjectStats slug={project.slug} />
+        </CardContent>
+      </Card>
+
       <ProjectMedia gallery={project.gallery} demoVideo={project.demoVideo} />
+
+      <ProjectAchievements slug={project.slug} />
 
       <Card>
         <CardHeader>
