@@ -1,6 +1,21 @@
 # Portfolio — Muhammed Cengiz
 
-Steam-inspired portfolio built with **Next.js (App Router) + TypeScript + Tailwind**.
+Steam-inspired developer portfolio built with **Next.js (App Router) + TypeScript + Tailwind**.
+Recruiter-first profile, a project "library", a hire-me "store", and a browser arcade.
+
+## Site map
+
+| Route | What it is |
+| --- | --- |
+| `/` | Profile — hero with links/resume, featured project, projects, skills, about, comments |
+| `/library` | Steam-style catalog of projects + mini-games (master/detail) |
+| `/library/arcade` | Arcade hub — 6 mini-games |
+| `/library/arcade/{snake,subnet,whack,match,shipit,echo}` | Individual games |
+| `/store` | "Hire me" — Steam store page |
+| `/projects/[slug]` | Project case studies (MDX) |
+| `/resume`, `/contact`, `/about` | Resume PDF, contact form, full bio |
+
+`/community` and `/projects` redirect into the profile and library respectively.
 
 ## Tech stack
 
@@ -33,6 +48,16 @@ npm run build
 ```
 
 ## Where to edit content
+
+### Your info (name, role, links, availability)
+- `data/profile.ts` — name, role, tagline, status, links (GitHub/LinkedIn/email/resume), education, featured project
+- `data/cv.ts` — bio paragraphs, education + coursework, certificates, timeline
+- `data/skills.ts` — skill groups (shown as the profile "Skills" panel) + top-skills chips
+- `data/reviews.ts` — testimonials shown as profile "Comments"
+
+### Avatar / banner / background
+- `public/steam/avatar.jpg`, `public/steam/banner.jpg`
+- Background video is desktop-only (mobile gets a light gradient): `data/profile.ts → background`
 
 ### Projects list
 

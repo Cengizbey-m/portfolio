@@ -94,7 +94,7 @@ export function StatusBar() {
           </button>
 
           <Link
-            href="/community"
+            href="/#comments"
             className={cn(
               "inline-flex items-center gap-1.5 rounded px-2 py-1 text-[hsl(var(--steam-topbar-foreground))]",
               "hover:bg-white/5"

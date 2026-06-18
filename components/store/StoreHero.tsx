@@ -176,7 +176,10 @@ export function StoreHero() {
                   {wishlisted ? "Wishlisted" : "Add to wishlist"}
                 </Button>
                 <Button variant="secondary" asChild className="normal-case tracking-normal font-medium">
-                  <Link href="/community#contact">Send a message</Link>
+                  <Link href="/contact">Send a message</Link>
+                </Button>
+                <Button variant="secondary" asChild className="normal-case tracking-normal font-medium">
+                  <Link href="/resume">View resume</Link>
                 </Button>
               </div>
 

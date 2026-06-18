@@ -77,11 +77,11 @@ export function FriendsBubble() {
           </ul>
           <div className="border-t border-border px-3 py-2 text-right">
             <Link
-              href="/community#friends"
+              href="/#stack"
               onClick={() => setOpen(false)}
               className="text-xs text-[hsl(var(--steam-link))] hover:underline"
             >
-              Friends list →
+              Full tech stack →
             </Link>
           </div>
         </div>

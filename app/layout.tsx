@@ -33,26 +33,38 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Cengiz — Steam-themed portfolio",
-    template: "%s | Cengiz",
+    default: "Muhammed Cengiz — Full-Stack Developer",
+    template: "%s · Muhammed Cengiz",
   },
   description:
-    "Steam-themed portfolio for Muhammed Cengiz. Browse the library of shipped projects, play the arcade, check the store (he's hireable), and read the reviews.",
+    "Muhammed Cengiz — full-stack developer with a networking background. Shipped client work, hackathon wins, and capstone AI. Building with Next.js, TypeScript, and Python. Open to co-op / internship roles.",
+  keywords: [
+    "Muhammed Cengiz",
+    "Full-Stack Developer",
+    "Next.js",
+    "TypeScript",
+    "React",
+    "Software Developer",
+    "Networking",
+    "Portfolio",
+    "Co-op",
+    "Internship",
+  ],
+  authors: [{ name: "Muhammed Cengiz" }],
+  creator: "Muhammed Cengiz",
   openGraph: {
     type: "website",
-    title: "Cengiz — Steam-themed portfolio",
+    title: "Muhammed Cengiz — Full-Stack Developer",
     description:
-      "Steam-themed dev portfolio: projects as games, mini-games in the arcade, hire-me store page.",
+      "Full-stack developer with a networking background. Shipped client work, hackathon wins, and capstone AI. Open to co-op / internship roles.",
     url: SITE_URL,
-    siteName: "Cengiz Portfolio",
-    images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Cengiz Portfolio" }],
+    siteName: "Muhammed Cengiz",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cengiz — Steam-themed portfolio",
+    title: "Muhammed Cengiz — Full-Stack Developer",
     description:
-      "Steam-themed dev portfolio with arcade, store, and community.",
-    images: ["/og.svg"],
+      "Full-stack developer with a networking background. Open to co-op / internship roles.",
   },
   alternates: { canonical: "/" },
 };

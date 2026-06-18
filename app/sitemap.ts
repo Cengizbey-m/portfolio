@@ -11,16 +11,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: `${base}/`, changeFrequency: "weekly", priority: 1 },
-    { url: `${base}/projects`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/library`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/store`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/library/arcade`, changeFrequency: "monthly", priority: 0.5 },
     ...projects.map((p) => ({
       url: `${base}/projects/${p.slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
+    { url: `${base}/resume`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/about`, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${base}/resume`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/contact`, changeFrequency: "monthly", priority: 0.6 },
   ];
 }
-
-

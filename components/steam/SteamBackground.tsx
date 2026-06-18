@@ -5,12 +5,21 @@ import { profile } from "@/data/profile";
 
 export function SteamBackground() {
   const bg = profile.background;
-  if (!bg?.src) return null;
+  const [useVideo, setUseVideo] = React.useState(false);
+
+  React.useEffect(() => {
+    // Only load/autoplay the (multi-MB) video on larger screens, and respect
+    // reduced-motion. Mobile gets a lightweight gradient instead — better for
+    // data, battery, and Core Web Vitals.
+    const desktop = window.matchMedia("(min-width: 768px)").matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setUseVideo(desktop && !reduced && bg?.type === "video" && !!bg?.src);
+  }, [bg]);
 
   return (
-    // Steam behavior: background is behind the profile area, then fades out and ends as you scroll.
+    // Steam behavior: background sits behind the profile area, then fades out as you scroll.
     <div className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-[640px] overflow-hidden">
-      {bg.type === "video" ? (
+      {useVideo && bg?.src ? (
         <video
           className="h-full w-full object-cover"
           autoPlay
@@ -21,10 +30,10 @@ export function SteamBackground() {
           src={bg.src}
         />
       ) : (
-        <img src={bg.src} alt="" className="h-full w-full object-cover" loading="lazy" />
+        <div className="h-full w-full bg-[radial-gradient(900px_420px_at_20%_-5%,rgba(102,192,244,0.22),transparent_60%),radial-gradient(800px_420px_at_85%_10%,rgba(155,109,226,0.14),transparent_62%),linear-gradient(180deg,rgba(23,26,33,0.95),rgba(27,40,56,0.6))]" />
       )}
 
-      {/* Darken + add Steam-ish blue glow for readability */}
+      {/* Darken + Steam-ish blue glow for readability */}
       <div className="absolute inset-0 bg-black/40" />
       <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_20%_10%,rgba(102,192,244,0.18),transparent_60%),radial-gradient(900px_420px_at_85%_20%,rgba(102,192,244,0.12),transparent_62%)]" />
 
@@ -33,4 +42,3 @@ export function SteamBackground() {
     </div>
   );
 }
-

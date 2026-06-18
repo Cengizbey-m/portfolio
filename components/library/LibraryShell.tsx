@@ -62,6 +62,42 @@ const ARCADE_ITEMS: LibraryItem[] = [
     developer: "Cengiz · Pest Control",
     releaseYear: 2025,
   },
+  {
+    kind: "arcade",
+    slug: "arcade-match",
+    title: "Cache Match",
+    short:
+      "Memory match: flip cards, find the pairs, and clear the board in the fewest moves. Mobile-friendly.",
+    tags: ["Mini-game", "Memory"],
+    cover: undefined,
+    caseStudy: "/library/arcade/match",
+    developer: "Cengiz · Arcade Studio",
+    releaseYear: 2026,
+  },
+  {
+    kind: "arcade",
+    slug: "arcade-shipit",
+    title: "Ship It",
+    short:
+      "Reflex bar — stop the marker in the deploy zone. Every hit speeds it up and shrinks the window.",
+    tags: ["Mini-game", "Reflex"],
+    cover: undefined,
+    caseStudy: "/library/arcade/shipit",
+    developer: "Cengiz · Release Eng",
+    releaseYear: 2026,
+  },
+  {
+    kind: "arcade",
+    slug: "arcade-echo",
+    title: "Packet Echo",
+    short:
+      "Simon-style sequence memory, themed for networks. Repeat the growing packet pattern.",
+    tags: ["Mini-game", "Memory"],
+    cover: undefined,
+    caseStudy: "/library/arcade/echo",
+    developer: "Cengiz · Networking Lab",
+    releaseYear: 2026,
+  },
 ];
 
 function projectToItem(p: Project): LibraryItem {
@@ -111,8 +147,25 @@ export function LibraryShell() {
   const active = filtered.find((it) => it.slug === activeSlug) ?? filtered[0];
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[300px_1fr]">
-      <aside className="rounded-md border border-border bg-[hsl(var(--steam-panel))] ring-1 ring-white/5">
+    <div className="space-y-5">
+      <header className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <p className="eyebrow">Browse</p>
+          <h1 className="mt-1 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">Library</h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Shipped projects and playable mini-games — pick one to see the details.
+          </p>
+        </div>
+        <Link
+          href="/library/arcade"
+          className="inline-flex h-10 items-center gap-2 rounded-sm border border-[hsl(var(--steam-gold))]/40 bg-[hsl(var(--steam-gold))]/10 px-4 text-sm font-semibold text-[hsl(var(--steam-gold))] transition hover:bg-[hsl(var(--steam-gold))]/20"
+        >
+          <Gamepad2 className="h-4 w-4" /> Open Arcade
+        </Link>
+      </header>
+
+      <div className="grid gap-4 lg:grid-cols-[300px_1fr]">
+      <aside className="panel">
         <div className="border-b border-border p-3">
           <div className="relative">
             <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -191,7 +244,8 @@ export function LibraryShell() {
         </div>
       </aside>
 
-      {active ? <DetailView item={active} /> : null}
+        {active ? <DetailView item={active} /> : null}
+      </div>
     </div>
   );
 }
@@ -200,12 +254,12 @@ function DetailView({ item }: { item: LibraryItem }) {
   const stats = item.kind === "project" ? getStatsFor(item.slug) : null;
   const isArcade = item.kind === "arcade";
   return (
-    <div className="overflow-hidden rounded-md border border-border bg-[hsl(var(--steam-panel))] ring-1 ring-white/5">
+    <div className="panel overflow-hidden">
       {/* Hero */}
       <div className="relative h-56 w-full overflow-hidden md:h-72">
         {item.cover ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={item.cover} alt="" className="h-full w-full object-cover" />
+          <img src={item.cover} alt="" className="h-full w-full object-cover object-top" />
         ) : (
           <div className="h-full w-full bg-[radial-gradient(900px_300px_at_15%_15%,rgba(102,192,244,0.25),transparent_55%),linear-gradient(180deg,rgba(23,26,33,0.9),rgba(27,40,56,0.9))]" />
         )}
@@ -290,7 +344,7 @@ function PlayButtons({ item }: { item: LibraryItem }) {
       ) : null}
       <Button variant="secondary" asChild className="normal-case tracking-normal font-medium">
         <Link href={item.caseStudy} onClick={() => unlock("open-case-study")}>
-          Community Hub
+          Case study
         </Link>
       </Button>
       {item.github ? (

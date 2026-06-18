@@ -87,6 +87,8 @@ export const sfx = {
       { freq: 1046.5, duration: 0.18, type: "square", gain: 0.05 },
     ]),
   arcadeEat: () => playTones([{ freq: 1200, duration: 0.05, type: "square", gain: 0.04 }]),
+  tone: (freq: number, duration = 0.22) =>
+    playTones([{ freq, duration, type: "sine", gain: 0.05 }]),
   arcadeOver: () =>
     playTones([
       { freq: 392, duration: 0.12, type: "sawtooth", gain: 0.05 },
