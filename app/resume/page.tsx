@@ -24,7 +24,7 @@ export default async function ResumePage() {
   const hasResume = await fileExists(resumeDiskPath);
 
   return (
-    <div className="space-y-6">
+    <div className="mx-auto max-w-5xl space-y-6">
       <Card>
         <CardHeader className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <SectionHeader

@@ -149,7 +149,7 @@ export function NotificationsMenu() {
           </ul>
           <div className="border-t border-border px-3 py-2 text-right">
             <Link
-              href="/community"
+              href="/#comments"
               onClick={() => setOpen(false)}
               className="text-xs text-[hsl(var(--steam-link))] hover:underline"
             >

@@ -1,39 +1,64 @@
 export const profile = {
+  // Identity
   displayName: "Cengiz",
   realName: "Muhammed Cengiz",
-  headline: "SDNE student • Full‑stack + Networking",
-  location: "Oakville / GTA",
+  role: "Full-Stack Developer",
+  headline: "Full‑stack developer with a networking background",
+  tagline:
+    "I build fast, reliable web apps end‑to‑end — and I understand the network they run on.",
+  location: "Oakville / GTA, Canada",
   country: "Canada",
+
+  // Availability (recruiter-first)
   status: {
     label: "Open to opportunities",
-    sublabel: "Co-op / Internship",
-    accent: "offline" as const,
+    sublabel: "Co‑op / Internship · New grad",
+    accent: "online" as const,
   },
+  availability: {
+    value: "Available",
+    detail: "Co‑op / Internship",
+    responseTime: "Replies within a day",
+    cost: "Free to chat",
+  },
+
+  // Education
+  education: {
+    program: "Software Development & Network Engineering (SDNE)",
+    school: "Sheridan College",
+    grad: "2026",
+  },
+
+  // Steam-flavored profile chrome
   level: 22,
   avatarUrl: "/steam/avatar.jpg",
   bannerUrl: "/steam/banner.jpg",
   background: {
     // Steam-like "profile background" behind the whole site.
-    // Use image for performance; video is supported too.
     type: "video" as "image" | "video",
     src: "/Background-images/Background-video-3.mp4",
   },
+
+  // Links — these are surfaced prominently, recruiter-first
   links: {
     github: "https://github.com/Cengizbey-m",
     linkedin: "https://www.linkedin.com/in/muhammed-cengiz/",
     email: "muhammedcengiz2778@gmail.com",
+    resume: "/resume",
+    resumePdf: "/resume.pdf",
   },
+
+  // Headline stats shown on the profile hero
   stats: [
-    { label: "Projects", value: "4" },
+    { label: "Projects shipped", value: "4" },
     { label: "Focus", value: "Web + Networks" },
-    { label: "Grad", value: "~7–8 mo" },
+    { label: "Status", value: "Open to work" },
   ],
   sideStats: [
     { label: "Grad", value: "2026" },
     { label: "Location", value: "GTA" },
     { label: "Stack", value: "Next.js" },
   ],
+
   featuredProjectSlug: "le-pathetique",
 } as const;
-
-

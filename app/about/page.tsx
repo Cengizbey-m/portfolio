@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="space-y-6">
+    <div className="mx-auto max-w-3xl space-y-6">
       <Card>
         <CardHeader>
           <SectionHeader

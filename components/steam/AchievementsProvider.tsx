@@ -29,7 +29,7 @@ function recordPageVisit(pathname: string): boolean {
     const set = new Set<string>(raw ? JSON.parse(raw) : []);
     set.add(pathname);
     window.localStorage.setItem(ALL_PAGES_KEY, JSON.stringify(Array.from(set)));
-    const required = ["/", "/library", "/community", "/store"];
+    const required = ["/", "/library", "/library/arcade", "/store"];
     return required.every((p) => set.has(p));
   } catch {
     return false;

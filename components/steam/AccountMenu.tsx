@@ -75,11 +75,11 @@ export function AccountMenu() {
               { href: "/", label: "View profile" },
               { href: "/library", label: "My library" },
               { href: "/library/arcade", label: "Arcade" },
-              { href: "/inventory", label: "Inventory · trading cards" },
-              { href: "/replay", label: "Year in Code 2025" },
-              { href: "/community", label: "Community" },
               { href: "/store", label: "Store / Hire me" },
-              { href: "/resume", label: "Account details (resume)" },
+              { href: "/resume", label: "Resume" },
+              { href: "/contact", label: "Contact" },
+              { href: "/inventory", label: "Trading cards" },
+              { href: "/replay", label: "Year in Code 2025" },
             ].map((item) => (
               <li key={item.href}>
                 <Link

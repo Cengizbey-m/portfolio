@@ -107,7 +107,7 @@ export default async function ProjectCaseStudyPage({
               asChild
               className="normal-case tracking-normal font-medium"
             >
-              <Link href="/projects">Back to projects</Link>
+              <Link href="/library">← Back to library</Link>
             </Button>
           </div>
         </CardHeader>
@@ -140,7 +140,7 @@ export default async function ProjectCaseStudyPage({
               <img
                 src={project.coverImage}
                 alt=""
-                className="h-56 w-full object-cover md:h-72"
+                className="h-56 w-full object-cover object-top md:h-72"
                 loading="lazy"
               />
             </div>
