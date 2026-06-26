@@ -7,8 +7,12 @@ import { AboutSnapshot } from "@/components/profile/AboutSnapshot";
 import { ProfileComments } from "@/components/profile/ProfileComments";
 import { NowCard } from "@/components/profile/NowCard";
 import { StackCard } from "@/components/profile/StackCard";
+import { Reveal } from "@/components/Reveal";
 
 export default function Home() {
+  // The home page is a single scroll: hero first, then the work, then the
+  // "hire me" details in the sidebar. Each block is wrapped in <Reveal> so it
+  // eases in as you scroll — keeps a long page feeling alive instead of static.
   return (
     <div className="space-y-6">
       <ProfileHero />
@@ -20,18 +24,34 @@ export default function Home() {
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
         <div className="min-w-0 space-y-6">
-          <FeaturedProject />
-          <ProjectsShowcase />
-          <SkillsShowcase />
-          <AboutSnapshot />
-          <ProfileComments />
+          <Reveal>
+            <FeaturedProject />
+          </Reveal>
+          <Reveal>
+            <ProjectsShowcase />
+          </Reveal>
+          <Reveal>
+            <SkillsShowcase />
+          </Reveal>
+          <Reveal>
+            <AboutSnapshot />
+          </Reveal>
+          <Reveal>
+            <ProfileComments />
+          </Reveal>
         </div>
 
         <aside className="hidden lg:block">
           <div className="space-y-6 lg:sticky lg:top-20">
-            <RecruiterCard />
-            <NowCard />
-            <StackCard />
+            <Reveal>
+              <RecruiterCard />
+            </Reveal>
+            <Reveal delay={0.05}>
+              <NowCard />
+            </Reveal>
+            <Reveal delay={0.1}>
+              <StackCard />
+            </Reveal>
           </div>
         </aside>
       </div>

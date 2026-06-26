@@ -1,28 +1,40 @@
 # TheTripMan (Client)
 
-**Live site:** https://www.thetripman.com
+**Live site:** https://www.trvoo.com (also reachable at thetripman.com)
 
 ## Summary
 
-Production scheduling microsite for a premium transportation business. Built to be fast, mobile-first, and conversion-focused with a reliable booking flow.
+A booking + payments platform I built **solo** for an influencer-led transportation
+business with a ~1.2M-follower audience. It's live in production and takes real customer
+bookings. I work on it on a **revenue-share** basis — I'm paid a commission on every
+booking the platform processes, so its success is directly tied to mine.
 
 ## What I shipped
 
-- One-page booking experience: service selection → schedule → details → confirmation
-- Two scheduling modes (embed + custom calendar) to match business needs
-- Transactional email notifications (confirmations + calendar invites)
-- Admin workflow for managing bookings (access-controlled)
+- A full booking flow: browse services → pick a time → enter details → **pay** → get a confirmation.
+- **Stripe** payments wired end-to-end, with the booking only confirmed once payment succeeds.
+- An authenticated **admin dashboard** so the client can see and manage every booking without touching code.
+- Automated email confirmations (Resend) with **calendar invites** (.ics / Google Calendar) for both sides.
+- Two scheduling modes (embed + custom calendar) so the booking experience matches how the business actually runs.
 
 ## Tech snapshot
 
-- Next.js 15 + TypeScript
+- Next.js 15 (App Router) + TypeScript
 - Tailwind + shadcn/ui
+- **Stripe** (payments)
 - Postgres (Neon) + Prisma
 - Scheduling: Cal.com/Calendly + FullCalendar + Google Calendar
-- Resend email • GA4 • Vercel
+- Resend email • GA4 analytics • Vercel
+- Quality: Jest + jest-axe accessibility tests, Husky CI hooks
+
+## Why it matters
+
+This is the project I'm proudest of. It's not coursework — it's a real product, with a
+real client, taking real money, that I own from the database to the deploy button. When I
+talk through architecture in an interview (how payments stay consistent with bookings, how
+the admin auth works, how I keep the client unblocked), this is the system I reach for.
 
 ## Notes
 
-The production repository is private due to business confidentiality.
-
-
+The production repository is private out of respect for the client's business.
+Screenshots are chosen to avoid any sensitive data.

@@ -45,12 +45,13 @@ const features = [
   },
 ];
 
+// Real screenshots from shipped work — the "store gallery" for hiring me.
 const screenshots = [
-  "/images/Tripman-general.png",
-  "/images/Feather-marketstatic.png",
-  "/images/Formally-Home.png",
-  "/images/Tripman-bio.png",
-  "/images/Feather-charts.png",
+  "/images/tripman/tripman-1.png",
+  "/images/feather/feather-1.png",
+  "/images/tripman/tripman-2.png",
+  "/images/feather/feather-2.png",
+  "/images/tripman/tripman-3.png",
 ];
 
 export function StoreHero() {
@@ -77,10 +78,11 @@ export function StoreHero() {
     <div className="space-y-6">
       {/* Tag pill (Steam: New release / Sale / etc.) */}
       <div className="flex flex-wrap items-center gap-2 text-xs">
-        <span className="rounded bg-[hsl(var(--steam-green))]/20 px-2 py-1 font-semibold uppercase tracking-[0.18em] text-[hsl(var(--steam-green))] ring-1 ring-[hsl(var(--steam-green))]/40">
+        {/* Solid fills + white text so these read clearly in light mode too. */}
+        <span className="rounded bg-[hsl(var(--steam-green))] px-2 py-1 font-semibold uppercase tracking-[0.18em] text-white shadow-sm">
           New &amp; Trending
         </span>
-        <span className="rounded bg-[hsl(var(--steam-orange))]/20 px-2 py-1 font-semibold uppercase tracking-[0.18em] text-[hsl(var(--steam-orange))] ring-1 ring-[hsl(var(--steam-orange))]/40">
+        <span className="rounded bg-[hsl(var(--steam-orange))] px-2 py-1 font-semibold uppercase tracking-[0.18em] text-white shadow-sm">
           On sale · -100% cost to ask
         </span>
         <span className="text-muted-foreground">|</span>
@@ -93,7 +95,9 @@ export function StoreHero() {
         Hire Cengiz
       </h1>
       <p className="text-sm text-muted-foreground md:text-base">
-        A full-stack developer with a strong networking foundation. SDNE @ Sheridan College, graduating 2026.
+        A full-stack developer with a strong networking foundation. SDNE @ Sheridan College, graduating
+        Aug 2026 — already shipping a live booking + payments platform for a client with a 1.2M-follower
+        audience.
       </p>
 
       {/* Hero: screenshots + buy box */}

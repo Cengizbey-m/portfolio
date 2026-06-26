@@ -4,6 +4,7 @@ import * as React from "react";
 import { usePathname } from "next/navigation";
 import { SteamTopNav } from "@/components/steam/SteamTopNav";
 import { SteamBackground } from "@/components/steam/SteamBackground";
+import { AmbientBackground } from "@/components/steam/AmbientBackground";
 import { StatusBar } from "@/components/steam/StatusBar";
 import { Footer } from "@/components/Footer";
 import { AchievementsProvider } from "@/components/steam/AchievementsProvider";
@@ -27,6 +28,8 @@ export function SteamShell({ children }: { children: React.ReactNode }) {
     <AchievementsProvider>
       <CardDropProvider>
         <div className="relative flex min-h-dvh flex-col">
+          {/* Calm drift behind every page, then the brighter hero backdrop on home. */}
+          <AmbientBackground />
           {showBackground ? <SteamBackground /> : null}
           <SteamTopNav />
 
