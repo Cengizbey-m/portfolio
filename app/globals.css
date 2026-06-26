@@ -397,6 +397,58 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
 }
 .rise-in { animation: rise-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
 
+/* Periodic banner sheen — a subtle light sweep so the hero feels alive */
+@keyframes banner-sheen {
+  0% { transform: translateX(-160%); }
+  55%, 100% { transform: translateX(320%); }
+}
+.banner-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 26%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  filter: blur(4px);
+  animation: banner-sheen 7s ease-in-out infinite;
+}
+
+/* Hero banner network nodes — a soft pulse, like traffic crossing the graph. */
+@keyframes hero-node-twinkle {
+  0%, 100% { opacity: 0.85; transform: scale(1); transform-origin: center; }
+  50% { opacity: 0.3; transform: scale(0.82); transform-origin: center; }
+}
+.hero-node-twinkle { animation: hero-node-twinkle 3.2s ease-in-out infinite; transform-box: fill-box; }
+
+/* Ambient drifting blobs — the slow, calm motion behind the whole site. */
+.ambient-blob {
+  position: absolute;
+  border-radius: 9999px;
+  /* Kept moderate on purpose — huge blur radii tank GPU/battery on phones. */
+  filter: blur(64px);
+  opacity: 0.2;
+  will-change: transform;
+}
+.ambient-blob--1 {
+  width: 34rem; height: 34rem; left: -8rem; top: -6rem;
+  background: radial-gradient(circle, hsl(var(--steam-link) / 0.5), transparent 70%);
+  animation: drift-1 28s ease-in-out infinite;
+}
+.ambient-blob--2 {
+  width: 30rem; height: 30rem; right: -7rem; top: 34%;
+  background: radial-gradient(circle, hsl(var(--steam-purple) / 0.4), transparent 70%);
+  animation: drift-2 34s ease-in-out infinite;
+}
+.ambient-blob--3 {
+  width: 28rem; height: 28rem; left: 18%; bottom: -9rem;
+  background: radial-gradient(circle, hsl(var(--steam-green) / 0.28), transparent 70%);
+  animation: drift-3 31s ease-in-out infinite;
+}
+/* Light mode: keep it as the faintest tint so text stays crisp. */
+.light .ambient-blob { opacity: 0.12; }
+@keyframes drift-1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(60px, 42px); } }
+@keyframes drift-2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-52px, 30px); } }
+@keyframes drift-3 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(34px, -40px); } }
+
 /* Marquee row for skill chips */
 .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
@@ -407,6 +459,9 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
   .download-bar,
   .count-pop,
   .rise-in,
+  .banner-sheen::after,
+  .ambient-blob,
+  .hero-node-twinkle,
   .confetti-piece { animation: none !important; }
   .rise-in { opacity: 1 !important; transform: none !important; }
   .game-card:hover { transform: none; }

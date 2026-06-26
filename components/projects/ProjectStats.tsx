@@ -1,22 +1,32 @@
-"use client";
+import { Layers, UserRound, Briefcase, Activity, CalendarDays, LinkIcon } from "lucide-react";
+import { projects } from "@/data/projects";
+import { getProjectFacts } from "@/lib/projectStats";
 
-import { Star, Clock, Users, HardDrive, Trophy } from "lucide-react";
-import { getStatsFor } from "@/lib/projectStats";
-
+/**
+ * Honest, on-theme "stats" for a project — real facts only (role, type,
+ * status, year, stack size, available links). No fabricated hours/reviews.
+ */
 export function ProjectStats({ slug }: { slug: string }) {
-  const s = getStatsFor(slug);
+  const project = projects.find((p) => p.slug === slug);
+  const f = getProjectFacts(slug);
+
+  const linkLabels: string[] = [];
+  if (project?.links.liveDemo) linkLabels.push("Live");
+  if (project?.links.github) linkLabels.push("Code");
+  linkLabels.push("Case study");
+
   return (
     <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-      <Stat icon={<Clock className="h-4 w-4" />} label="Hours on record" value={`${s.hoursPlayed} hrs`} />
-      <Stat label="Last played" value={s.lastPlayed} />
-      <Stat icon={<Trophy className="h-4 w-4" />} label="Achievements" value={`${s.achievementsUnlocked} / ${s.achievementsTotal}`} />
+      <Stat icon={<UserRound className="h-4 w-4" />} label="Role" value={f.role} />
+      <Stat icon={<Briefcase className="h-4 w-4" />} label="Type" value={f.type} />
+      <Stat icon={<Activity className="h-4 w-4 text-[hsl(var(--steam-green))]" />} label="Status" value={f.status} />
+      <Stat icon={<CalendarDays className="h-4 w-4" />} label="Year" value={f.year} />
       <Stat
-        icon={<Star className="h-4 w-4 text-[hsl(var(--steam-gold))]" />}
-        label="Reviews"
-        value={`${s.reviewSummary} (${s.reviewCount.toLocaleString()})`}
+        icon={<Layers className="h-4 w-4" />}
+        label="Stack"
+        value={`${project?.stack.length ?? 0} technologies`}
       />
-      <Stat icon={<HardDrive className="h-4 w-4" />} label="Install size" value={`${s.installedSizeMb} MB`} />
-      <Stat icon={<Users className="h-4 w-4" />} label="Players" value="Single + Co-op" />
+      <Stat icon={<LinkIcon className="h-4 w-4" />} label="Links" value={linkLabels.join(" · ")} />
     </div>
   );
 }

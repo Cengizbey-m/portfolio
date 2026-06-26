@@ -18,7 +18,6 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { SectionHeader } from "@/components/SectionHeader";
-import { getStatsFor } from "@/lib/projectStats";
 
 type ProjectAch = {
   id: string;
@@ -52,6 +51,16 @@ const PER_PROJECT: Record<string, ProjectAch[]> = {
     { id: "fm-design", title: "Design System Seed", body: "Reusable component library that can grow into a full DS.", icon: Code2, unlocked: true },
     { id: "fm-auth", title: "Locked Down", body: "JWT auth + RBAC scaffolded.", icon: Shield, unlocked: false },
   ],
+  puffy: [
+    { id: "pf-client", title: "Second Real Client", body: "Designed and shipped a website for a real local patisserie.", icon: Rocket, unlocked: true },
+    { id: "pf-mobile", title: "Mobile-First", body: "Built fast and friendly on a phone first — that's where the customers are.", icon: Eye, unlocked: true },
+    { id: "pf-local", title: "Found on Google", body: "Working on a QR-code menu + Google Business presence to bring walk-ins online.", icon: Network, unlocked: false },
+  ],
+  bloom: [
+    { id: "bl-product", title: "Product From Scratch", body: "Designed and built a calendar + notes app end-to-end, solo.", icon: Rocket, unlocked: true },
+    { id: "bl-focus", title: "Focus by Design", body: "Calendar, to-dos, and notes in one warm, distraction-light workspace.", icon: Eye, unlocked: true },
+    { id: "bl-ship", title: "Ship It", body: "Polishing screenshots and the public build — coming soon.", icon: Code2, unlocked: false },
+  ],
 };
 
 const FALLBACK: ProjectAch[] = [
@@ -62,14 +71,13 @@ const FALLBACK: ProjectAch[] = [
 
 export function ProjectAchievements({ slug }: { slug: string }) {
   const list = PER_PROJECT[slug] ?? FALLBACK;
-  const stats = getStatsFor(slug);
   const unlockedCount = list.filter((a) => a.unlocked).length;
   return (
     <Card>
       <CardHeader className="flex flex-row items-end justify-between gap-3">
         <SectionHeader
           title="Achievements"
-          description={`${unlockedCount} of ${list.length} unlocked · ${stats.achievementsUnlocked} of ${stats.achievementsTotal} per Steam`}
+          description={`${unlockedCount} of ${list.length} unlocked`}
         />
         <Trophy className="h-4 w-4 text-[hsl(var(--steam-gold))]" />
       </CardHeader>

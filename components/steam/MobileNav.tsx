@@ -9,6 +9,7 @@ import { profile } from "@/data/profile";
 
 const primary = [
   { href: "/", label: "Profile" },
+  { href: "/about", label: "About" },
   { href: "/library", label: "Library" },
   { href: "/library/arcade", label: "Arcade" },
   { href: "/store", label: "Hire me · Store" },
@@ -68,8 +69,9 @@ export function MobileNav() {
           <div className="absolute inset-y-0 left-0 flex w-[84vw] max-w-xs flex-col bg-[hsl(var(--steam-topbar))] shadow-2xl ring-1 ring-white/10">
             <div className="flex items-center justify-between border-b border-border px-4 py-3">
               <div className="flex items-center gap-3">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded bg-gradient-to-b from-[hsl(var(--steam-link))]/40 to-black/30 text-sm font-black text-white ring-1 ring-white/15">
-                  C
+                <span className="inline-flex h-9 w-9 overflow-hidden rounded-full bg-black/30 ring-1 ring-white/20">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/steam/logo-avatar.png" alt="" className="h-full w-full object-cover" />
                 </span>
                 <div className="min-w-0">
                   <p className="truncate text-sm font-semibold text-foreground">{profile.realName}</p>

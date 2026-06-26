@@ -6,20 +6,23 @@ import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/steam/AnimatedCounter";
 import { unlock } from "@/lib/achievements";
 
-const months = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+// A "Spotify Wrapped"-style year recap — but built on things that actually
+// happened, not invented stats. Real projects, real grades, real tools.
+
+// Roughly where my keyboard time went — a feel, not a GitHub export.
+const langs = [
+  { name: "TypeScript", pct: 55, color: "bg-[#3178c6]" },
+  { name: "C# / .NET", pct: 18, color: "bg-[#9b6bd6]" },
+  { name: "Python", pct: 15, color: "bg-[#3572A5]" },
+  { name: "SQL", pct: 7, color: "bg-[#e38c00]" },
+  { name: "Other", pct: 5, color: "bg-white/30" },
 ];
 
-// Commits per month — totally vibe-driven, looks like real activity.
-const commits = [22, 38, 51, 47, 64, 73, 41, 35, 58, 81, 76, 26];
-
-const langs = [
-  { name: "TypeScript", pct: 58, color: "bg-[#3178c6]" },
-  { name: "Python", pct: 17, color: "bg-[#3572A5]" },
-  { name: "SQL", pct: 9, color: "bg-[#e38c00]" },
-  { name: "Bash", pct: 7, color: "bg-[#4eaa25]" },
-  { name: "Other", pct: 9, color: "bg-white/30" },
+const builds = [
+  { name: "TheTripMan", note: "Booking + payments for a 1.2M-follower client. Live, solo, revenue-share." },
+  { name: "Le Pathétique", note: "Solo multimodal-AI hackathon build at BearHacks 2026." },
+  { name: "Feather (Capstone)", note: "AI market-insights app with a team — prototype graded 94/100." },
+  { name: "Puffy", note: "A second real client: a website for a local patisserie." },
 ];
 
 export function ReplayShow() {
@@ -32,38 +35,46 @@ export function ReplayShow() {
       <Hero />
 
       <Section
-        eyebrow="Time logged"
-        title="You spent 1,164 hours in here this year."
-        sub="That's 48 full days. The compiler was your most active friend."
+        eyebrow="The headline"
+        title="Six builds shipped — two of them for real clients."
+        sub="Not coursework screenshots. Live, deployed software people actually use."
       >
         <div className="grid gap-3 md:grid-cols-3">
-          <Stat big to={1164} suffix=" hrs" label="Hours coding" />
-          <Stat big to={612} suffix="" label="Commits pushed" />
-          <Stat big to={27} suffix="" label="Late-night deploys" />
+          <Stat big to={6} suffix="" label="Projects shipped" />
+          <Stat big to={2} suffix="" label="Real clients" />
+          <Stat big to={94} suffix=" / 100" label="Capstone score" />
         </div>
       </Section>
 
       <Section
-        eyebrow="Most active month"
-        title="October. 81 commits, no broken builds."
-        sub="That was capstone crunch and tripman polish. You shipped a lot."
+        eyebrow="Biggest build"
+        title="TheTripMan went live — and kept running."
+        sub="A booking + payments platform for an influencer-led business, built solo end-to-end and processing real bookings."
       >
-        <div className="rounded-md border border-border bg-[hsl(var(--steam-panel))] p-4 ring-1 ring-white/10">
-          <CommitChart values={commits} />
-        </div>
+        <ul className="grid gap-3 sm:grid-cols-2">
+          {builds.map((b) => (
+            <li
+              key={b.name}
+              className="rounded-md border border-border bg-white/5 p-4 ring-1 ring-white/10"
+            >
+              <p className="text-sm font-bold text-foreground">{b.name}</p>
+              <p className="mt-1 text-xs leading-6 text-muted-foreground">{b.note}</p>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section
-        eyebrow="Top languages"
+        eyebrow="Where the time went"
         title="TypeScript carried the year."
-        sub="Python showed up for ML work. SQL kept things honest."
+        sub="A rough sense of the split — C#/.NET and Python pulled their weight on coursework and ML."
       >
         <ul className="space-y-3">
           {langs.map((l) => (
             <li key={l.name}>
               <div className="mb-1 flex items-center justify-between text-sm">
                 <span className="font-semibold text-foreground">{l.name}</span>
-                <span className="text-muted-foreground tabular-nums">{l.pct}%</span>
+                <span className="text-muted-foreground tabular-nums">~{l.pct}%</span>
               </div>
               <div className="h-2 overflow-hidden rounded-full bg-black/30 ring-1 ring-white/10">
                 <div
@@ -77,22 +88,9 @@ export function ReplayShow() {
       </Section>
 
       <Section
-        eyebrow="Most-played project"
-        title="TheTripMan · 612 hours on record."
-        sub="Plus a hackathon weekend and two more shipped builds."
-      >
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <Stat big to={612} suffix=" hrs" label="TheTripMan" />
-          <Stat big to={384} suffix=" hrs" label="Capstone AI Finance" />
-          <Stat big to={168} suffix=" hrs" label="Formally Prototype" />
-          <Stat big to={48} suffix=" hrs" label="Le Pathétique · BearHacks" />
-        </div>
-      </Section>
-
-      <Section
-        eyebrow="Vibes"
-        title="You were online at 2:14 AM more than any other time."
-        sub="Don't worry. Caffeine was up 22% year-over-year."
+        eyebrow="Tools I lived in"
+        title="Next.js and a fast editor did the heavy lifting."
+        sub="Modern stack, used the way a working dev actually uses it."
       >
         <div className="grid gap-3 md:grid-cols-2">
           <div className="rounded-sm border border-border bg-white/5 p-4 ring-1 ring-white/10">
@@ -115,7 +113,7 @@ export function ReplayShow() {
           That&rsquo;s a wrap
         </p>
         <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
-          See you in 2026 · graduating soon
+          Graduating Aug 2026 — and already shipping
         </h2>
         <p className="mx-auto mt-2 max-w-prose text-sm text-muted-foreground">
           Open to co-op &amp; new-grad full-stack roles. If your team needs a junior who already
@@ -141,16 +139,16 @@ function Hero() {
   return (
     <section className="overflow-hidden rounded-md border border-border bg-[radial-gradient(900px_320px_at_15%_15%,rgba(102,192,244,0.35),transparent_55%),linear-gradient(180deg,rgba(23,26,33,0.95),rgba(27,40,56,0.95))] p-8 ring-1 ring-white/5">
       <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[hsl(var(--steam-link))]">
-        Year in Code · 2025
+        Year in Code · 2025–26
       </p>
-      <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-foreground md:text-6xl">
+      <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-white md:text-6xl">
         cengiz, your year
         <br />
         was <span className="text-[hsl(var(--steam-link))]">loud</span>.
       </h1>
-      <p className="mt-3 max-w-prose text-sm leading-7 text-muted-foreground md:text-base">
-        Scroll down. Animated stats, top languages, favourite project, and one
-        chart that looks much better than the underlying sleep schedule.
+      <p className="mt-3 max-w-prose text-sm leading-7 text-white/70 md:text-base">
+        Scroll down — the projects that shipped, where the time went, and the tools that
+        carried it. No invented stats; just the real highlights.
       </p>
     </section>
   );
@@ -217,30 +215,6 @@ function Stat({
       <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
         {label}
       </p>
-    </div>
-  );
-}
-
-function CommitChart({ values }: { values: number[] }) {
-  const max = Math.max(...values);
-  return (
-    <div className="space-y-3">
-      <div className="flex items-end gap-1.5 md:gap-2" style={{ height: 200 }}>
-        {values.map((v, i) => (
-          <div key={i} className="flex flex-1 flex-col items-center gap-1">
-            <div className="flex w-full flex-1 items-end">
-              <div
-                className="w-full rounded-t bg-gradient-to-t from-[hsl(var(--steam-link))]/30 to-[hsl(var(--steam-link))] transition-[height] duration-1000 ease-out"
-                style={{ height: `${(v / max) * 100}%` }}
-                title={`${v} commits`}
-              />
-            </div>
-            <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-              {months[i]}
-            </span>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }

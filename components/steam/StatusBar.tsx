@@ -94,7 +94,7 @@ export function StatusBar() {
           </button>
 
           <Link
-            href="/#comments"
+            href="/contact"
             className={cn(
               "inline-flex items-center gap-1.5 rounded px-2 py-1 text-[hsl(var(--steam-topbar-foreground))]",
               "hover:bg-white/5"
@@ -102,7 +102,7 @@ export function StatusBar() {
           >
             <span className="status-dot status-dot--online" />
             <MessageSquare className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Friends &amp; Chat</span>
+            <span className="hidden sm:inline">Available · Chat with me</span>
           </Link>
         </div>
       </div>

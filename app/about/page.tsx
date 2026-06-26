@@ -19,14 +19,23 @@ export default function AboutPage() {
         </CardHeader>
         <CardContent className="pt-4 space-y-3">
           <p className="leading-7 text-muted-foreground">
-            I’m Muhammed Cengiz, an SDNE student at Sheridan College (Oakville/GTA),
-            graduating in ~7–8 months. I like roles where I can build product features end‑to‑end:
-            UI/UX, APIs, data, deployment, and practical security.
+            I’m Muhammed Cengiz, a full-stack developer in the Oakville / GTA area, finishing my
+            Software Development &amp; Network Engineering diploma at Sheridan College (graduating
+            August 2026). What I care about most is shipping real, working products — a live booking
+            and payments platform for a client with a 1.2M-follower audience, a site for a local
+            patisserie, and a handful of hackathon and product builds in between.
           </p>
           <p className="leading-7 text-muted-foreground">
-            I’m currently targeting junior full‑stack / software developer internships and new‑grad roles
-            where I can contribute quickly and grow with good engineering practices (code reviews, testing,
-            deployment automation, and clear docs).
+            My favourite kind of work is owning a feature end-to-end: the UI/UX, the API, the data,
+            and getting it to production with the practical security and networking I picked up in
+            SDNE. I move fast, I lean on modern tools (including AI) the way a senior dev leans on an
+            IDE, and I understand everything I put my name on.
+          </p>
+          <p className="leading-7 text-muted-foreground">
+            Right now I’m looking for a junior full-stack / software developer role where I can
+            contribute quickly and grow with good engineering habits — code reviews, testing,
+            deployment automation, and clear docs. I’m a Canadian permanent resident, so no
+            sponsorship is needed.
           </p>
         </CardContent>
       </Card>
@@ -50,19 +59,17 @@ export default function AboutPage() {
               Relevant coursework
             </p>
             <ul className="list-disc space-y-1 pl-5">
-              <li>AI & ML – Python (PROG25211)</li>
-              <li>Cloud Enabled Networks (TELE20483)</li>
-              <li>Cybersecurity Fundamentals (INFO24178)</li>
-              <li>Database Design & Implementation (DBAS27198) • Database Management (DBAS32100)</li>
-              <li>Enterprise Java Development (PROG32758)</li>
-              <li>Linux/UNIX Operating Systems (SYST13416)</li>
-              <li>Web Development (SYST10049) • Interactive User Design (SYST15892)</li>
-              <li>IT Project Management Using PMP (INFO20172) • Technical Communication (COMM13729)</li>
+              <li>AI &amp; Machine Learning – Python (PROG25211)</li>
+              <li>iOS Application Development · Advanced iOS (PROG31632 / PROG39856)</li>
+              <li>.NET / C# Technologies · Advanced .NET Server-Side (PROG32356 / PROG36944)</li>
+              <li>Hybrid Mobile Apps with Next.js (SYST35300)</li>
+              <li>Cloud Systems · Cloud-Enabled Networks (SYST35144 / TELE20483)</li>
+              <li>Database Design &amp; Implementation · Database Management (DBAS27198 / DBAS32100)</li>
+              <li>Enterprise Java Development (PROG32758) · Data Structures in C (PROG20799)</li>
+              <li>Linux/UNIX Operating Systems (SYST13416) · Computer &amp; Network Security (INFO24178)</li>
+              <li>Software Process Management · Systems Development Methodologies (SYST38634 / SYST28951)</li>
+              <li>Capstone Prototype + Project (INFO34049 / INFO39014)</li>
             </ul>
-            <p className="pt-2">
-              Also completed (not yet added on LinkedIn): Capstone, C#/.NET Technologies, Hybrid Mobile
-              (Next.js), Software Process Management.
-            </p>
           </div>
         </CardContent>
       </Card>
@@ -73,7 +80,7 @@ export default function AboutPage() {
         </CardHeader>
         <CardContent className="pt-4">
           <ul className="list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-            <li>CCNA IP Addressing & Subnetting (Exam Prep)</li>
+            <li>CCNA IP Addressing & Subnetting</li>
             <li>IPv6 Fundamentals (APNIC)</li>
             <li>Cisco Intro to Cybersecurity</li>
             <li>LinkedIn: Networking Foundations</li>
@@ -81,22 +88,6 @@ export default function AboutPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <SectionHeader title="Timeline" description="Where I’m at and what’s next." />
-        </CardHeader>
-        <CardContent className="pt-4">
-          <ol className="list-decimal space-y-2 pl-5 text-sm text-muted-foreground">
-            <li>
-              Now → Graduation: build and ship polished case studies, demos, and clean documentation.
-            </li>
-            <li>
-              0–2 months: polish demos, add tests/monitoring basics, and prepare 2–3 tailored resume versions.
-            </li>
-            <li>2–6 months: targeted applications + networking; iterate based on feedback.</li>
-          </ol>
-        </CardContent>
-      </Card>
     </div>
   );
 }

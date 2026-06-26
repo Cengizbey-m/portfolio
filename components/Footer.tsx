@@ -24,14 +24,17 @@ const sections: { title: string; links: { href: string; label: string; external?
 ];
 
 export function Footer() {
+  // Surface follows the theme (panel-2 token) so text stays readable in light
+  // mode instead of sitting on a forced-dark slab.
   return (
-    <footer className="mt-10 border-t border-border bg-[hsl(var(--steam-topbar))]/60">
+    <footer className="mt-10 border-t border-border bg-[hsl(var(--steam-panel-2))]">
       <div className="mx-auto w-full max-w-[80rem] px-4 py-10 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded bg-gradient-to-b from-[hsl(var(--steam-link))]/40 to-black/30 text-sm font-black text-white ring-1 ring-white/15">
-                C
+              <span className="inline-flex h-8 w-8 overflow-hidden rounded-full bg-black/30 ring-1 ring-white/20">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/steam/logo-avatar.png" alt="Muhammed Cengiz" className="h-full w-full object-cover" />
               </span>
               <span className="font-semibold tracking-tight text-foreground">Muhammed Cengiz</span>
             </div>

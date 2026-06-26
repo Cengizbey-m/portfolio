@@ -9,6 +9,9 @@ export type Review = {
   funny: number;
 };
 
+// These "reviews" are a wink, not real testimonials — a little Steam-style fun.
+// The profile section says as much, and the only real way to reach me is the
+// contact form right below them. Swap these out the day I have real quotes to show.
 export const reviews: Review[] = [
   {
     author: "Hiring Manager",

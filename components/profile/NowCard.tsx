@@ -2,7 +2,7 @@ import { Activity } from "lucide-react";
 
 const nowItems = [
   "Polishing case studies + this portfolio",
-  "Wrapping up SDNE coursework (grad 2026)",
+  "Wrapping up SDNE coursework (grad Aug 2026)",
   "Sharpening Next.js, system design & networking",
 ];
 
