@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { projects } from "@/data/projects";
-import { profile } from "@/data/profile";
 import { Badge } from "@/components/ui/badge";
 
 export function ProjectsShowcase() {
-  // Featured one is shown above; show the rest here, then link to the full library.
-  const rest = projects.filter((p) => p.slug !== profile.featuredProjectSlug);
+  // Show the whole catalogue here, TheTripMan included — it earns a spot in the
+  // grid even though it's also the big featured card up top.
+  const rest = projects;
 
   return (
     <section className="panel overflow-hidden rise-in">

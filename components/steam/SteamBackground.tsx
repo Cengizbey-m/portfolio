@@ -1,13 +1,17 @@
 "use client";
 
 import * as React from "react";
+import { useTheme } from "next-themes";
 import { profile } from "@/data/profile";
 
 export function SteamBackground() {
   const bg = profile.background;
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
   const [useVideo, setUseVideo] = React.useState(false);
 
   React.useEffect(() => {
+    setMounted(true);
     // Only load/autoplay the (multi-MB) video on larger screens, and respect
     // reduced-motion. Mobile gets a lightweight gradient instead — better for
     // data, battery, and Core Web Vitals.
@@ -15,6 +19,8 @@ export function SteamBackground() {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setUseVideo(desktop && !reduced && bg?.type === "video" && !!bg?.src);
   }, [bg]);
+
+  const isLight = mounted && resolvedTheme === "light";
 
   return (
     // Steam behavior: background sits behind the profile area, then fades out as you scroll.
@@ -33,9 +39,21 @@ export function SteamBackground() {
         <div className="h-full w-full bg-[radial-gradient(900px_420px_at_20%_-5%,rgba(102,192,244,0.22),transparent_60%),radial-gradient(800px_420px_at_85%_10%,rgba(155,109,226,0.14),transparent_62%),linear-gradient(180deg,rgba(23,26,33,0.95),rgba(27,40,56,0.6))]" />
       )}
 
-      {/* Darken + Steam-ish blue glow for readability */}
-      <div className="absolute inset-0 bg-black/40" />
-      <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_20%_10%,rgba(102,192,244,0.18),transparent_60%),radial-gradient(900px_420px_at_85%_20%,rgba(102,192,244,0.12),transparent_62%)]" />
+      {/* Theme-aware wash. Dark mode: darken the forest for contrast. Light mode:
+          we KEEP the same video but melt it into the bright page with a light
+          veil, so it reads as a soft texture instead of a dark slab. */}
+      {isLight ? (
+        <>
+          <div className="absolute inset-0 bg-white/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-[hsl(var(--background))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_20%_10%,hsl(var(--steam-link)/0.12),transparent_60%)]" />
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_20%_10%,rgba(102,192,244,0.18),transparent_60%),radial-gradient(900px_420px_at_85%_20%,rgba(102,192,244,0.12),transparent_62%)]" />
+        </>
+      )}
 
       {/* Fade out so the profile background ends (Steam-like) */}
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-b from-transparent to-[hsl(var(--background))]" />

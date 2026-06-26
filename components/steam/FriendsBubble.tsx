@@ -2,14 +2,23 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { MessageSquareMore } from "lucide-react";
-import { friends } from "@/data/friends";
+import { MessageSquareMore, Mail, Linkedin, Github, FileText, Send } from "lucide-react";
+import { profile } from "@/data/profile";
 import { sfx } from "@/lib/sound";
+
+// This used to be a fake "friends list." It's now a real quick-connect panel —
+// the fastest way for someone to actually reach me without leaving the page.
+type ConnectLink = {
+  label: string;
+  sub: string;
+  href: string;
+  external?: boolean;
+  icon: React.ComponentType<{ className?: string }>;
+};
 
 export function FriendsBubble() {
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
-  const onlineCount = friends.filter((f) => f.status === "online" || f.status === "in-game").length;
 
   React.useEffect(() => {
     if (!open) return;
@@ -20,6 +29,14 @@ export function FriendsBubble() {
     return () => document.removeEventListener("mousedown", onClick);
   }, [open]);
 
+  const links: ConnectLink[] = [
+    { label: "Email", sub: profile.links.email, href: `mailto:${profile.links.email}`, icon: Mail },
+    { label: "LinkedIn", sub: "Connect & message me", href: profile.links.linkedin, external: true, icon: Linkedin },
+    { label: "GitHub", sub: "See what I'm building", href: profile.links.github, external: true, icon: Github },
+    { label: "Contact form", sub: "Lands straight in my inbox", href: "/contact", icon: Send },
+    { label: "Resume", sub: "One-page PDF", href: "/resume", icon: FileText },
+  ];
+
   return (
     <div className="relative" ref={ref}>
       <button
@@ -28,62 +45,52 @@ export function FriendsBubble() {
           sfx.click();
           setOpen((v) => !v);
         }}
-        aria-label={`Friends, ${onlineCount} online`}
+        aria-label="Connect with me"
         className="relative inline-flex h-9 items-center gap-1.5 rounded px-2 text-[hsl(var(--steam-topbar-foreground))] hover:bg-white/5"
       >
         <span className="status-dot status-dot--online" />
         <MessageSquareMore className="h-4.5 w-4.5" />
-        <span className="hidden text-xs font-semibold sm:inline">{onlineCount}</span>
+        <span className="hidden text-xs font-semibold sm:inline">Connect</span>
       </button>
 
       {open && (
         <div className="absolute right-0 top-[calc(100%+0.5rem)] z-50 w-72 max-w-[92vw] overflow-hidden rounded-md border border-border bg-[hsl(var(--steam-panel))] shadow-2xl ring-1 ring-white/10">
-          <div className="border-b border-border px-3 py-2 text-xs font-semibold tracking-[0.14em] uppercase text-muted-foreground">
-            Friends ({onlineCount} online)
+          <div className="border-b border-border px-3 py-2.5">
+            <p className="text-sm font-semibold text-foreground">Let&apos;s connect</p>
+            <p className="mt-1 inline-flex items-center gap-1.5 text-[11px] text-muted-foreground">
+              <span className="status-dot status-dot--online" />
+              Open to opportunities · replies within a day
+            </p>
           </div>
-          <ul className="max-h-80 overflow-y-auto steam-scroll">
-            {friends.map((f) => {
-              const dotClass =
-                f.status === "online"
-                  ? "status-dot--online"
-                  : f.status === "in-game"
-                  ? "status-dot--in-game"
-                  : f.status === "away"
-                  ? "status-dot--away"
-                  : "status-dot--offline";
+          <ul>
+            {links.map((l) => {
+              const Icon = l.icon;
+              const inner = (
+                <span className="flex items-center gap-3 px-3 py-2.5 hover:bg-white/5">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded bg-black/30 text-[hsl(var(--steam-link))] ring-1 ring-white/10">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm font-semibold text-foreground">{l.label}</span>
+                    <span className="block truncate text-[11px] text-muted-foreground">{l.sub}</span>
+                  </span>
+                </span>
+              );
               return (
-                <li key={f.name} className="border-b border-border/60 last:border-b-0">
-                  <div className="flex items-center gap-3 px-3 py-2 hover:bg-white/5">
-                    <div className={`grid h-8 w-8 shrink-0 place-items-center rounded text-xs font-bold text-white ring-1 ring-white/10 ${f.avatarColor}`}>
-                      {f.name.slice(0, 1)}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-semibold text-foreground">{f.name}</p>
-                      <p className="truncate text-[11px] text-muted-foreground">
-                        {f.status === "in-game" && f.playing
-                          ? `Playing ${f.playing}`
-                          : f.status === "online"
-                          ? "Online"
-                          : f.status === "away"
-                          ? "Away"
-                          : "Offline"}
-                      </p>
-                    </div>
-                    <span className={`status-dot ${dotClass}`} />
-                  </div>
+                <li key={l.label} className="border-b border-border/60 last:border-b-0">
+                  {l.external || l.href.startsWith("mailto:") ? (
+                    <a href={l.href} target={l.external ? "_blank" : undefined} rel="noreferrer" onClick={() => setOpen(false)}>
+                      {inner}
+                    </a>
+                  ) : (
+                    <Link href={l.href} onClick={() => setOpen(false)}>
+                      {inner}
+                    </Link>
+                  )}
                 </li>
               );
             })}
           </ul>
-          <div className="border-t border-border px-3 py-2 text-right">
-            <Link
-              href="/#stack"
-              onClick={() => setOpen(false)}
-              className="text-xs text-[hsl(var(--steam-link))] hover:underline"
-            >
-              Full tech stack →
-            </Link>
-          </div>
         </div>
       )}
     </div>

@@ -26,13 +26,14 @@ export const profile = {
   education: {
     program: "Software Development & Network Engineering (SDNE)",
     school: "Sheridan College",
-    grad: "2026",
+    grad: "Aug 2026",
   },
 
   // Steam-flavored profile chrome
   level: 22,
   avatarUrl: "/steam/avatar.jpg",
-  bannerUrl: "/steam/banner.jpg",
+  // Empty → ProfileHero renders a clean CSS-gradient banner (no baked-in text).
+  bannerUrl: "",
   background: {
     // Steam-like "profile background" behind the whole site.
     type: "video" as "image" | "video",
@@ -50,7 +51,7 @@ export const profile = {
 
   // Headline stats shown on the profile hero
   stats: [
-    { label: "Projects shipped", value: "4" },
+    { label: "Projects shipped", value: "6" },
     { label: "Focus", value: "Web + Networks" },
     { label: "Status", value: "Open to work" },
   ],
@@ -60,5 +61,5 @@ export const profile = {
     { label: "Stack", value: "Next.js" },
   ],
 
-  featuredProjectSlug: "le-pathetique",
+  featuredProjectSlug: "thetripman",
 } as const;

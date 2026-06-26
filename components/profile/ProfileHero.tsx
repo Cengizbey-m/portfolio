@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Github, Linkedin, Mail, FileText, MessageSquare, MapPin } from "lucide-react";
 import { profile } from "@/data/profile";
 import { LevelRing } from "@/components/steam/LevelRing";
+import { HeroBannerArt } from "@/components/profile/HeroBannerArt";
 import { unlock } from "@/lib/achievements";
 import { fireConfetti } from "@/lib/confetti";
 import { sfx } from "@/lib/sound";
@@ -41,9 +42,28 @@ export function ProfileHero() {
             onError={() => setBannerSrc("")}
           />
         ) : (
-          <div className="h-full w-full bg-[radial-gradient(900px_260px_at_20%_10%,rgba(102,192,244,0.25),transparent_55%),linear-gradient(180deg,rgba(23,26,33,0.9),rgba(27,40,56,0.9))]" />
+          <div className="relative h-full w-full overflow-hidden">
+            {/* Theme-aware banner: a soft blue/purple wash that works on both
+                a dark and a light panel (no hardcoded dark colours). */}
+            <div className="absolute inset-0 bg-[radial-gradient(1100px_300px_at_18%_-25%,hsl(var(--steam-link)/0.30),transparent_55%),radial-gradient(820px_300px_at_96%_-15%,hsl(var(--steam-purple)/0.20),transparent_60%),linear-gradient(180deg,hsl(var(--steam-panel-2)),hsl(var(--steam-panel)))]" />
+            <div
+              className="absolute inset-0 opacity-50"
+              style={{
+                backgroundImage:
+                  "radial-gradient(rgba(255,255,255,0.10) 1px, transparent 1px)",
+                backgroundSize: "22px 22px",
+                maskImage:
+                  "radial-gradient(720px 200px at 30% 0%, black, transparent 72%)",
+                WebkitMaskImage:
+                  "radial-gradient(720px 200px at 30% 0%, black, transparent 72%)",
+              }}
+            />
+            {/* Networking motif — fills the space the old banner text used to. */}
+            <HeroBannerArt />
+          </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--steam-panel))] via-[hsl(var(--steam-panel))]/70 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--steam-panel))] via-[hsl(var(--steam-panel))]/70 to-transparent" />
+        <div className="banner-sheen pointer-events-none absolute inset-0 overflow-hidden" />
         <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-[hsl(var(--steam-green))]/40 bg-[hsl(var(--steam-green))]/15 px-3 py-1 text-[11px] font-semibold text-[hsl(var(--steam-green))] backdrop-blur">
           <span className="status-dot status-dot--online" />
           {profile.status.label}
@@ -51,42 +71,44 @@ export function ProfileHero() {
       </div>
 
       <div className="px-4 pb-5 sm:px-6">
-        {/* Identity row */}
-        <div className="-mt-10 flex flex-col gap-4 sm:-mt-12 sm:flex-row sm:items-end">
+        {/* Avatar + level ring overlap the banner; the name sits safely below so it can never clip. */}
+        <div className="-mt-12 flex items-end justify-between gap-4 sm:-mt-14">
           <button
             type="button"
             onClick={handleAvatarClick}
             aria-label="Avatar"
-            className="group relative h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-black/30 ring-2 ring-[hsl(var(--steam-link))]/50 shadow-xl sm:h-28 sm:w-28"
+            className="group relative h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-black/30 ring-2 ring-[hsl(var(--steam-link))]/50 shadow-xl transition-shadow duration-300 hover:ring-[hsl(var(--steam-link))]/90 hover:shadow-[0_0_28px_-4px_hsl(var(--steam-link)/0.6)] sm:h-28 sm:w-28"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={avatarSrc}
               alt="Muhammed Cengiz"
-              className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.05]"
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.06]"
               onError={() => setAvatarSrc("/steam/avatar.svg")}
             />
           </button>
 
-          <div className="min-w-0 flex-1 [text-shadow:0_1px_6px_rgba(0,0,0,0.5)]">
-            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                {profile.realName}
-              </h1>
-              <span className="text-sm text-muted-foreground">aka {profile.displayName}</span>
-            </div>
-            <p className="mt-1 text-base font-semibold text-[hsl(var(--steam-link))]">
-              {profile.role}
-            </p>
-            <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
-              <MapPin className="h-3.5 w-3.5" />
-              {profile.location}
-            </p>
-          </div>
-
-          <div className="hidden shrink-0 sm:block">
+          <div className="mb-1 shrink-0">
             <LevelRing level={profile.level} progress={0.62} size={56} badgeLabel={`Lvl ${profile.level}`} />
           </div>
+        </div>
+
+        {/* Identity — full width, in normal flow, never overlapping the banner.
+            Colours come from theme tokens so it reads in both light and dark. */}
+        <div className="mt-3">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              {profile.realName}
+            </h1>
+            <span className="text-sm text-muted-foreground">aka {profile.displayName}</span>
+          </div>
+          <p className="mt-1 text-base font-semibold text-[hsl(var(--steam-link))]">
+            {profile.role}
+          </p>
+          <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
+            <MapPin className="h-3.5 w-3.5" />
+            {profile.location}
+          </p>
         </div>
 
         <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">{profile.tagline}</p>

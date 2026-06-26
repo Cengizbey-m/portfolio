@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { Search, Filter, Play, Star, Users, Trophy, Gamepad2 } from "lucide-react";
 import { projects, type Project } from "@/data/projects";
-import { getStatsFor } from "@/lib/projectStats";
+import { getProjectFacts } from "@/lib/projectStats";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -251,7 +251,7 @@ export function LibraryShell() {
 }
 
 function DetailView({ item }: { item: LibraryItem }) {
-  const stats = item.kind === "project" ? getStatsFor(item.slug) : null;
+  const facts = item.kind === "project" ? getProjectFacts(item.slug) : null;
   const isArcade = item.kind === "arcade";
   return (
     <div className="panel overflow-hidden">
@@ -297,14 +297,12 @@ function DetailView({ item }: { item: LibraryItem }) {
             </div>
           )}
 
-          {stats && (
+          {facts && (
             <div className="mt-5 grid gap-2 sm:grid-cols-2">
-              <Stat icon={<Trophy className="h-4 w-4" />} label="Achievements" value={`${stats.achievementsUnlocked} / ${stats.achievementsTotal} unlocked`} />
-              <Stat icon={<Star className="h-4 w-4 text-[hsl(var(--steam-gold))]" />} label="Reviews" value={`${stats.reviewSummary} (${stats.reviewCount.toLocaleString()})`} />
-              <Stat label="Hours on record" value={`${stats.hoursPlayed} hrs`} />
-              <Stat label="Last played" value={stats.lastPlayed} />
-              <Stat label="Install size" value={`${stats.installedSizeMb} MB`} />
-              <Stat icon={<Users className="h-4 w-4" />} label="Player count" value="Single-player + Co-op" />
+              <Stat icon={<Users className="h-4 w-4" />} label="Role" value={facts.role} />
+              <Stat icon={<Star className="h-4 w-4 text-[hsl(var(--steam-gold))]" />} label="Type" value={facts.type} />
+              <Stat icon={<Trophy className="h-4 w-4 text-[hsl(var(--steam-green))]" />} label="Status" value={facts.status} />
+              <Stat label="Year" value={facts.year} />
             </div>
           )}
         </div>

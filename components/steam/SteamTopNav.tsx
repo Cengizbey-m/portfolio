@@ -15,6 +15,7 @@ const nav = [
   { href: "/store", label: "STORE" },
   { href: "/library", label: "LIBRARY" },
   { href: "/library/arcade", label: "ARCADE" },
+  { href: "/about", label: "ABOUT" },
   { href: "/", label: profile.displayName.toUpperCase() },
 ];
 
@@ -35,10 +36,16 @@ export function SteamTopNav() {
 
           <Link
             href="/"
+            aria-label="Home — Muhammed Cengiz"
             className="flex items-center gap-2 text-[hsl(var(--steam-topbar-foreground))]"
           >
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded bg-gradient-to-b from-[hsl(var(--steam-link))]/40 to-black/30 text-sm font-black ring-1 ring-white/15">
-              C
+            <span className="inline-flex h-8 w-8 overflow-hidden rounded-full bg-black/30 ring-1 ring-white/20 shadow-[0_0_0_1px_rgba(0,0,0,0.4)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/steam/logo-avatar.png"
+                alt="Muhammed Cengiz"
+                className="h-full w-full object-cover"
+              />
             </span>
             <span className="hidden font-semibold tracking-tight sm:inline">cengiz</span>
           </Link>

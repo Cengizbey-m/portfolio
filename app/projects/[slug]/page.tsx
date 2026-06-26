@@ -116,7 +116,7 @@ export default async function ProjectCaseStudyPage({
       <Card>
         <CardHeader>
           <p className="text-xs font-semibold tracking-[0.14em] uppercase text-muted-foreground">
-            Game stats
+            At a glance
           </p>
         </CardHeader>
         <CardContent className="pt-4">

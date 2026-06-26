@@ -21,8 +21,8 @@ export const staticNotifications: StaticNotification[] = [
   {
     id: "n-library",
     kind: "update",
-    title: "3 new games installed",
-    body: "TheTripMan, Capstone AI Finance, and Formally are ready to launch.",
+    title: "6 projects in your library",
+    body: "TheTripMan, Feather, Le Pathétique, Puffy, Bloom and Formally are ready to launch.",
     when: "today",
     href: "/library",
   },
