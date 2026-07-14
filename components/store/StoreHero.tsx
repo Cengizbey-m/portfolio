@@ -48,10 +48,10 @@ const features = [
 // Real screenshots from shipped work — the "store gallery" for hiring me.
 const screenshots = [
   "/images/tripman/tripman-1.png",
+  "/images/bloom/bloom-1.png",
   "/images/feather/feather-1.png",
   "/images/tripman/tripman-2.png",
-  "/images/feather/feather-2.png",
-  "/images/tripman/tripman-3.png",
+  "/images/bloom/bloom-3.png",
 ];
 
 export function StoreHero() {

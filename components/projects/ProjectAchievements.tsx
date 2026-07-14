@@ -57,9 +57,9 @@ const PER_PROJECT: Record<string, ProjectAch[]> = {
     { id: "pf-local", title: "Found on Google", body: "Working on a QR-code menu + Google Business presence to bring walk-ins online.", icon: Network, unlocked: false },
   ],
   bloom: [
-    { id: "bl-product", title: "Product From Scratch", body: "Designed and built a calendar + notes app end-to-end, solo.", icon: Rocket, unlocked: true },
-    { id: "bl-focus", title: "Focus by Design", body: "Calendar, to-dos, and notes in one warm, distraction-light workspace.", icon: Eye, unlocked: true },
-    { id: "bl-ship", title: "Ship It", body: "Polishing screenshots and the public build — coming soon.", icon: Code2, unlocked: false },
+    { id: "bl-product", title: "Product From Scratch", body: "Designed and shipped a full life planner end-to-end, solo — live right now.", icon: Rocket, unlocked: true },
+    { id: "bl-focus", title: "Sync That Disappears", body: "Offline-first, debounce-synced to the cloud, realtime across every signed-in device.", icon: Eye, unlocked: true },
+    { id: "bl-ship", title: "Everywhere at Once", body: "Public launch on web, iOS, and Android — in progress.", icon: Code2, unlocked: false },
   ],
 };
 

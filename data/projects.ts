@@ -66,6 +66,47 @@ export const projects: Project[] = [
       "The production repository is private due to business confidentiality. Screenshots avoid any sensitive client data.",
   },
   {
+    title: "Bloom (Product • Cloud-Synced Life Planner PWA)",
+    slug: "bloom",
+    tags: ["Web"],
+    short:
+      "A cute, cloud-synced life planner — calendar, tasks, habits, notes, journal, goals, and a focus timer in one warm workspace. Sign in with Google and your data follows you: start on your phone, continue on your PC. Live now; web, iOS, and Android launch in the works.",
+    problem:
+      "Students and workers juggle classes, tasks, habits, and notes across a pile of cold, disconnected apps. Bloom pulls daily life into one friendly workspace that stays in sync on every device — and keeps working offline.",
+    role:
+      "Solo: product design and full-stack build — data model, offline-first sync engine, auth, theming, and every screen of the UI.",
+    stack: [
+      "React 18 + TypeScript (Vite)",
+      "Tailwind CSS v4",
+      "Zustand (state + localStorage persistence)",
+      "Supabase (PostgreSQL + Google Auth + Realtime)",
+      "Offline-first PWA (Workbox)",
+      "Row Level Security + DOMPurify sanitization",
+      "Framer Motion",
+      "Vercel",
+    ],
+    impact: [
+      "Built an offline-first sync engine: everything saves locally first, then debounce-syncs to Supabase — Realtime subscriptions keep every signed-in device up to date, theme and notes included.",
+      "Google sign-in with Row Level Security across 10 Postgres tables, so each user's data is isolated at the database level.",
+      "Designed a forgiveness-based habit score (0–100%) instead of punishing streak resets, plus mood–habit correlation stats.",
+      "Quality-of-life details everywhere: global Ctrl/Cmd+K quick-add, a Pomodoro timer that follows you across pages, 3 themes + custom accent colors, and achievements.",
+    ],
+    coverImage: "/images/bloom/bloom-1.png",
+    gallery: [
+      "/images/bloom/bloom-1.png",
+      "/images/bloom/bloom-2.png",
+      "/images/bloom/bloom-3.png",
+      "/images/bloom/bloom-4.png",
+      "/images/bloom/bloom-5.png",
+    ],
+    links: {
+      caseStudy: "/projects/bloom",
+      liveDemo: "https://bloom-cal.vercel.app",
+    },
+    confidentialityNote:
+      "The codebase is private while Bloom prepares for public launch on web, iOS, and Android.",
+  },
+  {
     title: "Le Pathétique (BearHacks 2026 — AI French Food Critic)",
     slug: "le-pathetique",
     tags: ["AI/ML", "Web", "Hackathon"],
@@ -169,27 +210,6 @@ export const projects: Project[] = [
     links: {
       caseStudy: "/projects/puffy",
       github: "https://github.com/Cengizbey-m/Puffy",
-    },
-  },
-  {
-    title: "Bloom (Calendar + Notes App for Students)",
-    slug: "bloom",
-    tags: ["Web"],
-    short:
-      "A colorful calendar, notes, and life-organizer app for students and workers — think Notion, but warmer and more focused. Screenshots coming soon.",
-    problem:
-      "Students juggle classes, tasks, and notes across too many apps. Bloom pulls calendar, to-dos, and note-taking into one focused, friendly workspace.",
-    role:
-      "Solo: product design and full-stack build — from the data model to the UI.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    impact: [
-      "Bringing calendar, to-dos, and notes into one focused workspace built for student life.",
-      "Designed for warmth and low friction — colorful, fast, and distraction-light.",
-    ],
-    coverImage: "/images/bloom/bloom-placeholder.svg",
-    links: {
-      caseStudy: "/projects/bloom",
-      github: "https://github.com/Cengizbey-m/Bloom",
     },
   },
   {

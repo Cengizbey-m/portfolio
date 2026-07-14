@@ -19,6 +19,14 @@ export const staticNotifications: StaticNotification[] = [
     when: "just now",
   },
   {
+    id: "n-bloom",
+    kind: "update",
+    title: "New release: Bloom is live 🌸",
+    body: "A cloud-synced life planner — Google sign-in, offline-first, syncs across all your devices. Try the live app.",
+    when: "new",
+    href: "/projects/bloom",
+  },
+  {
     id: "n-library",
     kind: "update",
     title: "6 projects in your library",
