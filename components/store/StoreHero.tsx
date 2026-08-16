@@ -211,7 +211,7 @@ export function StoreHero() {
               ))}
             </div>
             <p className="mt-1.5 text-[11px] text-muted-foreground">
-              Judged first overall at Sheridan&rsquo;s 2026 capstone showcase. Prototype graded 94/100.
+              Judged first overall at Sheridan&rsquo;s 2026 capstone showcase after a year of work. Graded 97/100.
             </p>
           </div>
 

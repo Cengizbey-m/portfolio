@@ -20,7 +20,7 @@ export const education = {
   status: "Graduated",
   honours: [
     "Capstone ranked #1 of 50+ projects at the 2026 capstone showcase",
-    "Capstone prototype graded 94/100",
+    "Year-long capstone graded 97/100 in the final term, 94/100 at the prototype stage",
   ],
   coursework: [
     "AI & Machine Learning with Python (PROG25211)",

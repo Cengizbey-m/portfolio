@@ -21,7 +21,7 @@ const langs = [
 const builds = [
   { name: "TheTripMan", note: "Booking + payments for a 1.2M-follower client. Live, solo, revenue-share." },
   { name: "Le Pathétique", note: "Solo multimodal-AI hackathon build at BearHacks 2026." },
-  { name: "Feather (Capstone)", note: "Ranked #1 of 50+ at the capstone showcase. Prototype graded 94/100." },
+  { name: "Feather (Capstone)", note: "A year-long build, ranked #1 of 50+ at the capstone showcase. Graded 97/100." },
   { name: "Puffy", note: "A second real client: a website for a local patisserie." },
 ];
 

@@ -241,13 +241,15 @@ export function SnakeGame() {
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-md border border-border bg-black ring-1 ring-white/10">
+      {/* The canvas has a fixed internal resolution but is scaled by CSS so it
+          fills the panel at any width instead of leaving dead space beside it. */}
+      <div className="mx-auto w-full max-w-3xl overflow-hidden rounded-md border border-border bg-[#0e1620] ring-1 ring-white/10">
         <canvas
           ref={canvasRef}
           width={COLS * CELL}
           height={ROWS * CELL}
-          className="block max-w-full"
-          style={{ imageRendering: "pixelated" }}
+          className="block h-auto w-full"
+          style={{ imageRendering: "pixelated", aspectRatio: `${COLS} / ${ROWS}` }}
         />
       </div>
 

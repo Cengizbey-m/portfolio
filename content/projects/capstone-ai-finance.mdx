@@ -1,12 +1,23 @@
-# Feather (Capstone, Team of 5)
+# Feather (Capstone, Team of 4)
 
 **Live:** [feathertrade.org](https://www.feathertrade.org/)
 
 ## Result
 
 Feather was selected for the final showcase round and judged **first overall out of more
-than fifty capstone projects** at Sheridan's 2026 showcase. The prototype phase was graded
-94/100.
+than fifty capstone projects** at Sheridan's 2026 showcase. It was graded **97/100** in the
+final term, up from 94/100 at the prototype stage.
+
+This is the biggest thing I have built with other people. It ran across two terms and a
+full academic year, with four developers coordinating design decisions, scope, and a
+codebase that had to survive all of it.
+
+## The team
+
+Built with **Muazam Syed**, **Wajiha Siddiqui**, and **Katie Reeves**. A year is long enough
+that team process stops being a formality: we ran code review, split ownership properly,
+and had to renegotiate scope more than once when a good idea turned out to be a bad
+deadline.
 
 ## Summary
 
@@ -37,7 +48,7 @@ service and the React frontend. Fixing the shape of that contract early meant th
 team could build against a stable spec while the model work was still changing underneath,
 so neither half of the team sat blocked on the other.
 
-**Containerization.** Docker for the service, so five people ran an identical environment
+**Containerization.** Docker for the service, so four people ran an identical environment
 and demo day did not depend on whose laptop was being used.
 
 ## Tech
@@ -48,13 +59,18 @@ and demo day did not depend on whose laptop was being used.
 - Docker for local and demo environments
 - Deployed on Vercel
 
-## What I would do differently
+## What a year teaches you
 
 The evaluation layer was built after the models, which meant a round of rework once we
 could actually see how weak some early results were. Next time I would build the scoring
 harness first and develop the models against it, the same way you would write the test
 before the implementation.
 
+The other lesson was less technical. Over two terms, the thing that cost the most time was
+not code, it was decisions left ambiguous. The stretches where we moved fastest were the
+ones where somebody wrote the decision down.
+
 ## Notes
 
-The repository is private as the project continues past the capstone.
+The repository is private. The team is still developing Feather, and it may continue
+past the capstone.

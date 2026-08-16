@@ -8,7 +8,7 @@
  */
 
 export const resumeSummary =
-  "Full-stack developer with an advanced diploma in Software Development and Network Engineering and a track record of shipping production software. Built and maintain a booking and payments platform processing live Stripe transactions for a client with a 1.2M-follower audience. Capstone team ranked #1 of 50+ projects at the 2026 Sheridan showcase. Canadian permanent resident, available across the Greater Toronto Area or remote.";
+  "Full-stack developer with an advanced diploma in Software Development and Network Engineering and a track record of shipping software that people use. Built and maintain a booking and payments platform processing live Stripe transactions for a client with a 1.2M-follower audience, and designed and launched Bloom, a cloud-synced planner with offline support and realtime multi-device sync. Year-long capstone team ranked #1 of 50+ projects at the 2026 Sheridan showcase, graded 97/100. Canadian permanent resident, available across the Greater Toronto Area or remote.";
 
 export type ResumeRole = {
   title: string;
@@ -48,15 +48,16 @@ export const experience: ResumeRole[] = [
     tech: "Next.js, TypeScript, Tailwind CSS, Vercel",
   },
   {
-    title: "Software Developer, Capstone (Team of 5)",
+    title: "Software Developer, Capstone (Team of 4)",
     org: "Feather, Sheridan College",
     location: "Oakville, ON",
-    period: "2026",
+    period: "2025 – 2026",
     bullets: [
-      "Ranked #1 out of 50+ projects at the 2026 capstone showcase after selection for the final showcase round; prototype phase graded 94/100.",
+      "Ranked #1 out of 50+ projects at the 2026 capstone showcase, selected for the final showcase round and judged first overall. Graded 97/100 in the final term, up from 94/100 at the prototype stage.",
+      "Delivered across two terms and a full academic year with a team of four, using code review, shared ownership, and scope renegotiation as the project grew.",
       "Owned the model evaluation layer, scoring every run against naive baselines so the interface reports accuracy honestly instead of displaying unqualified predictions.",
       "Defined and implemented the REST API contract between the FastAPI service and the React client, allowing frontend and ML work to proceed in parallel without blocking.",
-      "Containerized the backend with Docker to give five developers an identical environment and a reproducible demo setup.",
+      "Containerized the backend with Docker to give four developers an identical environment and a reproducible demo setup.",
     ],
     tech: "React, TypeScript, FastAPI, Python, SQLAlchemy, scikit-learn, Docker",
   },
@@ -64,17 +65,19 @@ export const experience: ResumeRole[] = [
 
 export const sideProjects: ResumeRole[] = [
   {
-    title: "Bloom, Cloud-Synced Life Planner",
-    org: "Independent product",
-    location: "bloom-cal.vercel.app",
+    title: "Bloom, Cloud-Synced Life Planner (live product)",
+    org: "Independent product · bloom-cal.vercel.app",
+    location: "Sole developer and designer",
     period: "2026 – Present",
     bullets: [
-      "Designed and built a live planner covering calendar, tasks, habits, notes, and focus timing, as sole developer and designer.",
-      "Engineered an offline-first sync layer: writes commit to local state immediately and sync to PostgreSQL on a debounce, keeping the UI responsive on unreliable connections.",
-      "Implemented Realtime subscriptions so changes propagate across every signed-in device, and enforced Row Level Security across 10 tables to isolate accounts at the database layer.",
-      "Shipped as an installable PWA with Workbox service workers for full offline use, with Google OAuth sign-in.",
+      "Designed, built, and launched a complete planner covering seven connected modules: calendar, tasks, habits, notes, journal, goals, and a focus timer. Live and in daily use.",
+      "Engineered an offline-first sync layer: writes commit to local state immediately and sync to PostgreSQL on a debounce, so the interface stays responsive on unreliable connections and keeps working with no network at all.",
+      "Implemented Supabase Realtime subscriptions so edits propagate across every signed-in device within seconds, including theme and settings, not just content.",
+      "Secured multi-tenant data with Row Level Security across 10 PostgreSQL tables, isolating every account at the database layer rather than relying on client-side checks, with Google OAuth for sign-in.",
+      "Shipped as an installable PWA using Workbox service workers, and sanitized all user-authored markdown with DOMPurify to prevent stored XSS.",
+      "Designed a forgiveness-based habit scoring model to replace binary streaks, alongside mood correlation analytics over a rolling 30-day window.",
     ],
-    tech: "React 18, TypeScript, Vite, Supabase, PostgreSQL, Zustand, Tailwind, Workbox",
+    tech: "React 18, TypeScript, Vite, Supabase, PostgreSQL, Zustand, Tailwind CSS v4, Workbox, Framer Motion",
   },
   {
     title: "Le Pathétique, Multimodal AI Application",

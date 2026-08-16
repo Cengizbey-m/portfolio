@@ -158,7 +158,7 @@ export default async function ResumePage() {
                 <Trophy className="mt-[3px] h-3.5 w-3.5 shrink-0 text-[hsl(var(--steam-gold))]" />
                 <span>
                   <span className="font-semibold">Capstone ranked #1 of 50+ projects</span> at the
-                  2026 capstone showcase. Prototype phase graded 94/100.
+                  2026 capstone showcase. A full-year project, graded 97/100 in the final term.
                 </span>
               </li>
               <li className="flex gap-2 text-[13px] leading-[1.55] text-muted-foreground">

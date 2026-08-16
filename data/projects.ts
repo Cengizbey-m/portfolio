@@ -74,13 +74,13 @@ export const projects: Project[] = [
     title: "Feather (Capstone • AI Market Insights Platform)",
     slug: "capstone-ai-finance",
     tags: ["AI/ML", "Web"],
-    highlight: "Ranked #1 of 50+ projects",
+    highlight: "Ranked #1 of 50+ · a year of work",
     short:
-      "A next-day stock movement prediction tool with an honest evaluation layer. Judged first overall out of more than fifty projects at Sheridan's 2026 capstone showcase, with the prototype graded 94/100.",
+      "A year-long capstone building a next-day stock movement prediction platform with an honest evaluation layer. Judged first overall out of more than fifty projects at Sheridan's 2026 showcase, graded 97/100 in the final term.",
     problem:
       "Prediction demos usually hide their error rate and present a confident number the user has no way to question. We wanted a tool that shows a forecast next to the evidence for trusting it, and refuses to overstate what the model actually knows.",
     role:
-      "Team of five. I owned the model evaluation layer and the API contract between the Python service and the React frontend, and implemented feature work across both sides.",
+      "Team of four, across two terms and a full academic year. I owned the model evaluation layer and the API contract between the Python service and the React frontend, and implemented feature work on both sides.",
     stack: [
       "React + TypeScript (Vite)",
       "FastAPI (Python)",
@@ -91,7 +91,8 @@ export const projects: Project[] = [
     ],
     impact: [
       "Judged #1 out of 50+ capstone projects at the 2026 showcase after being selected for the final showcase round.",
-      "Prototype phase graded 94/100.",
+      "Graded 97/100 in the final term, up from 94/100 at the prototype stage.",
+      "The largest project I have worked on: two terms, a full academic year, and four developers coordinating through it.",
       "Built the evaluation layer that scores every model against baselines, so the UI can show accuracy honestly instead of printing a number with no context.",
       "Defined the API contract between the Python model service and the React client, which let the frontend and ML work continue in parallel without blocking each other.",
       "Containerized the service with Docker so the whole team ran an identical environment and demo setup was not a gamble.",
@@ -114,9 +115,9 @@ export const projects: Project[] = [
     title: "Bloom (Product • Cloud-Synced Life Planner)",
     slug: "bloom",
     tags: ["Web"],
-    highlight: "Live · offline-first sync",
+    highlight: "Live · 7 modules · cloud synced",
     short:
-      "A planner that holds calendar, tasks, habits, notes, journal, goals, and a focus timer in one place. Sign in with Google and your data follows you: start something on your phone, finish it on your laptop, and keep working with no connection at all.",
+      "A complete, launched planner holding calendar, tasks, habits, notes, journal, goals, and a focus timer in one place. Sign in with Google and your data follows you: start something on your phone, finish it on your laptop, and keep working with no connection at all.",
     problem:
       "Planner apps either sync well and feel like enterprise software, or feel nice and lose your data between devices. I wanted one that does both, and that does not punish you for missing a day.",
     role:
@@ -132,6 +133,7 @@ export const projects: Project[] = [
       "Vercel",
     ],
     impact: [
+      "Shipped a finished product, not a prototype: seven connected modules, three themes, custom accent colours, achievements, and an installable PWA build.",
       "Built an offline-first sync engine: writes land in local state immediately, then sync to Postgres on a debounce, so the interface never waits on the network.",
       "Wired Realtime subscriptions so a change on one device shows up on every other signed-in device, including theme and settings.",
       "Secured user data with Row Level Security across 10 Postgres tables, isolating every account at the database level rather than trusting client-side checks.",

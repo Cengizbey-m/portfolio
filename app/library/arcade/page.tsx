@@ -1,9 +1,9 @@
 import Link from "next/link";
 import {
   Worm,
-  Network,
   Bug,
   Grid3x3,
+  Grid2x2,
   Rocket,
   Radio,
   Gamepad2,
@@ -14,7 +14,7 @@ import {
 export const metadata = {
   title: "Arcade",
   description:
-    "A small arcade of dev- and networking-themed mini-games built into the portfolio. Snake, subnetting, memory, reflex, and more. Each one grants achievements.",
+    "A small arcade of mini-games built into the portfolio. Snake, a sliding photo puzzle, memory, reflex, and more. Each one grants achievements.",
 };
 
 type Game = {
@@ -37,11 +37,11 @@ const games: Game[] = [
     accent: "hsl(var(--steam-link))",
   },
   {
-    slug: "subnet",
-    title: "Subnet Sprint",
-    short: "60 seconds of CIDR & subnetting trivia. Don't /24 yourself.",
-    badge: "Networking",
-    icon: Network,
+    slug: "puzzle",
+    title: "Slide Puzzle",
+    short: "Upload your own photo, scramble it, slide the tiles back into place.",
+    badge: "Puzzle",
+    icon: Grid2x2,
     accent: "hsl(var(--steam-green))",
   },
   {

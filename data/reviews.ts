@@ -25,7 +25,7 @@ export const reviews: Review[] = [
   },
   {
     author: "Capstone Teammate",
-    role: "Team of 5, ranked #1 of 50+",
+    role: "Team of 4, ranked #1 of 50+",
     recommended: true,
     hoursOnRecord: 612,
     body: "Owned his pieces end to end and caught the problems before demo day. Knew when to call a meeting and when to just open a PR. We finished first for a reason.",

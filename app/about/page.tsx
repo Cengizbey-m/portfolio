@@ -52,7 +52,7 @@ export default function AboutPage() {
               <span className="text-muted-foreground">
                 <span className="font-semibold text-foreground">Capstone ranked #1 of 50+.</span>{" "}
                 Feather was picked for the showcase round and judged first overall at Sheridan&rsquo;s 2026
-                capstone showcase. The prototype was graded 94/100.
+                capstone showcase, at the end of a full year of work. Graded 97/100 in the final term, up from 94/100 for the prototype.
               </span>
             </li>
             <li className="flex gap-3">

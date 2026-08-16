@@ -40,15 +40,15 @@ const ARCADE_ITEMS: LibraryItem[] = [
   },
   {
     kind: "arcade",
-    slug: "arcade-subnet",
-    title: "Subnet Sprint",
+    slug: "arcade-puzzle",
+    title: "Slide Puzzle",
     short:
-      "Quickfire subnetting & CIDR quiz. 60 seconds, see how many you can answer right.",
-    tags: ["Mini-game", "Networking"],
+      "Upload any photo and it becomes a sliding tile puzzle. Choose 3x3, 4x4, or 5x5, then slide the pieces back into place.",
+    tags: ["Mini-game", "Puzzle"],
     cover: undefined,
-    caseStudy: "/library/arcade/subnet",
-    developer: "Cengiz · Networking Lab",
-    releaseYear: 2025,
+    caseStudy: "/library/arcade/puzzle",
+    developer: "Cengiz · Arcade Studio",
+    releaseYear: 2026,
   },
   {
     kind: "arcade",

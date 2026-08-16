@@ -41,10 +41,10 @@ const PER_PROJECT: Record<string, ProjectAch[]> = {
     { id: "tm-secret", title: "Quiet Room", body: "Production code stays private out of respect for the client.", icon: Lock, unlocked: false },
   ],
   "capstone-ai-finance": [
-    { id: "ca-first", title: "First Place", body: "Judged #1 out of 50+ projects at Sheridan's 2026 capstone showcase.", icon: Award, unlocked: true },
+    { id: "ca-first", title: "First Place", body: "Judged #1 out of 50+ projects at Sheridan's 2026 capstone showcase. Graded 97/100.", icon: Award, unlocked: true },
     { id: "ca-eval", title: "Evaluation Owner", body: "Built the harness that scores every model against a naive baseline, so the UI can be honest.", icon: Beaker, unlocked: true },
     { id: "ca-api", title: "Contract Driven", body: "Defined the API between model and frontend so neither half of the team sat blocked.", icon: Box, unlocked: true },
-    { id: "ca-team", title: "Team Player", body: "Shipped with a team of five: code review, sprint planning, all of it.", icon: Users, unlocked: true },
+    { id: "ca-team", title: "Team Player", body: "A year with a team of four: code review, sprint planning, and the boring coordination that makes it work.", icon: Users, unlocked: true },
   ],
   "formally-prototype": [
     { id: "fm-onboard", title: "First-Run Polish", body: "An onboarding flow that gets you training before it asks you to configure anything.", icon: Eye, unlocked: true },
