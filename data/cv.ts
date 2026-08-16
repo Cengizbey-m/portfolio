@@ -52,7 +52,7 @@ export const credentials = [
     id: "capstone",
     stat: "#1 of 50+",
     title: "Top capstone, 2026 showcase",
-    body: "Feather was selected for the showcase round and judged first overall out of more than fifty projects.",
+    body: "A year-long build judged first overall out of more than fifty projects. I found a critical auth flaw in the live service and built the gateway that closed it.",
     icon: "Trophy",
   },
   {

@@ -8,7 +8,7 @@
  */
 
 export const resumeSummary =
-  "Full-stack developer with an advanced diploma in Software Development and Network Engineering and a track record of shipping software that people use. Built and maintain a booking and payments platform processing live Stripe transactions for a client with a 1.2M-follower audience, and designed and launched Bloom, a cloud-synced planner with offline support and realtime multi-device sync. Year-long capstone team ranked #1 of 50+ projects at the 2026 Sheridan showcase, graded 97/100. Canadian permanent resident, available across the Greater Toronto Area or remote.";
+  "Full-stack developer with an advanced diploma in Software Development and Network Engineering and a track record of shipping software that people use. Built and maintain a booking and payments platform processing live Stripe transactions for a client with a 1.2M-follower audience. On a year-long capstone ranked #1 of 50+ projects, I found and fixed a critical authentication flaw and built the API gateway, token verification, and rate limiting that now protect the service. Also designed and launched Bloom, a cloud-synced planner with offline support and realtime multi-device sync. Canadian permanent resident, available across the Greater Toronto Area or remote.";
 
 export type ResumeRole = {
   title: string;
@@ -54,12 +54,16 @@ export const experience: ResumeRole[] = [
     period: "2025 – 2026",
     bullets: [
       "Ranked #1 out of 50+ projects at the 2026 capstone showcase, selected for the final showcase round and judged first overall. Graded 97/100 in the final term, up from 94/100 at the prototype stage.",
-      "Delivered across two terms and a full academic year with a team of four, using code review, shared ownership, and scope renegotiation as the project grew.",
-      "Owned the model evaluation layer, scoring every run against naive baselines so the interface reports accuracy honestly instead of displaying unqualified predictions.",
-      "Defined and implemented the REST API contract between the FastAPI service and the React client, allowing frontend and ML work to proceed in parallel without blocking.",
-      "Containerized the backend with Docker to give four developers an identical environment and a reproducible demo setup.",
+      "Identified a critical authentication flaw in the production API, which accepted a client-supplied header as proof of identity and allowed any caller to read or write any user account. Verified the vulnerability against the live service before designing the fix.",
+      "Designed and built the API gateway now fronting the backend, implemented as Vercel edge functions: verifies Firebase ID tokens against Google's JWKS, strips client-supplied identity, and normalizes user fields in request bodies to block spoofing through either channel.",
+      "Enforced allowlist-based routing so undeclared paths return 404 without reaching the upstream, eliminating open-proxy exposure on the production domain.",
+      "Implemented dual-window rate limiting (burst and sustained) backed by PostgreSQL counters shared across edge instances, replacing a service that previously had no limiting and could exhaust a shared third-party API quota.",
+      "Audited the database and remediated 12 tables running without Row Level Security, including user profile data, via SQL migration scoping user tables to service-role access.",
+      "Restored a CI pipeline that had been failing on every run, then resolved the 129 lint errors and 5 test failures it had been masking.",
+      "Authored the team's security review documenting every finding with a reproduction command, remediation status, and owner.",
+      "Earlier in the project, owned the model evaluation layer scoring predictions against naive baselines, and defined the REST API contract between the FastAPI service and the React client.",
     ],
-    tech: "React, TypeScript, FastAPI, Python, SQLAlchemy, scikit-learn, Docker",
+    tech: "TypeScript, React, Vercel Edge Functions, Firebase Auth, PostgreSQL, Supabase, FastAPI, Python, scikit-learn, Docker, GitHub Actions, Vitest, pytest",
   },
 ];
 

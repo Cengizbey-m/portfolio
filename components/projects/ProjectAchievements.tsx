@@ -42,6 +42,8 @@ const PER_PROJECT: Record<string, ProjectAch[]> = {
   ],
   "capstone-ai-finance": [
     { id: "ca-first", title: "First Place", body: "Judged #1 out of 50+ projects at Sheridan's 2026 capstone showcase. Graded 97/100.", icon: Award, unlocked: true },
+    { id: "ca-authfix", title: "Found the Hole", body: "The API trusted a header as proof of identity. Anyone could read any account. I proved it against production, then built the gateway that closed it.", icon: Shield, unlocked: true },
+    { id: "ca-rls", title: "Twelve Tables Later", body: "Audited the database, found 12 tables with Row Level Security switched off, and wrote the migration that fixed it.", icon: Lock, unlocked: true },
     { id: "ca-eval", title: "Evaluation Owner", body: "Built the harness that scores every model against a naive baseline, so the UI can be honest.", icon: Beaker, unlocked: true },
     { id: "ca-api", title: "Contract Driven", body: "Defined the API between model and frontend so neither half of the team sat blocked.", icon: Box, unlocked: true },
     { id: "ca-team", title: "Team Player", body: "A year with a team of four: code review, sprint planning, and the boring coordination that makes it work.", icon: Users, unlocked: true },

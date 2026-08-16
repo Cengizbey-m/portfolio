@@ -4,73 +4,156 @@
 
 ## Result
 
-Feather was selected for the final showcase round and judged **first overall out of more
-than fifty capstone projects** at Sheridan's 2026 showcase. It was graded **97/100** in the
-final term, up from 94/100 at the prototype stage.
+Selected for the final showcase round and judged **first overall out of more than fifty
+capstone projects** at Sheridan's 2026 showcase. Graded **97/100** in the final term, up
+from 94/100 at the prototype stage.
 
-This is the biggest thing I have built with other people. It ran across two terms and a
-full academic year, with four developers coordinating design decisions, scope, and a
-codebase that had to survive all of it.
+It ran for a full academic year across two terms with four developers. It is the largest
+system I have worked on, and the only one where I have had to audit somebody else's
+security decisions and then argue for changing them.
 
 ## The team
 
-Built with **Muazam Syed**, **Wajiha Siddiqui**, and **Katie Reeves**. A year is long enough
-that team process stops being a formality: we ran code review, split ownership properly,
-and had to renegotiate scope more than once when a good idea turned out to be a bad
-deadline.
+Built with **Muazam Syed**, **Wajiha Siddiqui**, and **Katie Reeves**.
 
-## Summary
+## What Feather actually is
 
-Feather forecasts next-day stock movement and, more importantly, shows you how much to
-trust the forecast. Most student prediction demos print a confident number and hide the
-error rate. We built the opposite: every prediction ships with the evaluation evidence
-behind it.
+A market insights platform, not a single prediction widget. The app covers:
 
-## The problem
+- **Market.** Indices, sector leaders and laggards, and a heatmap treemap where each tile is
+  sized by its S&P 500 weight, with area and candle charts.
+- **Portfolio.** Build a what-if basket of tickers valued at live prices, with Feather's
+  next-session forecast applied per holding and rolled up to a projected basket value.
+- **Sectors.** Compare your basket's sector weights against a benchmark (S&P 500 weights,
+  equal weight, or custom) with configurable drift margins that flag green, yellow, or red.
+- **Clarity.** Context before decisions: where today's move ranks against the past year of
+  daily moves, how the wider market and the ticker's sector are behaving, and what the news
+  is saying.
+- **Context / News.** Article sentiment scored and aggregated into an overall tone.
+- **Risk.** SEC filing analysis, running as its own Cloud Run service.
+- **MiroFish.** An event simulation that takes several minutes and returns predicted outcomes
+  for selected events against a chosen ticker.
+- **Interpretations** and a settings surface covering theme, currency, chart defaults, and
+  which tickers appear where.
 
-A model that is right 55% of the time and a model that is right 80% of the time look
-identical in a UI that only shows a prediction. That is not a visualization problem, it is
-an honesty problem. If a user cannot see how a model performs against a naive baseline,
-the interface is quietly lying to them.
+Model confidence is shown alongside every prediction rather than buried, because the point
+of the evaluation work was to make the number auditable.
 
-## What I owned
+## Architecture
 
-I worked on the evaluation layer and the boundary between the Python service and the React
-client.
+```
+browser ──/api/…──► Vercel edge gateway ──► Cloud Run "alpha-worker" ──► Neon / Alpha Vantage
+                    (the part I own)
+   │
+   └──────────────► Firebase Auth (Google sign-in)
+```
 
-**Evaluation.** I built the layer that scores every model run against baselines, including
-a naive "tomorrow looks like today" predictor. If a trained model cannot beat that, the UI
-says so. This became the feature judges asked about most, because it is the part that
-makes the product defensible rather than impressive.
+Three Cloud Run services sit behind the product: the main API, the SEC risk extractor, and
+the MiroFish simulation. The FastAPI service in the repository is the reference
+implementation we prototype policy against, not what serves production.
 
-**The API contract.** I defined and implemented the interface between the FastAPI model
-service and the React frontend. Fixing the shape of that contract early meant the frontend
-team could build against a stable spec while the model work was still changing underneath,
-so neither half of the team sat blocked on the other.
+Roughly 29,000 lines of TypeScript across 148 frontend files, a 1,750-line gateway, and a
+2,500-line reference backend, with twelve test files spanning all three.
 
-**Containerization.** Docker for the service, so four people ran an identical environment
-and demo day did not depend on whose laptop was being used.
+## What I own: the gateway and the security work
 
-## Tech
+Partway through the year I audited the running service rather than the code, and the result
+changed what I spent the rest of the project doing.
 
-- Frontend: React + TypeScript (Vite)
-- Backend: FastAPI (Python), SQLAlchemy
-- Models: scikit-learn baselines (SVR, Random Forest)
-- Docker for local and demo environments
-- Deployed on Vercel
+### The finding
+
+The browser told the API who the user was with an `X-User-Id` header read out of
+`localStorage`, and nothing verified it. A Firebase uid is a public identifier, not a secret.
+Measured against production, not inferred:
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' -H 'X-User-Id: anything' $API/api/watchlist   # 200
+curl -s -o /dev/null -w '%{http_code}\n' $API/api/users/prefs                          # 401
+curl -s -o /dev/null -w '%{http_code}\n' -H 'Authorization: Bearer garbage' \
+                                         -H 'X-User-Id: anything' $API/api/users/prefs # 200
+```
+
+The 401 on the bare request is the tell. There was a gate, and it checked whether you had
+sent a header rather than whether the header was true. The garbage bearer token proves the
+`Authorization` header was not being validated either. Anyone could read or write any
+account, and one endpoint keyed on email, which is guessable in a way a uid is not.
+
+### The fix
+
+I built the API gateway that now fronts the backend, as Vercel edge functions.
+
+**Identity.** It verifies the Firebase ID token against Google's published signing keys,
+throws away whatever the caller claimed, and forwards values derived from the verified
+token. It also overwrites the user fields *inside request bodies*, because verifying a
+header achieves nothing if the backend reads the body instead.
+
+**Allowlist, not proxy.** Every upstream path has to be declared with its method, whether it
+needs authentication, and which rate-limit budget it belongs to. An unrecognised path is a
+404 that never reaches the upstream. A reverse proxy that forwards whatever it is handed is
+an open proxy, and an open proxy on our domain would let anyone reach our backend while
+wearing our IP address and our TLS certificate.
+
+**Rate limiting.** There was none at all: twenty-five concurrent requests all returned 200,
+and one script in a loop could exhaust the Alpha Vantage quota every user shares while
+keeping Cloud Run scaled up on our bill. Each tier is now enforced by two budgets at once, a
+short burst window and a longer sustained one, because either alone has an obvious bypass.
+The counters live in Postgres so all edge instances share one number rather than each
+keeping a private count.
+
+**Caching with a rule.** Shared CDN caching is only ever set for responses identical for
+every visitor. Anything user-scoped stays at zero, because a per-user response in a shared
+cache is a data leak.
+
+### The database
+
+Reading the Supabase advisor, I found 12 of 17 public tables had Row Level Security
+switched off, including `user_profiles` with emails, display names, and avatars. Supabase
+publishes every public table through PostgREST, and the default grants give the anonymous
+role read and write access, so RLS is the only thing between that endpoint and the data.
+
+It was not exploitable at that moment only because our anon key was not in the shipped
+bundle. That is a delay, not a control: the anon key is designed to be public, so the
+protection would have evaporated the first time anyone added the Supabase client to the
+frontend. I wrote the migration that enabled RLS, kept public reads on market data, and
+scoped the user tables to service role only.
+
+### Everything else
+
+The same pass turned up a login endpoint that created an account for any unrecognised
+email, a placeholder signing key left in config, error handlers interpolating stack
+internals into responses, untrusted news URLs rendered straight into `href` where a
+`javascript:` link would have run, every guest sharing one server-side account, and a single
+401 from any endpoint hard-signing the user out mid-session.
+
+I also found the CI pipeline had been failing on every run for months. The ESLint config
+extended a path ESLint cannot resolve, so it threw before checking a file and the test and
+build steps after it never ran, while the backend job died at collection on a missing
+dependency. Fixing the config surfaced 129 lint errors and 5 test failures that had been
+invisible behind it.
+
+## The honest part
+
+The models are baselines, not a research contribution. We do not have the storage, GPU, or
+hardware budget to train anything serious, and the evaluation layer exists precisely so the
+interface says that rather than dressing a weak model in a confident number.
+
+Some findings are still open, and the plan says so with the owner and the command to
+reproduce each one. Two of the three Cloud Run services sit outside the gateway and have
+not had the same review. The main API can still be called directly, bypassing everything the
+gateway enforces, until the token verification lands in the service itself. Writing that
+down honestly was more useful to the team than claiming the work was finished.
 
 ## What a year teaches you
 
-The evaluation layer was built after the models, which meant a round of rework once we
-could actually see how weak some early results were. Next time I would build the scoring
-harness first and develop the models against it, the same way you would write the test
-before the implementation.
+The evaluation layer was built after the models, which meant rework once we could see how
+weak some early results were. I would build the scoring harness first next time, the same
+way you write the test before the implementation.
 
-The other lesson was less technical. Over two terms, the thing that cost the most time was
-not code, it was decisions left ambiguous. The stretches where we moved fastest were the
-ones where somebody wrote the decision down.
+The bigger lesson was that the most valuable thing I did all year was not a feature. It was
+checking an assumption everyone had already accepted, against the running system, and being
+willing to be the person who says the authentication does not work.
 
 ## Notes
 
-The repository is private. The team is still developing Feather, and it may continue
-past the capstone.
+The repository is private. The team is still developing Feather and is considering taking it
+further than the capstone.

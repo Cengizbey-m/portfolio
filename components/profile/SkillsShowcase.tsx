@@ -3,6 +3,7 @@ import {
   Server,
   Database,
   Network,
+  Shield,
   Wrench,
   Sparkles,
   type LucideIcon,
@@ -14,6 +15,7 @@ const ICONS: Record<string, LucideIcon> = {
   Server,
   Database,
   Network,
+  Shield,
   Wrench,
   Sparkles,
 };

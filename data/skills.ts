@@ -53,6 +53,19 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
+    id: "security",
+    title: "Auth & Security",
+    icon: "Shield",
+    blurb: "I audit what is running, not what the code claims.",
+    skills: [
+      { name: "Token verification (JWT / JWKS)", level: 4 },
+      { name: "Row Level Security", level: 4 },
+      { name: "Rate limiting", level: 4 },
+      { name: "CORS / CSP / headers", level: 4 },
+      { name: "OWASP fundamentals", level: 3 },
+    ],
+  },
+  {
     id: "networking",
     title: "Networking & Systems",
     icon: "Network",
@@ -60,7 +73,6 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       { name: "IP / subnetting / IPv6", level: 5 },
       { name: "Linux / UNIX", level: 4 },
-      { name: "Security fundamentals", level: 3 },
       { name: "Cloud-enabled networks", level: 3 },
     ],
   },
@@ -71,9 +83,10 @@ export const skillGroups: SkillGroup[] = [
     blurb: "Ship it, then keep it healthy.",
     skills: [
       { name: "Git / GitHub", level: 5 },
+      { name: "GitHub Actions / CI", level: 4 },
       { name: "Docker", level: 3 },
-      { name: "Vercel / CI", level: 4 },
-      { name: "Testing basics", level: 3 },
+      { name: "Vitest / pytest", level: 4 },
+      { name: "Vercel / Cloud Run", level: 4 },
     ],
   },
   {
