@@ -459,9 +459,11 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
 @media print {
   /* The sheet already paints its own white background and dark ink using fixed
      colours, so printing is mostly a matter of removing the site around it. */
+  /* The resume sheet supplies its own margins, so the page box adds none.
+     Anything else printed still renders, just edge to edge. */
   @page {
     size: letter;
-    margin: 11mm 12mm;
+    margin: 0;
   }
 
   html,

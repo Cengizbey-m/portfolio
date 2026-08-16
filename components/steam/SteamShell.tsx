@@ -15,6 +15,9 @@ import { ConsoleEgg } from "@/components/steam/ConsoleEgg";
 /** Pages that opt out of the centered container and go full-bleed. */
 const FULL_BLEED_ROUTES = ["/replay"];
 
+/** Pages rendered with no site chrome at all, because they become a PDF. */
+const BARE_ROUTES = ["/resume/print"];
+
 function matches(pathname: string, routes: string[]) {
   return routes.some((p) => pathname === p || pathname.startsWith(`${p}/`));
 }
@@ -23,6 +26,11 @@ export function SteamShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const fullBleed = matches(pathname, FULL_BLEED_ROUTES);
   const showBackground = pathname === "/";
+
+  // The print view is the source for the generated PDF, so nothing may wrap it.
+  if (matches(pathname, BARE_ROUTES)) {
+    return <>{children}</>;
+  }
 
   return (
     <AchievementsProvider>

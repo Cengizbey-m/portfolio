@@ -32,7 +32,7 @@ export const profile = {
   },
 
   // Steam-flavored profile chrome
-  level: 26,
+  level: 23,
   avatarUrl: "/steam/avatar.jpg",
   // Empty → ProfileHero renders a clean CSS-gradient banner (no baked-in text).
   bannerUrl: "",
