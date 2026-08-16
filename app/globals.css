@@ -462,7 +462,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
   /* The resume sheet supplies its own margins, so the page box adds none.
      Anything else printed still renders, just edge to edge. */
   @page {
-    size: letter;
+    size: A4;
     margin: 0;
   }
 
