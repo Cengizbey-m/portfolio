@@ -36,7 +36,7 @@ export function SteamTopNav() {
 
           <Link
             href="/"
-            aria-label="Home — Muhammed Cengiz"
+            aria-label="Home, Muhammed Cengiz"
             className="flex items-center gap-2 text-[hsl(var(--steam-topbar-foreground))]"
           >
             <span className="inline-flex h-8 w-8 overflow-hidden rounded-full bg-black/30 ring-1 ring-white/20 shadow-[0_0_0_1px_rgba(0,0,0,0.4)]">
@@ -71,7 +71,7 @@ export function SteamTopNav() {
         </div>
 
         <div className="flex items-center gap-1">
-          {/* Social — recruiter-first, always one tap away */}
+          {/* Social links, always one tap away */}
           <a
             href={profile.links.github}
             target="_blank"
@@ -91,7 +91,7 @@ export function SteamTopNav() {
             <Linkedin className="h-[1.15rem] w-[1.15rem]" />
           </a>
 
-          {/* Resume — prominent, visible on every screen size */}
+          {/* Resume, prominent on every screen size */}
           <Link
             href="/resume"
             className="inline-flex h-9 items-center gap-1.5 rounded-sm bg-[linear-gradient(180deg,rgba(102,192,244,0.95),rgba(26,68,194,0.95))] px-2.5 text-xs font-semibold tracking-[0.08em] text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.18)] hover:brightness-110 sm:px-3"

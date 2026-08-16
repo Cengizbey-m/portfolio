@@ -37,6 +37,11 @@ export function FeaturedProject() {
             <div className="grid h-full place-items-center text-sm text-muted-foreground">No cover</div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+          {featured.highlight ? (
+            <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-sm border border-[hsl(var(--steam-gold))]/40 bg-black/70 px-2.5 py-1 text-[11px] font-semibold text-[hsl(var(--steam-gold))] backdrop-blur">
+              {featured.highlight}
+            </span>
+          ) : null}
         </Link>
 
         {/* Details */}

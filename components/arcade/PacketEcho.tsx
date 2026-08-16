@@ -125,7 +125,7 @@ export function PacketEcho() {
     phase === "showing"
       ? "Watch the sequence…"
       : phase === "input"
-      ? "Your turn — repeat it"
+      ? "Your turn, repeat it"
       : phase === "over"
       ? `Dropped packet! You reached length ${level}.`
       : "Repeat the growing packet sequence.";

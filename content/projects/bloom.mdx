@@ -1,60 +1,66 @@
 # Bloom
 
-**Live app:** [bloom-cal.vercel.app](https://bloom-cal.vercel.app) · Sign in with Google and it just works.
+**Live app:** [bloom-cal.vercel.app](https://bloom-cal.vercel.app) · Sign in with Google.
 
 ## Summary
 
-Bloom is a cute, cloud-synced life planner I designed and built solo — calendar, tasks,
-habits, notes, journal, goals, and a focus timer in one warm workspace. It's live right now,
-and a public launch on **web, iOS, and Android** is in the works (which is why the codebase
-is private for the moment).
+Bloom is a planner that holds calendar, tasks, habits, notes, journal, goals, and a focus
+timer in one place. I designed and built it solo. It is live now, and a public launch on
+web, iOS, and Android is in progress, which is why the repository is private for the
+moment.
 
-## The idea
+## The problem
 
-Students and workers juggle classes, tasks, habits, and notes across a pile of cold,
-disconnected apps. Bloom pulls daily life into one friendly place — and makes it feel
-*pleasant*: soft colors, three themes (Light / Dark / Sakura), custom accent colors, and
-little celebrations when you actually do the thing.
+Planner apps tend to fall into two groups. Some sync reliably and feel like enterprise
+software. Others feel good to use and quietly lose your data between devices. I wanted one
+that syncs properly, works with no connection, and does not make you feel bad for missing
+a day.
 
-## The part I'm proudest of: sync that disappears
+## The engineering I care about: sync you never notice
 
-Bloom is **offline-first**. Every change saves to local state instantly (Zustand +
-localStorage), then debounce-syncs to Supabase in the background. Realtime subscriptions
-push changes back out to every signed-in device — so you can add a task on your phone on
-the bus, and it's already on your PC when you sit down. Theme, notes, habits, everything
-follows your account.
+Bloom is offline-first. Every write lands in local state immediately through Zustand and
+localStorage, then syncs to Postgres on a debounce in the background. The interface never
+waits on a network round trip, so it stays responsive on bad transit Wi-Fi.
 
-- **Auth:** Google sign-in via Supabase Auth
-- **Data:** PostgreSQL with 10 tables, each guarded by Row Level Security — user data is
-  isolated at the database level, not just in app code
-- **Offline:** PWA with Workbox — the app keeps working with no connection and reconciles
-  when you're back
-- **Safety:** Markdown notes are sanitized with DOMPurify
+Realtime subscriptions push changes back out to every signed-in device. Add a task on your
+phone on the bus and it is already on your laptop when you sit down. Theme and settings
+travel with the account too, not just content.
 
-## Design decisions I care about
+- **Auth:** Google sign-in through Supabase Auth.
+- **Data:** PostgreSQL, 10 tables, each protected by Row Level Security. Accounts are
+  isolated at the database level rather than by client-side checks, so a bug in the
+  frontend cannot expose another user's data.
+- **Offline:** PWA with Workbox. The app keeps working with no connection and reconciles
+  when it returns.
+- **Safety:** Markdown notes are sanitized with DOMPurify before render.
 
-- **Forgiveness-based habit scoring.** Instead of a streak that resets to zero the day life
-  happens, habits carry a 0–100% consistency score that bends without breaking. Kinder, and
-  more honest.
-- **Mood–habit correlation.** Log your mood daily and Bloom's statistics show how it moves
-  with your habits over 30 days.
-- **Speed as a feature.** A global `Ctrl/Cmd+K` quick-add creates a task, event, or note from
-  any page in about two seconds.
-- **A focus timer that follows you.** Start a Pomodoro session and a mini widget keeps
-  ticking in the corner as you move around the app — with lo-fi, rain, or fireplace
-  background sounds.
+## Product decisions
 
-## Tech snapshot
+**Forgiveness-based habit scoring.** Streak counters reset to zero the first day life gets
+in the way, which is exactly when people quit. Bloom uses a 0 to 100% consistency score
+that dips instead of resetting. It is kinder and it is a more accurate description of how
+someone is actually doing.
+
+**Mood and habit correlation.** Log a daily mood and the statistics view shows how it moves
+alongside your habits over 30 days.
+
+**Speed as a feature.** A global Ctrl/Cmd+K creates a task, event, or note from any screen
+in about two seconds. If capture is slow, people stop capturing.
+
+**A focus timer that follows you.** Start a Pomodoro and a small widget keeps counting as
+you move around the app, with lo-fi, rain, or fireplace audio.
+
+## Tech
 
 - React 18 + TypeScript (Vite)
-- Tailwind CSS v4 · Framer Motion
+- Tailwind CSS v4, Framer Motion
 - Zustand for state, persisted to localStorage
-- Supabase — PostgreSQL, Google Auth, Realtime
-- PWA (Workbox) · deployed on Vercel
+- Supabase: PostgreSQL, Google Auth, Realtime
+- PWA via Workbox, deployed on Vercel
 
 ## Why it matters
 
-Bloom is where I'm the product designer *and* the engineer — deciding what deserves to
-exist, then building it end-to-end: data model, sync engine, auth, theming, and every screen.
-It's also my testbed for shipping like a real product team: private beta first, polish, then
-a public multi-platform launch.
+Bloom is the project where I am both the product designer and the engineer. I decide what
+deserves to exist and then build it: the data model, the sync engine, authentication,
+theming, and every screen. It is also where I practice shipping like a product team rather
+than a student, which means a private beta first, then polish, then a public launch.

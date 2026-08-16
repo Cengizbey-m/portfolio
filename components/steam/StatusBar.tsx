@@ -41,7 +41,10 @@ export function StatusBar() {
   }
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 h-11 border-t border-border bg-[hsl(var(--steam-topbar))]/95 backdrop-blur supports-[backdrop-filter]:bg-[hsl(var(--steam-topbar))]/80">
+    <div
+      data-print-hide
+      className="fixed inset-x-0 bottom-0 z-40 h-11 border-t border-border bg-[hsl(var(--steam-topbar))]/95 backdrop-blur supports-[backdrop-filter]:bg-[hsl(var(--steam-topbar))]/80"
+    >
       <div className="mx-auto flex h-full max-w-[100rem] items-center gap-3 px-3 text-xs text-[hsl(var(--steam-topbar-muted))]">
         <Link
           href="/library"

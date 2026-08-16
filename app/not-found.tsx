@@ -11,7 +11,7 @@ export default function NotFound() {
         This install couldn&rsquo;t be found
       </h1>
       <p className="mt-2 max-w-md text-sm leading-6 text-muted-foreground">
-        The page failed to mount — like a save file that didn&rsquo;t sync. Let&rsquo;s get you back
+        The page failed to mount, like a save file that didn&rsquo;t sync. Let&rsquo;s get you back
         to something that actually loads.
       </p>
       <div className="mt-6 flex flex-wrap items-center justify-center gap-2">

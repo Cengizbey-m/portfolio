@@ -253,7 +253,7 @@ export function SnakeGame() {
 
       {over && (
         <div className="rounded-sm border border-[hsl(var(--steam-red))]/40 bg-[hsl(var(--steam-red))]/10 px-3 py-2 text-sm text-foreground">
-          Game over — your snake bit itself. Final score: <strong>{score}</strong>. Press{" "}
+          Game over, your snake bit itself. Final score: <strong>{score}</strong>. Press{" "}
           <kbd className="rounded bg-white/10 px-1 py-0.5 text-xs">Space</kbd> or hit restart.
         </div>
       )}

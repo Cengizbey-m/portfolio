@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/steam/AnimatedCounter";
 import { unlock } from "@/lib/achievements";
 
-// A "Spotify Wrapped"-style year recap — but built on things that actually
+// A "Spotify Wrapped"-style year recap, built on things that actually
 // happened, not invented stats. Real projects, real grades, real tools.
 
-// Roughly where my keyboard time went — a feel, not a GitHub export.
+// Roughly where my keyboard time went. A feel, not a GitHub export.
 const langs = [
   { name: "TypeScript", pct: 55, color: "bg-[#3178c6]" },
   { name: "C# / .NET", pct: 18, color: "bg-[#9b6bd6]" },
@@ -21,7 +21,7 @@ const langs = [
 const builds = [
   { name: "TheTripMan", note: "Booking + payments for a 1.2M-follower client. Live, solo, revenue-share." },
   { name: "Le Pathétique", note: "Solo multimodal-AI hackathon build at BearHacks 2026." },
-  { name: "Feather (Capstone)", note: "AI market-insights app with a team — prototype graded 94/100." },
+  { name: "Feather (Capstone)", note: "Ranked #1 of 50+ at the capstone showcase. Prototype graded 94/100." },
   { name: "Puffy", note: "A second real client: a website for a local patisserie." },
 ];
 
@@ -36,7 +36,7 @@ export function ReplayShow() {
 
       <Section
         eyebrow="The headline"
-        title="Six builds shipped — two of them for real clients."
+        title="Six builds shipped, two of them for real clients."
         sub="Not coursework screenshots. Live, deployed software people actually use."
       >
         <div className="grid gap-3 md:grid-cols-3">
@@ -48,8 +48,8 @@ export function ReplayShow() {
 
       <Section
         eyebrow="Biggest build"
-        title="TheTripMan went live — and kept running."
-        sub="A booking + payments platform for an influencer-led business, built solo end-to-end and processing real bookings."
+        title="TheTripMan went live, and kept running."
+        sub="A booking + payments platform for an influencer-led business, built solo end to end and processing real bookings."
       >
         <ul className="grid gap-3 sm:grid-cols-2">
           {builds.map((b) => (
@@ -67,7 +67,7 @@ export function ReplayShow() {
       <Section
         eyebrow="Where the time went"
         title="TypeScript carried the year."
-        sub="A rough sense of the split — C#/.NET and Python pulled their weight on coursework and ML."
+        sub="A rough sense of the split. C#/.NET and Python pulled their weight on coursework and ML."
       >
         <ul className="space-y-3">
           {langs.map((l) => (
@@ -113,11 +113,11 @@ export function ReplayShow() {
           That&rsquo;s a wrap
         </p>
         <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
-          Graduating Aug 2026 — and already shipping
+          Graduated, ranked #1, still shipping
         </h2>
         <p className="mx-auto mt-2 max-w-prose text-sm text-muted-foreground">
-          Open to co-op &amp; new-grad full-stack roles. If your team needs a junior who already
-          ships, that&rsquo;s the trade.
+          Open to full-time developer roles across the GTA or remote. Canadian permanent resident,
+          so there is no sponsorship to sort out.
         </p>
         <div className="mt-4 flex flex-wrap justify-center gap-2">
           <Button asChild>
@@ -147,7 +147,7 @@ function Hero() {
         was <span className="text-[hsl(var(--steam-link))]">loud</span>.
       </h1>
       <p className="mt-3 max-w-prose text-sm leading-7 text-white/70 md:text-base">
-        Scroll down — the projects that shipped, where the time went, and the tools that
+        Scroll down for the projects that shipped, where the time went, and the tools that
         carried it. No invented stats; just the real highlights.
       </p>
     </section>

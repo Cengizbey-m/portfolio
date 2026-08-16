@@ -58,7 +58,7 @@ export function ProfileHero() {
                   "radial-gradient(720px 200px at 30% 0%, black, transparent 72%)",
               }}
             />
-            {/* Networking motif — fills the space the old banner text used to. */}
+            {/* Networking motif, fills the space the old banner text used to. */}
             <HeroBannerArt />
           </div>
         )}
@@ -93,7 +93,7 @@ export function ProfileHero() {
           </div>
         </div>
 
-        {/* Identity — full width, in normal flow, never overlapping the banner.
+        {/* Identity: full width, in normal flow, never overlapping the banner.
             Colours come from theme tokens so it reads in both light and dark. */}
         <div className="mt-3">
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
@@ -113,7 +113,7 @@ export function ProfileHero() {
 
         <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">{profile.tagline}</p>
 
-        {/* Links — recruiter-first, the first thing reachable */}
+        {/* Links, the first thing a recruiter can reach */}
         <div className="mt-4 flex flex-wrap gap-2">
           <Link
             href={profile.links.resume}

@@ -39,7 +39,8 @@ export function Footer() {
               <span className="font-semibold tracking-tight text-foreground">Muhammed Cengiz</span>
             </div>
             <p className="mt-3 max-w-xs text-sm leading-6 text-muted-foreground">
-              Full-stack developer with a networking background. Open to co-op / internship roles.
+              Full-stack developer in the Greater Toronto Area. Canadian permanent resident, open to
+              full-time roles.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <a className="link-pill" href={profile.links.github} target="_blank" rel="noreferrer">
@@ -74,7 +75,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 flex flex-col gap-2 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Muhammed Cengiz · Oakville / GTA, Canada</p>
+          <p>© {new Date().getFullYear()} Muhammed Cengiz · Greater Toronto Area, Canada</p>
           <p className="opacity-70">
             Built with Next.js + TypeScript. Steam-inspired, not affiliated with Valve.
           </p>

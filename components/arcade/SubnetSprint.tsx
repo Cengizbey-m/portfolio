@@ -50,7 +50,7 @@ const POOL: Question[] = [
     prompt: "IPv6 link-local prefix?",
     options: ["fc00::/7", "fe80::/10", "ff00::/8", "2001::/16"],
     answer: 1,
-    why: "fe80::/10 — link-local. fc00::/7 = unique local, ff00::/8 = multicast.",
+    why: "fe80::/10 is link-local. fc00::/7 = unique local, ff00::/8 = multicast.",
   },
   {
     prompt: "Default gateway typically lives at... in a /24?",
@@ -61,13 +61,13 @@ const POOL: Question[] = [
       "any random IP",
     ],
     answer: 2,
-    why: "Convention: .1 (or sometimes .254) — the first or last usable host.",
+    why: "Convention: .1 (or sometimes .254), the first or last usable host.",
   },
   {
     prompt: "Which is NOT a valid subnet mask?",
     options: ["255.255.255.192", "255.255.255.128", "255.255.255.160", "255.255.255.224"],
     answer: 2,
-    why: "Subnet masks must be contiguous 1-bits. 160 = 10100000 — gap = invalid.",
+    why: "Subnet masks must be contiguous 1-bits. 160 = 10100000, so the gap makes it invalid.",
   },
   {
     prompt: "What's the network address of 192.168.10.45/27?",
@@ -191,7 +191,7 @@ export function SubnetSprint() {
             Score: {score} <span className="text-base font-medium text-muted-foreground">· high {high}</span>
           </p>
           <p className="mt-1 text-sm text-muted-foreground">
-            {allRight ? "Perfect run — Subnet Sensei unlocked." : "Restart and chase a perfect round for an achievement."}
+            {allRight ? "Perfect run. Subnet Sensei unlocked." : "Restart and chase a perfect round for an achievement."}
           </p>
         </div>
         <div className="flex gap-2">

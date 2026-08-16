@@ -122,7 +122,7 @@ body {
   padding-inline: 1.25rem;
 }
 
-/* Steam-ish global background — subtle, premium, not a cheap glow */
+/* Steam-ish global background: subtle, premium, not a cheap glow */
 body::before {
   content: "";
   position: fixed;
@@ -309,7 +309,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
   border-radius: 4px;
 }
 
-/* The core panel surface — use instead of repeating the inline gradient */
+/* The core panel surface. Use instead of repeating the inline gradient. */
 .panel {
   border: 1px solid hsl(var(--border));
   border-radius: 0.5rem;
@@ -397,7 +397,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
 }
 .rise-in { animation: rise-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
 
-/* Periodic banner sheen — a subtle light sweep so the hero feels alive */
+/* Periodic banner sheen: a subtle light sweep so the hero feels alive */
 @keyframes banner-sheen {
   0% { transform: translateX(-160%); }
   55%, 100% { transform: translateX(320%); }
@@ -412,18 +412,18 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
   animation: banner-sheen 7s ease-in-out infinite;
 }
 
-/* Hero banner network nodes — a soft pulse, like traffic crossing the graph. */
+/* Hero banner network nodes: a soft pulse, like traffic crossing the graph. */
 @keyframes hero-node-twinkle {
   0%, 100% { opacity: 0.85; transform: scale(1); transform-origin: center; }
   50% { opacity: 0.3; transform: scale(0.82); transform-origin: center; }
 }
 .hero-node-twinkle { animation: hero-node-twinkle 3.2s ease-in-out infinite; transform-box: fill-box; }
 
-/* Ambient drifting blobs — the slow, calm motion behind the whole site. */
+/* Ambient drifting blobs: the slow, calm motion behind the whole site. */
 .ambient-blob {
   position: absolute;
   border-radius: 9999px;
-  /* Kept moderate on purpose — huge blur radii tank GPU/battery on phones. */
+  /* Kept moderate on purpose: huge blur radii tank GPU/battery on phones. */
   filter: blur(64px);
   opacity: 0.2;
   will-change: transform;
@@ -451,6 +451,85 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
 
 /* Marquee row for skill chips */
 .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+/* ============================================================
+   Print: the /resume page has to come out of Ctrl+P looking like
+   a real resume, not a screenshot of a website.
+   ============================================================ */
+@media print {
+  /* Force a plain white document regardless of the active theme. */
+  :root,
+  :root[data-theme="dark"],
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --muted-foreground: 0 0% 28%;
+    --border: 0 0% 80%;
+    --steam-panel: 0 0% 100%;
+    --steam-panel-2: 0 0% 100%;
+    --steam-link: 210 90% 32%;
+    --steam-green: 140 70% 24%;
+    --steam-gold: 38 90% 32%;
+  }
+
+  @page {
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    padding-bottom: 0 !important;
+  }
+
+  body::before,
+  body::after {
+    display: none !important;
+  }
+
+  /* Everything that is site chrome, not resume. */
+  header:not(.resume-sheet header),
+  footer,
+  .resume-actions,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  .resume-sheet {
+    border: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    max-width: none !important;
+  }
+
+  .resume-sheet > div {
+    padding: 0 !important;
+  }
+
+  /* Keep entries and sections from splitting awkwardly across pages. */
+  .resume-section {
+    break-inside: avoid-page;
+  }
+  .resume-entry {
+    break-inside: avoid-page;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
 
 /* Reduced-motion respect */
 @media (prefers-reduced-motion: reduce) {

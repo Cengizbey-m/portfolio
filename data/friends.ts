@@ -3,7 +3,7 @@ export type FriendStatus = "online" | "offline" | "away" | "in-game";
 export type Friend = {
   name: string;
   status: FriendStatus;
-  /** What they're "playing" — your stack told as a story */
+  /** What they're "playing": the stack told as a story */
   playing?: string;
   avatarColor: string; // tailwind/hsl
   bio: string;

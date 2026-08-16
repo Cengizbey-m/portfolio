@@ -33,38 +33,41 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Muhammed Cengiz — Full-Stack Developer",
+    default: "Muhammed Cengiz | Full-Stack Developer",
     template: "%s · Muhammed Cengiz",
   },
   description:
-    "Muhammed Cengiz — full-stack developer with a networking background. Shipped client work, hackathon wins, and capstone AI. Building with Next.js, TypeScript, and Python. Open to co-op / internship roles.",
+    "Full-stack developer in the Greater Toronto Area. I ship production web apps: a live booking and payments platform for a client with a 1.2M-follower audience, and Bloom, a cloud-synced planner. Capstone ranked #1 of 50+. Canadian permanent resident, open to full-time roles.",
   keywords: [
     "Muhammed Cengiz",
     "Full-Stack Developer",
+    "Software Developer",
     "Next.js",
     "TypeScript",
     "React",
-    "Software Developer",
-    "Networking",
-    "Portfolio",
-    "Co-op",
-    "Internship",
+    "Node.js",
+    "PostgreSQL",
+    "Python",
+    "Toronto",
+    "GTA",
+    "Ontario",
+    "Canada",
   ],
   authors: [{ name: "Muhammed Cengiz" }],
   creator: "Muhammed Cengiz",
   openGraph: {
     type: "website",
-    title: "Muhammed Cengiz — Full-Stack Developer",
+    title: "Muhammed Cengiz | Full-Stack Developer",
     description:
-      "Full-stack developer with a networking background. Shipped client work, hackathon wins, and capstone AI. Open to co-op / internship roles.",
+      "Full-stack developer in the GTA. Live client platforms taking real payments, a capstone ranked #1 of 50+, and a shipped product. Canadian permanent resident, open to full-time roles.",
     url: SITE_URL,
     siteName: "Muhammed Cengiz",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Muhammed Cengiz — Full-Stack Developer",
+    title: "Muhammed Cengiz | Full-Stack Developer",
     description:
-      "Full-stack developer with a networking background. Open to co-op / internship roles.",
+      "Full-stack developer in the GTA. Production apps, a #1-ranked capstone, and Canadian PR.",
   },
   alternates: { canonical: "/" },
 };

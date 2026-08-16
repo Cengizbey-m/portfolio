@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 
 export const metadata = {
   title: "Cache Match",
-  description: "Memory match mini-game — flip cards to find matching pairs.",
+  description: "Memory match mini-game. Flip cards to find matching pairs.",
 };
 
 export default function CacheMatchPage() {

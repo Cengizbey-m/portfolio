@@ -3,7 +3,7 @@ import { projects } from "@/data/projects";
 import { getProjectFacts } from "@/lib/projectStats";
 
 /**
- * Honest, on-theme "stats" for a project — real facts only (role, type,
+ * Honest, on-theme "stats" for a project. Real facts only (role, type,
  * status, year, stack size, available links). No fabricated hours/reviews.
  */
 export function ProjectStats({ slug }: { slug: string }) {

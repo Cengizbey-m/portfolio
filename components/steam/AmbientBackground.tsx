@@ -1,7 +1,7 @@
 /**
  * A calm, always-on backdrop. A few big, heavily-blurred colour blobs drift
  * slowly behind everything so the page keeps a sense of depth and life all the
- * way down — not just under the hero. Kept low-opacity on purpose: it should be
+ * way down, not just under the hero. Kept low-opacity on purpose: it should be
  * the kind of thing you feel more than notice. Motion is disabled for anyone
  * who prefers reduced motion (see globals.css).
  */

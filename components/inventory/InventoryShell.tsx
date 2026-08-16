@@ -111,7 +111,7 @@ export function InventoryShell() {
         <CardHeader>
           <SectionHeader
             title="Card Set · cengiz portfolio"
-            description="Hover any card you own — they tilt with your cursor."
+            description="Hover any card you own and it tilts with your cursor."
           />
         </CardHeader>
         <CardContent className="pt-4">
@@ -124,7 +124,7 @@ export function InventoryShell() {
                     <TradingCardArt card={c} size="sm" interactive={isOwned} />
                   </div>
                   <p className="line-clamp-2 text-center text-xs text-muted-foreground">
-                    {isOwned ? c.flavor : "Locked — keep the tab open."}
+                    {isOwned ? c.flavor : "Locked. Keep the tab open."}
                   </p>
                 </li>
               );

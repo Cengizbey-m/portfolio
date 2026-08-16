@@ -7,15 +7,21 @@ import { AboutSnapshot } from "@/components/profile/AboutSnapshot";
 import { ProfileComments } from "@/components/profile/ProfileComments";
 import { NowCard } from "@/components/profile/NowCard";
 import { StackCard } from "@/components/profile/StackCard";
+import { CredentialsStrip } from "@/components/profile/CredentialsStrip";
 import { Reveal } from "@/components/Reveal";
 
 export default function Home() {
   // The home page is a single scroll: hero first, then the work, then the
   // "hire me" details in the sidebar. Each block is wrapped in <Reveal> so it
-  // eases in as you scroll — keeps a long page feeling alive instead of static.
+  // eases in as you scroll, which keeps a long page feeling alive instead of static.
   return (
     <div className="space-y-6">
       <ProfileHero />
+
+      {/* The hard differentiators, full width, before anything else. */}
+      <Reveal>
+        <CredentialsStrip />
+      </Reveal>
 
       {/* Mobile-only recruiter summary, right under the hero */}
       <div className="lg:hidden">

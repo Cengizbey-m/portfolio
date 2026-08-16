@@ -1,11 +1,26 @@
+import { Trophy, GraduationCap, BadgeCheck } from "lucide-react";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { bio, education, certificates } from "@/data/cv";
 
 export const metadata = {
   title: "About",
-  description: "SDNE background, focus areas, and certificates.",
+  description:
+    "Full-stack developer in the Greater Toronto Area. Sheridan SDNE graduate, capstone ranked #1 of 50+, Canadian permanent resident.",
 };
+
+const strengths = [
+  "Full-stack web (Next.js / TypeScript)",
+  "API design and integration",
+  "Relational data (Postgres, schema, queries)",
+  "Payments (Stripe)",
+  "Auth and access control",
+  "Networking (IP, subnetting, IPv6)",
+  "Linux / UNIX",
+  "Security fundamentals",
+  "AI/ML prototyping (Python)",
+];
 
 export default function AboutPage() {
   return (
@@ -14,61 +29,70 @@ export default function AboutPage() {
         <CardHeader>
           <SectionHeader
             title="About"
-            description="Software developer with SDNE depth (networking, Linux, security, databases)."
+            description="Full-stack developer with network engineering depth."
           />
         </CardHeader>
-        <CardContent className="pt-4 space-y-3">
-          <p className="leading-7 text-muted-foreground">
-            I’m Muhammed Cengiz, a full-stack developer in the Oakville / GTA area, finishing my
-            Software Development &amp; Network Engineering diploma at Sheridan College (graduating
-            August 2026). What I care about most is shipping real, working products — a live booking
-            and payments platform for a client with a 1.2M-follower audience, a site for a local
-            patisserie, and a handful of hackathon and product builds in between.
-          </p>
-          <p className="leading-7 text-muted-foreground">
-            My favourite kind of work is owning a feature end-to-end: the UI/UX, the API, the data,
-            and getting it to production with the practical security and networking I picked up in
-            SDNE. I move fast, I lean on modern tools (including AI) the way a senior dev leans on an
-            IDE, and I understand everything I put my name on.
-          </p>
-          <p className="leading-7 text-muted-foreground">
-            Right now I’m looking for a junior full-stack / software developer role where I can
-            contribute quickly and grow with good engineering habits — code reviews, testing,
-            deployment automation, and clear docs. I’m a Canadian permanent resident, so no
-            sponsorship is needed.
-          </p>
+        <CardContent className="space-y-3 pt-4">
+          {bio.map((p) => (
+            <p key={p.slice(0, 24)} className="leading-7 text-muted-foreground">
+              {p}
+            </p>
+          ))}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <SectionHeader title="Highlights" description="The short version." />
+        </CardHeader>
+        <CardContent className="pt-4">
+          <ul className="space-y-3 text-sm">
+            <li className="flex gap-3">
+              <Trophy className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--steam-gold))]" />
+              <span className="text-muted-foreground">
+                <span className="font-semibold text-foreground">Capstone ranked #1 of 50+.</span>{" "}
+                Feather was picked for the showcase round and judged first overall at Sheridan&rsquo;s 2026
+                capstone showcase. The prototype was graded 94/100.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <GraduationCap className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--steam-link))]" />
+              <span className="text-muted-foreground">
+                <span className="font-semibold text-foreground">
+                  {education.credential}, {education.program}.
+                </span>{" "}
+                {education.school}, {education.location}. {education.status} {education.grad}.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--steam-green))]" />
+              <span className="text-muted-foreground">
+                <span className="font-semibold text-foreground">Canadian permanent resident.</span>{" "}
+                Authorized to work anywhere in Canada with no sponsorship or work permit required.
+              </span>
+            </li>
+          </ul>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader id="skills" className="scroll-mt-24">
-          <SectionHeader title="Strengths" description="Areas I work in most often." />
+          <SectionHeader title="Strengths" description="Where I spend most of my time." />
         </CardHeader>
-        <CardContent className="pt-4 space-y-4">
+        <CardContent className="space-y-4 pt-4">
           <div className="flex flex-wrap gap-2">
-            <Badge>Full‑stack web (Next.js / TypeScript)</Badge>
-            <Badge>API design & integration</Badge>
-            <Badge>Database fundamentals (schema, queries)</Badge>
-            <Badge>Networking (IP, subnetting, IPv6)</Badge>
-            <Badge>Linux/UNIX</Badge>
-            <Badge>Security fundamentals</Badge>
-            <Badge>AI/ML prototyping (Python)</Badge>
+            {strengths.map((s) => (
+              <Badge key={s}>{s}</Badge>
+            ))}
           </div>
           <div className="space-y-2 text-sm text-muted-foreground">
-            <p className="font-semibold tracking-[0.08em] uppercase text-foreground">
+            <p className="font-semibold uppercase tracking-[0.08em] text-foreground">
               Relevant coursework
             </p>
             <ul className="list-disc space-y-1 pl-5">
-              <li>AI &amp; Machine Learning – Python (PROG25211)</li>
-              <li>iOS Application Development · Advanced iOS (PROG31632 / PROG39856)</li>
-              <li>.NET / C# Technologies · Advanced .NET Server-Side (PROG32356 / PROG36944)</li>
-              <li>Hybrid Mobile Apps with Next.js (SYST35300)</li>
-              <li>Cloud Systems · Cloud-Enabled Networks (SYST35144 / TELE20483)</li>
-              <li>Database Design &amp; Implementation · Database Management (DBAS27198 / DBAS32100)</li>
-              <li>Enterprise Java Development (PROG32758) · Data Structures in C (PROG20799)</li>
-              <li>Linux/UNIX Operating Systems (SYST13416) · Computer &amp; Network Security (INFO24178)</li>
-              <li>Software Process Management · Systems Development Methodologies (SYST38634 / SYST28951)</li>
-              <li>Capstone Prototype + Project (INFO34049 / INFO39014)</li>
+              {education.coursework.map((c) => (
+                <li key={c}>{c}</li>
+              ))}
             </ul>
           </div>
         </CardContent>
@@ -80,16 +104,12 @@ export default function AboutPage() {
         </CardHeader>
         <CardContent className="pt-4">
           <ul className="list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-            <li>CCNA IP Addressing & Subnetting</li>
-            <li>IPv6 Fundamentals (APNIC)</li>
-            <li>Cisco Intro to Cybersecurity</li>
-            <li>LinkedIn: Networking Foundations</li>
+            {certificates.map((c) => (
+              <li key={c}>{c}</li>
+            ))}
           </ul>
         </CardContent>
       </Card>
-
     </div>
   );
 }
-
-

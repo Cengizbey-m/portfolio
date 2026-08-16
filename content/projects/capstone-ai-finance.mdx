@@ -1,21 +1,60 @@
-# Feather — AI Market Insights Platform (Capstone, Team)
+# Feather (Capstone, Team of 5)
 
-**Live demo:** https://www.feathertrade.org/
+**Live:** [feathertrade.org](https://www.feathertrade.org/)
+
+## Result
+
+Feather was selected for the final showcase round and judged **first overall out of more
+than fifty capstone projects** at Sheridan's 2026 showcase. The prototype phase was graded
+94/100.
 
 ## Summary
 
-Full-stack capstone app for next-day market insights: baseline ML predictions plus optional sentiment features, packaged into a UI that’s easy to explore. The codebase now lives in a private repository as the project continues past the capstone.
+Feather forecasts next-day stock movement and, more importantly, shows you how much to
+trust the forecast. Most student prediction demos print a confident number and hide the
+error rate. We built the opposite: every prediction ships with the evaluation evidence
+behind it.
 
-## My contribution
+## The problem
 
-- Owned evaluation approach (baselines + metrics) and translated results into clear UI-friendly outputs
-- Defined the API contract between the backend and frontend
-- Built features end-to-end (data → API → UI) and documented trade-offs for the team
+A model that is right 55% of the time and a model that is right 80% of the time look
+identical in a UI that only shows a prediction. That is not a visualization problem, it is
+an honesty problem. If a user cannot see how a model performs against a naive baseline,
+the interface is quietly lying to them.
 
-## Tech snapshot
+## What I owned
+
+I worked on the evaluation layer and the boundary between the Python service and the React
+client.
+
+**Evaluation.** I built the layer that scores every model run against baselines, including
+a naive "tomorrow looks like today" predictor. If a trained model cannot beat that, the UI
+says so. This became the feature judges asked about most, because it is the part that
+makes the product defensible rather than impressive.
+
+**The API contract.** I defined and implemented the interface between the FastAPI model
+service and the React frontend. Fixing the shape of that contract early meant the frontend
+team could build against a stable spec while the model work was still changing underneath,
+so neither half of the team sat blocked on the other.
+
+**Containerization.** Docker for the service, so five people ran an identical environment
+and demo day did not depend on whose laptop was being used.
+
+## Tech
 
 - Frontend: React + TypeScript (Vite)
-- Backend: FastAPI (Python) + SQLAlchemy
-- Docker for local/dev setup
+- Backend: FastAPI (Python), SQLAlchemy
+- Models: scikit-learn baselines (SVR, Random Forest)
+- Docker for local and demo environments
+- Deployed on Vercel
 
+## What I would do differently
 
+The evaluation layer was built after the models, which meant a round of rework once we
+could actually see how weak some early results were. Next time I would build the scoring
+harness first and develop the models against it, the same way you would write the test
+before the implementation.
+
+## Notes
+
+The repository is private as the project continues past the capstone.

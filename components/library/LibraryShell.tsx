@@ -79,7 +79,7 @@ const ARCADE_ITEMS: LibraryItem[] = [
     slug: "arcade-shipit",
     title: "Ship It",
     short:
-      "Reflex bar — stop the marker in the deploy zone. Every hit speeds it up and shrinks the window.",
+      "Reflex bar. Stop the marker in the deploy zone. Every hit speeds it up and shrinks the window.",
     tags: ["Mini-game", "Reflex"],
     cover: undefined,
     caseStudy: "/library/arcade/shipit",
@@ -153,7 +153,7 @@ export function LibraryShell() {
           <p className="eyebrow">Browse</p>
           <h1 className="mt-1 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">Library</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Shipped projects and playable mini-games — pick one to see the details.
+            Shipped projects and playable mini-games. Pick one to see the details.
           </p>
         </div>
         <Link

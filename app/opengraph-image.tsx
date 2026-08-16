@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "nodejs";
-export const alt = "Muhammed Cengiz — Full-Stack Developer";
+export const alt = "Muhammed Cengiz | Full-Stack Developer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -42,7 +42,7 @@ export default function OpengraphImage() {
             C
           </div>
           <div style={{ display: "flex", fontSize: 26, color: "#8f98a0", letterSpacing: 2 }}>
-            Oakville / GTA · Canada
+            Greater Toronto Area · Canada
           </div>
           <div
             style={{
@@ -60,7 +60,7 @@ export default function OpengraphImage() {
             }}
           >
             <div style={{ display: "flex", width: 14, height: 14, borderRadius: 999, background: "#a4d65e" }} />
-            Open to opportunities
+            Open to full-time roles
           </div>
         </div>
 
@@ -70,19 +70,19 @@ export default function OpengraphImage() {
             Muhammed Cengiz
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            <div style={{ display: "flex", width: 70, height: 6, borderRadius: 3, background: "#66c0f4" }} />
+            <div style={{ display: "flex", width: 8, height: 46, borderRadius: 4, background: "#66c0f4" }} />
             <div style={{ display: "flex", fontSize: 44, fontWeight: 600, color: "#66c0f4" }}>
               Full-Stack Developer
             </div>
           </div>
-          <div style={{ display: "flex", fontSize: 30, color: "#9fb0bf", maxWidth: 920 }}>
-            Fast, reliable web apps end-to-end — with a networking background underneath.
+          <div style={{ display: "flex", fontSize: 30, color: "#9fb0bf", maxWidth: 960 }}>
+            Production web apps, real users, real payments.
           </div>
         </div>
 
-        {/* tags */}
+        {/* proof */}
         <div style={{ display: "flex", gap: 14 }}>
-          {["Next.js", "TypeScript", "React", "Python", "Networking"].map((t) => (
+          {["Capstone ranked #1 of 50+", "3 apps in production", "Canadian PR"].map((t) => (
             <div
               key={t}
               style={{

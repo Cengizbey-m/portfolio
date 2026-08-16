@@ -101,7 +101,7 @@ export function CacheMatch() {
       );
       setFirst(null);
     } else {
-      // No match — flip both back after a beat
+      // No match, flip both back after a beat
       setLock(true);
       window.setTimeout(() => {
         setDeck((cur) =>
@@ -120,7 +120,7 @@ export function CacheMatch() {
           <span><span className="text-muted-foreground">MOVES</span> <span className="text-foreground">{moves}</span></span>
           <span><span className="text-muted-foreground">PAIRS</span> <span className="text-[hsl(var(--steam-green))]">{matchedCount / 2}/{SYMBOLS.length}</span></span>
           <span><span className="text-muted-foreground">TIME</span> <span className="tabular-nums text-foreground">{seconds}s</span></span>
-          <span><span className="text-muted-foreground">BEST</span> <span className="text-[hsl(var(--steam-gold))]">{best === null ? "—" : `${best} mv`}</span></span>
+          <span><span className="text-muted-foreground">BEST</span> <span className="text-[hsl(var(--steam-gold))]">{best === null ? "-" : `${best} mv`}</span></span>
         </div>
         <Button onClick={reset} className="normal-case tracking-normal font-medium">
           {started ? "Restart" : "Start"}
@@ -165,7 +165,7 @@ export function CacheMatch() {
       </div>
 
       <p className="text-xs text-muted-foreground">
-        Flip two cards to find matching pairs. Clear the board in as few moves as possible. Tap-friendly — works great on mobile.
+        Flip two cards to find matching pairs. Clear the board in as few moves as possible. Works well on mobile.
       </p>
     </div>
   );

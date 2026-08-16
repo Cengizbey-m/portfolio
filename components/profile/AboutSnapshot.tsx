@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GraduationCap, ArrowRight, Award } from "lucide-react";
+import { GraduationCap, ArrowRight, Award, Trophy } from "lucide-react";
 import { bio, education, certificates } from "@/data/cv";
 
 export function AboutSnapshot() {
@@ -15,7 +15,7 @@ export function AboutSnapshot() {
 
       <div className="grid gap-4 p-4 md:grid-cols-[1.4fr_1fr]">
         <div className="space-y-3">
-          {bio.map((p) => (
+          {bio.slice(0, 3).map((p) => (
             <p key={p.slice(0, 24)} className="text-sm leading-6 text-muted-foreground">
               {p}
             </p>
@@ -30,7 +30,13 @@ export function AboutSnapshot() {
             </p>
             <p className="mt-1.5 text-sm text-foreground">{education.school}</p>
             <p className="text-xs text-muted-foreground">{education.program}</p>
-            <p className="mt-1 text-xs text-muted-foreground">Graduating {education.grad}</p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {education.status} {education.grad}
+            </p>
+            <p className="mt-2 flex items-start gap-1.5 text-xs font-medium text-[hsl(var(--steam-gold))]">
+              <Trophy className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+              Capstone ranked #1 of 50+ at the 2026 showcase
+            </p>
           </div>
           <div className="inset p-3">
             <p className="flex items-center gap-2 text-sm font-semibold text-foreground">

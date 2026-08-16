@@ -4,7 +4,7 @@ import { projects } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 
 export function ProjectsShowcase() {
-  // Show the whole catalogue here, TheTripMan included — it earns a spot in the
+  // Show the whole catalogue here, TheTripMan included. It earns a spot in the
   // grid even though it's also the big featured card up top.
   const rest = projects;
 
@@ -40,8 +40,13 @@ export function ProjectsShowcase() {
             </div>
             <div className="flex min-w-0 flex-col">
               <p className="truncate text-sm font-semibold text-foreground group-hover:text-[hsl(var(--steam-link))]">
-                {p.title.split("(")[0].split("—")[0].trim()}
+                {p.title.split("(")[0].trim()}
               </p>
+              {p.highlight ? (
+                <p className="mt-0.5 truncate text-[11px] font-semibold text-[hsl(var(--steam-gold))]">
+                  {p.highlight}
+                </p>
+              ) : null}
               <div className="mt-1 flex flex-wrap gap-1">
                 {p.tags.slice(0, 2).map((t) => (
                   <Badge key={t} className="px-1.5 py-0 text-[10px]">

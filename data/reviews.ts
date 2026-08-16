@@ -9,7 +9,7 @@ export type Review = {
   funny: number;
 };
 
-// These "reviews" are a wink, not real testimonials — a little Steam-style fun.
+// These "reviews" are a wink, not real testimonials. A little Steam-style fun.
 // The profile section says as much, and the only real way to reach me is the
 // contact form right below them. Swap these out the day I have real quotes to show.
 export const reviews: Review[] = [
@@ -24,12 +24,12 @@ export const reviews: Review[] = [
     funny: 88,
   },
   {
-    author: "Past Teammate",
-    role: "Capstone collaborator",
+    author: "Capstone Teammate",
+    role: "Team of 5, ranked #1 of 50+",
     recommended: true,
     hoursOnRecord: 612,
-    body: "Owns his pieces end-to-end. Catches bugs before they reach the demo. Knows when to call a meeting and when to just open a PR.",
-    postedAgo: "Posted last semester",
+    body: "Owned his pieces end to end and caught the problems before demo day. Knew when to call a meeting and when to just open a PR. We finished first for a reason.",
+    postedAgo: "Posted after the showcase",
     helpful: 298,
     funny: 14,
   },

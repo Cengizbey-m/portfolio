@@ -29,44 +29,45 @@ type ProjectAch = {
 
 const PER_PROJECT: Record<string, ProjectAch[]> = {
   "le-pathetique": [
-    { id: "lp-shipped", title: "Solo Hack Shipped", body: "Built, shipped, and demoed Le Pathétique at BearHacks 2026 — solo, in one weekend.", icon: Rocket, unlocked: true },
-    { id: "lp-multimodal", title: "Multimodal in One Shot", body: "Gemini Flash handled both vision + creative writing in a single call. No chaining required.", icon: Beaker, unlocked: true },
-    { id: "lp-resilient", title: "Wi-Fi Will Not Stop Me", body: "Built an offline mock mode so the demo survives bad venue Wi-Fi or revoked keys.", icon: Shield, unlocked: true },
+    { id: "lp-shipped", title: "Solo Hack Shipped", body: "Built, shipped, and demoed Le Pathétique at BearHacks 2026, solo, in one weekend.", icon: Rocket, unlocked: true },
+    { id: "lp-multimodal", title: "Multimodal in One Shot", body: "Gemini Flash handled vision and creative writing in a single call. No chaining required.", icon: Beaker, unlocked: true },
+    { id: "lp-resilient", title: "Wi-Fi Will Not Stop Me", body: "An offline mock mode keeps the demo alive when venue Wi-Fi or an API key dies.", icon: Shield, unlocked: true },
     { id: "lp-personas", title: "13 Easter Eggs", body: "Six critic personas, thirteen hidden easter eggs. Repeat-play tested.", icon: Award, unlocked: true },
   ],
   thetripman: [
-    { id: "tm-shipped", title: "Goes Live", body: "Deployed for a paying client. The site is real and people are booking on it.", icon: Rocket, unlocked: true },
-    { id: "tm-cms", title: "Content Pipeline", body: "Wired the CMS so the client can edit copy without calling me at 11 PM.", icon: Code2, unlocked: true },
-    { id: "tm-uptime", title: "Two-Nines Club", body: "Site has been up reliably since launch.", icon: CheckCircle2, unlocked: true },
+    { id: "tm-shipped", title: "Goes Live", body: "Deployed for a paying client. Real customers book and pay on it.", icon: Rocket, unlocked: true },
+    { id: "tm-stripe", title: "Money Moves", body: "Stripe wired end to end. A booking confirms only after the webhook says payment settled.", icon: CheckCircle2, unlocked: true },
+    { id: "tm-admin", title: "Made Myself Optional", body: "An admin dashboard so the owner runs daily operations without calling me.", icon: Code2, unlocked: true },
     { id: "tm-secret", title: "Quiet Room", body: "Production code stays private out of respect for the client.", icon: Lock, unlocked: false },
   ],
   "capstone-ai-finance": [
-    { id: "ca-eval", title: "Evaluation Owner", body: "Built the evaluation harness — baselines, metrics, the whole thing.", icon: Beaker, unlocked: true },
-    { id: "ca-api", title: "Contract Driven", body: "Defined the API between model and frontend so neither team blocked the other.", icon: Box, unlocked: true },
-    { id: "ca-team", title: "Team Player", body: "Shipped as part of a 4-person team — code reviews, sprint planning, all of it.", icon: Users, unlocked: true },
-    { id: "ca-models", title: "Model Whisperer", body: "Tuned SVR + RF baselines past the naïve forecast.", icon: Award, unlocked: false },
+    { id: "ca-first", title: "First Place", body: "Judged #1 out of 50+ projects at Sheridan's 2026 capstone showcase.", icon: Award, unlocked: true },
+    { id: "ca-eval", title: "Evaluation Owner", body: "Built the harness that scores every model against a naive baseline, so the UI can be honest.", icon: Beaker, unlocked: true },
+    { id: "ca-api", title: "Contract Driven", body: "Defined the API between model and frontend so neither half of the team sat blocked.", icon: Box, unlocked: true },
+    { id: "ca-team", title: "Team Player", body: "Shipped with a team of five: code review, sprint planning, all of it.", icon: Users, unlocked: true },
   ],
   "formally-prototype": [
-    { id: "fm-onboard", title: "First-Run Polish", body: "Designed an onboarding flow that doesn't make the user configure anything to start.", icon: Eye, unlocked: true },
-    { id: "fm-design", title: "Design System Seed", body: "Reusable component library that can grow into a full DS.", icon: Code2, unlocked: true },
-    { id: "fm-auth", title: "Locked Down", body: "JWT auth + RBAC scaffolded.", icon: Shield, unlocked: false },
+    { id: "fm-onboard", title: "First-Run Polish", body: "An onboarding flow that gets you training before it asks you to configure anything.", icon: Eye, unlocked: true },
+    { id: "fm-design", title: "Design System Seed", body: "A reusable component library that outlived the prototype it was built for.", icon: Code2, unlocked: true },
+    { id: "fm-auth", title: "Locked Down", body: "JWT auth with role-based access, so admin and member views diverge safely.", icon: Shield, unlocked: false },
   ],
   puffy: [
     { id: "pf-client", title: "Second Real Client", body: "Designed and shipped a website for a real local patisserie.", icon: Rocket, unlocked: true },
-    { id: "pf-mobile", title: "Mobile-First", body: "Built fast and friendly on a phone first — that's where the customers are.", icon: Eye, unlocked: true },
-    { id: "pf-local", title: "Found on Google", body: "Working on a QR-code menu + Google Business presence to bring walk-ins online.", icon: Network, unlocked: false },
+    { id: "pf-mobile", title: "Mobile-First", body: "Designed at phone width first, because that is where local customers actually look.", icon: Eye, unlocked: true },
+    { id: "pf-local", title: "Found on Google", body: "A QR-code menu and Google Business listing are in progress to bring walk-ins online.", icon: Network, unlocked: false },
   ],
   bloom: [
-    { id: "bl-product", title: "Product From Scratch", body: "Designed and shipped a full life planner end-to-end, solo — live right now.", icon: Rocket, unlocked: true },
-    { id: "bl-focus", title: "Sync That Disappears", body: "Offline-first, debounce-synced to the cloud, realtime across every signed-in device.", icon: Eye, unlocked: true },
-    { id: "bl-ship", title: "Everywhere at Once", body: "Public launch on web, iOS, and Android — in progress.", icon: Code2, unlocked: false },
+    { id: "bl-product", title: "Product From Scratch", body: "Designed and shipped a full life planner end to end, solo. Live right now.", icon: Rocket, unlocked: true },
+    { id: "bl-focus", title: "Sync That Disappears", body: "Offline-first writes, debounced cloud sync, realtime across every signed-in device.", icon: Eye, unlocked: true },
+    { id: "bl-rls", title: "Locked at the Database", body: "Row Level Security across 10 Postgres tables. A frontend bug cannot leak another account.", icon: Shield, unlocked: true },
+    { id: "bl-ship", title: "Everywhere at Once", body: "Public launch on web, iOS, and Android is in progress.", icon: Code2, unlocked: false },
   ],
 };
 
 const FALLBACK: ProjectAch[] = [
   { id: "f-shipped", title: "Made It Real", body: "Took an idea, made it run.", icon: Rocket, unlocked: true },
   { id: "f-data", title: "Data Modeled", body: "Schema before code. Migrations on day one.", icon: Database, unlocked: true },
-  { id: "f-net", title: "Networked Carefully", body: "Headers, CORS, rate limits — handled.", icon: Network, unlocked: false },
+  { id: "f-net", title: "Networked Carefully", body: "Headers, CORS, and rate limits handled.", icon: Network, unlocked: false },
 ];
 
 export function ProjectAchievements({ slug }: { slug: string }) {

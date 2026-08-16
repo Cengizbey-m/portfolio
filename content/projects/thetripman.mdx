@@ -1,40 +1,63 @@
 # TheTripMan (Client)
 
-**Live site:** https://www.trvoo.com (also reachable at thetripman.com)
+**Live site:** [trvoo.com](https://www.trvoo.com)
 
 ## Summary
 
-A booking + payments platform I built **solo** for an influencer-led transportation
-business with a ~1.2M-follower audience. It's live in production and takes real customer
-bookings. I work on it on a **revenue-share** basis — I'm paid a commission on every
-booking the platform processes, so its success is directly tied to mine.
+A booking and payments platform I built solo for a transportation business with a
+1.2M-follower audience. It is live, it takes real customer payments, and I still maintain
+it. I work on it under a revenue-share agreement, so I earn a commission on every booking
+the platform processes.
 
-## What I shipped
+## The problem
 
-- A full booking flow: browse services → pick a time → enter details → **pay** → get a confirmation.
-- **Stripe** payments wired end-to-end, with the booking only confirmed once payment succeeds.
-- An authenticated **admin dashboard** so the client can see and manage every booking without touching code.
-- Automated email confirmations (Resend) with **calendar invites** (.ics / Google Calendar) for both sides.
-- Two scheduling modes (embed + custom calendar) so the booking experience matches how the business actually runs.
+The business had reach but no way to convert it. Bookings arrived as Instagram DMs and
+phone calls, payment happened in person or not at all, and nothing was recorded anywhere
+searchable. Every reservation cost the owner a conversation, and no-shows cost real money
+because nothing was collected up front.
 
-## Tech snapshot
+They needed customers to book and pay without a human in the loop, and they needed one
+place to see what was actually scheduled.
 
-- Next.js 15 (App Router) + TypeScript
+## What I built
+
+**A self-serve booking flow.** Browse services, pick a time, enter details, pay, receive a
+confirmation. No message thread required.
+
+**Stripe, wired properly.** Payment is the part that has to be correct. A reservation is
+only confirmed once Stripe's webhook says the payment settled, not when the browser thinks
+it succeeded. That distinction is what stops the database from holding bookings that were
+never actually paid for.
+
+**An admin dashboard.** Authenticated, and built so the owner can manage every reservation
+without contacting me. The goal was to make myself unnecessary for daily operations, which
+is what a client actually wants.
+
+**Automated confirmations.** Transactional email through Resend, with calendar invites for
+both sides. This removed the manual follow-up that previously happened for every booking.
+
+**Two scheduling modes.** An embedded scheduler and a custom calendar, because the business
+runs differently in peak season than off season.
+
+## Tech
+
+- Next.js 15 (App Router), TypeScript
 - Tailwind + shadcn/ui
-- **Stripe** (payments)
-- Postgres (Neon) + Prisma
-- Scheduling: Cal.com/Calendly + FullCalendar + Google Calendar
-- Resend email • GA4 analytics • Vercel
-- Quality: Jest + jest-axe accessibility tests, Husky CI hooks
+- Stripe for checkout and webhooks
+- PostgreSQL (Neon) with Prisma
+- Cal.com / FullCalendar / Google Calendar sync
+- Resend for transactional email, GA4 for analytics
+- Vercel, with Jest and jest-axe accessibility tests behind Husky hooks
 
 ## Why it matters
 
-This is the project I'm proudest of. It's not coursework — it's a real product, with a
-real client, taking real money, that I own from the database to the deploy button. When I
-talk through architecture in an interview (how payments stay consistent with bookings, how
-the admin auth works, how I keep the client unblocked), this is the system I reach for.
+This is not coursework. It is a production system with a paying client, real money moving
+through it, and consequences when something breaks. I own it from the schema to the deploy
+button, which means I have had to think about things coursework never asks: what happens
+when a webhook arrives twice, how to change a live schema without downtime, and how to ship
+a fix on a Saturday because bookings do not pause for weekends.
 
 ## Notes
 
-The production repository is private out of respect for the client's business.
-Screenshots are chosen to avoid any sensitive data.
+The production repository is private for the client's business reasons. Screenshots avoid
+customer and booking data.

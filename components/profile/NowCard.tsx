@@ -1,9 +1,9 @@
 import { Activity } from "lucide-react";
 
 const nowItems = [
-  "Polishing case studies + this portfolio",
-  "Wrapping up SDNE coursework (grad Aug 2026)",
-  "Sharpening Next.js, system design & networking",
+  "Interviewing for full-time developer roles in the GTA",
+  "Maintaining TheTripMan in production and shipping Bloom updates",
+  "Going deeper on testing, Docker, and CI pipelines",
 ];
 
 export function NowCard() {

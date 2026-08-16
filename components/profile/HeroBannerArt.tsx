@@ -1,6 +1,6 @@
 /**
  * The little network-graph motif that lives in the hero banner. It's a nod to
- * the "Network Engineering" half of my degree — nodes and links, with a few
+ * the "Network Engineering" half of my degree: nodes and links, with a few
  * points that gently twinkle like traffic moving across them. Drawn with theme
  * tokens so it reads on both the dark and the light banner.
  */

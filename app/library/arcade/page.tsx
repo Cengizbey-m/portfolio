@@ -14,7 +14,7 @@ import {
 export const metadata = {
   title: "Arcade",
   description:
-    "A small arcade of dev- and networking-themed mini-games built into the portfolio. Snake, subnetting, memory, reflex, and more — each grants achievements.",
+    "A small arcade of dev- and networking-themed mini-games built into the portfolio. Snake, subnetting, memory, reflex, and more. Each one grants achievements.",
 };
 
 type Game = {

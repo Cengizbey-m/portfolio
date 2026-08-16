@@ -1,25 +1,38 @@
-# Formally — Fitness + Personal Development Platform (Prototype)
+# Formally (Prototype)
 
 ## Summary
 
-Formally is an early-stage fitness + social platform. The goal is a clean experience for programs, progress tracking, and community features.
+An early-stage fitness and personal development platform covering programs, progress
+tracking, and community features. The repository is private while the product is still in
+development.
 
-## What’s implemented
+## The problem
 
-- Authentication + authorization (JWT + role-based access)
-- Programs, progress tracking, goals, notifications
-- Real-time messaging / group chats (Socket.io)
-- Admin panel and multi-language support (EN/TR)
+Fitness apps front-load configuration. Before they give you anything useful they want your
+goals, your equipment, your schedule, and your measurements, and a lot of people quit
+during setup rather than during training. The prototype tested how much of that could be
+deferred or dropped entirely without the resulting plan getting worse.
 
-## Tech snapshot
+## What is implemented
 
-- React (frontend)
-- Node.js / Express (backend)
-- MongoDB (Mongoose)
-- Docker + testing setup
+- Authentication and authorization with JWT and role-based access, so admin and member
+  views can diverge safely
+- Programs, progress tracking, goals, and notifications
+- Real-time messaging and group chats over Socket.io
+- An admin panel, with English and Turkish language support
+
+## What came out of it
+
+The component library built here became the starting point for how I structure interfaces
+in later projects. Getting the reusable pieces right once, then reaching for them
+repeatedly, is most of what makes a small team ship quickly.
+
+## Tech
+
+React on the frontend, Node.js and Express on the backend, MongoDB with Mongoose, Socket.io,
+Tailwind, and Docker.
 
 ## Notes
 
-The repository is private while the product is under development. More links will be added when it’s ready to launch.
-
-
+The repository is private while the product is under development. Links will be added when
+it is ready to launch.

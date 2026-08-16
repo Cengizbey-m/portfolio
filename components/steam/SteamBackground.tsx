@@ -13,7 +13,7 @@ export function SteamBackground() {
   React.useEffect(() => {
     setMounted(true);
     // Only load/autoplay the (multi-MB) video on larger screens, and respect
-    // reduced-motion. Mobile gets a lightweight gradient instead — better for
+    // reduced-motion. Mobile gets a lightweight gradient instead, better for
     // data, battery, and Core Web Vitals.
     const desktop = window.matchMedia("(min-width: 768px)").matches;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -25,27 +25,27 @@ import { fireConfetti } from "@/lib/confetti";
 const features = [
   {
     icon: Zap,
-    title: "Ships features end-to-end",
-    body: "From schema to deployment. Comfortable across the stack and won't bounce a ticket because it touches Postgres.",
-  },
-  {
-    icon: Globe2,
-    title: "Networking native",
-    body: "SDNE student — IP/subnetting, IPv6, security fundamentals. Reads packet captures for fun.",
-  },
-  {
-    icon: Cpu,
-    title: "AI/ML prototyping",
-    body: "Python + notebooks. Knows when to use a model and when 'if/else' is the better answer.",
+    title: "Ships features end to end",
+    body: "Schema, API, interface, deploy. I do not hand a ticket back because it touches the database.",
   },
   {
     icon: Award,
-    title: "Production-minded",
-    body: "Code reviews, tests when they matter, observability basics, sane env management.",
+    title: "Already runs in production",
+    body: "A client platform taking live Stripe payments and a launched product with real users. Not demos.",
+  },
+  {
+    icon: Globe2,
+    title: "Networking underneath",
+    body: "TCP/IP, subnetting, IPv6, and security fundamentals from a network engineering diploma. Useful at 2 AM.",
+  },
+  {
+    icon: Cpu,
+    title: "Honest about AI",
+    body: "Python and multimodal APIs when a model earns its place, and plain code when it does not.",
   },
 ];
 
-// Real screenshots from shipped work — the "store gallery" for hiring me.
+// Real screenshots from shipped work, used as the store gallery.
 const screenshots = [
   "/images/tripman/tripman-1.png",
   "/images/bloom/bloom-1.png",
@@ -70,7 +70,7 @@ export function StoreHero() {
     fireConfetti(120);
     unlock("checkout");
     if (typeof window !== "undefined") {
-      window.location.href = `mailto:${profile.links.email}?subject=Checkout%20%E2%80%94%20Hire%20Cengiz&body=Hi%20Cengiz%2C%0A%0AI%20opened%20your%20Steam%20store%20page%20and%20clicked%20checkout.%20I'd%20like%20to%20chat%20about%3A%0A%0A-%20%5Brole%20%2F%20project%5D%0A-%20%5Btimeline%5D%0A-%20%5Bnext%20step%5D%0A%0AThanks!`;
+      window.location.href = `mailto:${profile.links.email}?subject=Hiring%20enquiry%20for%20Muhammed%20Cengiz&body=Hi%20Cengiz%2C%0A%0AI%20came%20through%20your%20portfolio.%20I%27d%20like%20to%20talk%20about%3A%0A%0A-%20%5Brole%5D%0A-%20%5Bteam%20and%20stack%5D%0A-%20%5Bnext%20step%5D%0A%0AThanks!`;
     }
   }
 
@@ -83,7 +83,7 @@ export function StoreHero() {
           New &amp; Trending
         </span>
         <span className="rounded bg-[hsl(var(--steam-orange))] px-2 py-1 font-semibold uppercase tracking-[0.18em] text-white shadow-sm">
-          On sale · -100% cost to ask
+          Available now · full-time
         </span>
         <span className="text-muted-foreground">|</span>
         <Link href="/library" className="text-[hsl(var(--steam-link))] hover:underline">
@@ -95,9 +95,10 @@ export function StoreHero() {
         Hire Cengiz
       </h1>
       <p className="text-sm text-muted-foreground md:text-base">
-        A full-stack developer with a strong networking foundation. SDNE @ Sheridan College, graduating
-        Aug 2026 — already shipping a live booking + payments platform for a client with a 1.2M-follower
-        audience.
+        Full-stack developer in the Greater Toronto Area. Sheridan College graduate whose capstone
+        was ranked first out of more than fifty projects. I build and maintain a live booking and
+        payments platform for a client with a 1.2M-follower audience. Canadian permanent resident,
+        available for full-time work now.
       </p>
 
       {/* Hero: screenshots + buy box */}
@@ -143,15 +144,16 @@ export function StoreHero() {
             <div className="p-3">
               <div className="flex items-center gap-2">
                 <span className="rounded bg-[hsl(var(--steam-green))]/30 px-1.5 py-0.5 text-[11px] font-bold text-[hsl(var(--steam-green))]">
-                  -100%
+                  NO VISA
                 </span>
-                <span className="text-xs text-muted-foreground line-through">Way too much</span>
+                <span className="text-xs text-muted-foreground">sponsorship needed</span>
                 <span className="ml-auto text-2xl font-extrabold tracking-tight text-foreground">
-                  Free <span className="text-sm font-medium text-muted-foreground">to chat</span>
+                  Canadian <span className="text-sm font-medium text-muted-foreground">PR</span>
                 </span>
               </div>
               <p className="mt-2 text-[11px] text-muted-foreground">
-                Includes: code reviews, deploys, real shipped projects. Excludes: crypto, scope creep.
+                Includes: production experience, code review habits, and someone who reads the docs.
+                Excludes: crypto, scope creep.
               </p>
 
               <div className="mt-3 flex flex-col gap-2">
@@ -189,26 +191,28 @@ export function StoreHero() {
 
               {inCart && (
                 <p className="mt-3 rounded-sm bg-[hsl(var(--steam-green))]/15 p-2 text-[11px] text-[hsl(var(--steam-green))] ring-1 ring-[hsl(var(--steam-green))]/30">
-                  Added to cart. Hit checkout when you&rsquo;re ready — it just opens an email.
+                  Added to cart. Hit checkout when you&rsquo;re ready. It just opens an email.
                 </p>
               )}
             </div>
           </div>
 
-          {/* Rating tile */}
+          {/* Rating tile, backed by an actual result */}
           <div className="rounded-md border border-border bg-[hsl(var(--steam-panel))] p-3 ring-1 ring-white/5">
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              All Reviews
+              Critic score
             </p>
-            <p className="mt-1 flex items-center gap-1.5 text-sm text-[hsl(var(--steam-link))]">
-              Overwhelmingly Positive
-              <span className="text-[11px] text-muted-foreground">(4 reviews)</span>
+            <p className="mt-1 flex items-center gap-1.5 text-sm font-semibold text-[hsl(var(--steam-link))]">
+              Ranked #1 of 50+
             </p>
             <div className="mt-1 flex items-center gap-0.5">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="h-3.5 w-3.5 fill-[hsl(var(--steam-gold))] text-[hsl(var(--steam-gold))]" />
               ))}
             </div>
+            <p className="mt-1.5 text-[11px] text-muted-foreground">
+              Judged first overall at Sheridan&rsquo;s 2026 capstone showcase. Prototype graded 94/100.
+            </p>
           </div>
 
           {/* Tags */}
@@ -221,13 +225,14 @@ export function StoreHero() {
                 "Full-stack",
                 "Next.js",
                 "TypeScript",
-                "Networking",
+                "React",
+                "Node.js",
                 "PostgreSQL",
-                "AI/ML",
-                "Co-op-ready",
-                "New-grad",
-                "Indie",
-                "Story-rich",
+                "Stripe",
+                "Docker",
+                "Networking",
+                "Canadian PR",
+                "Available now",
               ].map((t) => (
                 <Badge key={t}>{t}</Badge>
               ))}
@@ -240,9 +245,11 @@ export function StoreHero() {
       <section className="rounded-md border border-border bg-[hsl(var(--steam-panel))] p-4 ring-1 ring-white/5">
         <h2 className="text-lg font-semibold text-foreground">About this product</h2>
         <p className="mt-2 text-sm leading-7 text-muted-foreground">
-          Cengiz is a single-player, co-op-friendly, story-rich full-stack developer with deep
-          systems-and-networks DLC. Optimized for new-grad and co-op slots. Auto-saves on every
-          deploy. Multiplayer mode supported (pairs well with senior engineers).
+          A full-stack developer who has already shipped software people pay for. I built and still
+          run a booking and payments platform for a real client, launched a product with cloud sync
+          and offline support, and led the evaluation work on a capstone that was judged first out
+          of more than fifty. I work well on a team, I take code review seriously, and I would
+          rather ask an obvious question than guess quietly.
         </p>
         <ul className="mt-4 grid gap-3 md:grid-cols-2">
           {features.map((f) => {
@@ -275,7 +282,7 @@ export function StoreHero() {
               <li><HardDrive className="mr-1 inline h-3.5 w-3.5" /> Storage: a Slack channel</li>
               <li><Cpu className="mr-1 inline h-3.5 w-3.5" /> CPU: any laptop with Node.js</li>
               <li><Calendar className="mr-1 inline h-3.5 w-3.5" /> Internet: required for stand-ups</li>
-              <li><CheckCircle2 className="mr-1 inline h-3.5 w-3.5" /> Patience: low — ships fast</li>
+              <li><CheckCircle2 className="mr-1 inline h-3.5 w-3.5" /> Onboarding: low, ships in week one</li>
             </ul>
           </div>
           <div className="rounded-sm border border-border bg-white/5 p-3 ring-1 ring-white/10">
@@ -283,10 +290,10 @@ export function StoreHero() {
               Recommended
             </p>
             <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
-              <li><HardDrive className="mr-1 inline h-3.5 w-3.5" /> Storage: real GitHub repo</li>
-              <li><Cpu className="mr-1 inline h-3.5 w-3.5" /> CPU: a CI runner that doesn&rsquo;t suck</li>
-              <li><Calendar className="mr-1 inline h-3.5 w-3.5" /> Schedule: 4-month co-op or full-time</li>
-              <li><CheckCircle2 className="mr-1 inline h-3.5 w-3.5" /> Bonus: senior teammates to learn from</li>
+              <li><HardDrive className="mr-1 inline h-3.5 w-3.5" /> Storage: a real repo with real users</li>
+              <li><Cpu className="mr-1 inline h-3.5 w-3.5" /> CPU: a CI runner that finishes this decade</li>
+              <li><Calendar className="mr-1 inline h-3.5 w-3.5" /> Schedule: full-time, GTA or remote</li>
+              <li><CheckCircle2 className="mr-1 inline h-3.5 w-3.5" /> Bonus: senior engineers to learn from</li>
             </ul>
           </div>
         </div>

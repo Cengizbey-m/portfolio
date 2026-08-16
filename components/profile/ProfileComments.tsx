@@ -27,7 +27,7 @@ export function ProfileComments() {
           {reviews.length}
         </span>
         <span className="ml-auto text-[11px] italic text-muted-foreground">
-          Written in good fun — the real way to reach me is below.
+          Written in good fun. The real way to reach me is below.
         </span>
       </div>
 
@@ -53,7 +53,7 @@ export function ProfileComments() {
         ))}
       </ul>
 
-      {/* Composer — honest: real comments land in my inbox */}
+      {/* Composer. Real comments land in my inbox. */}
       <div className="border-t border-border bg-black/15 p-4">
         <div className="flex items-start gap-3">
           <div className="grid h-10 w-10 shrink-0 place-items-center rounded bg-[hsl(var(--steam-link))]/15 text-[hsl(var(--steam-link))] ring-1 ring-[hsl(var(--steam-link))]/20">

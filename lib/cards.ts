@@ -53,7 +53,7 @@ export function setActiveSeconds(n: number) {
 
 /**
  * Try to drop the next undropped card. Returns the dropped card id or null.
- * Cards drop in deck order (predictable, like Steam — first card is always "The Commit").
+ * Cards drop in deck order (predictable, like Steam: first card is always "The Commit").
  */
 export function tryDrop(): string | null {
   const owned = readOwned();

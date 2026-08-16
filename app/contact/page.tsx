@@ -4,7 +4,7 @@ import { profile } from "@/data/profile";
 
 export const metadata = {
   title: "Contact",
-  description: "Get in touch — email, LinkedIn, or the form. Replies within a day.",
+  description: "Get in touch by email, LinkedIn, or the form below. I reply within a day.",
 };
 
 export default function ContactPage() {
@@ -15,7 +15,7 @@ export default function ContactPage() {
         <h1 className="mt-1 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">Contact</h1>
         <p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
           <Clock className="h-4 w-4 text-[hsl(var(--steam-green))]" />
-          Open to co-op / internship roles · usually replies within a day.
+          Open to full-time developer roles. I usually reply within a day.
         </p>
       </header>
 

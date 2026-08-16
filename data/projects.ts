@@ -11,6 +11,8 @@ export type Project = {
   title: string;
   slug: string;
   tags: ProjectTag[];
+  /** One-line headline fact. Shown as a badge on cards. */
+  highlight?: string;
   short: string;
   problem: string;
   role: string;
@@ -25,30 +27,33 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "TheTripMan (Client • Booking + Payments Platform)",
+    title: "TheTripMan (Client • Booking and Payments Platform)",
     slug: "thetripman",
     tags: ["Web", "Networking"],
+    highlight: "Live · taking real payments",
     short:
-      "Booking + payments platform I built solo for an influencer-led transportation business (~1.2M audience). Live in production, taking real bookings on a revenue-share deal. Production code is private.",
+      "A booking and payments platform I built and still run for a transportation business with a 1.2M-follower audience. Customers book and pay online through Stripe, and the owner manages every reservation from an admin dashboard instead of a phone.",
     problem:
-      "A real business with a large social audience needed customers to browse services, book, and pay online — with no developer in the loop day-to-day — plus an admin to manage every booking.",
+      "The business had a large social following but no way to convert it. Bookings arrived through DMs and phone calls, payment happened in person, and nothing was tracked. They needed customers to browse services, reserve a time, and pay up front without a developer involved day to day.",
     role:
-      "Solo full-stack developer: design, frontend, backend, Stripe payments, database, deployment, and ongoing maintenance. I own the whole thing.",
+      "Sole developer. I own the product: design, frontend, API, database schema, Stripe integration, deployment, and the maintenance that follows. I still ship changes against live traffic.",
     stack: [
-      "Next.js 15",
+      "Next.js 15 (App Router)",
       "TypeScript",
       "Tailwind + shadcn/ui",
-      "Stripe (payments)",
-      "Postgres (Neon) + Prisma",
-      "Scheduling: Cal.com/Calendly + FullCalendar + Google Calendar",
-      "Resend email",
-      "GA4 analytics",
-      "Vercel",
+      "Stripe (checkout, webhooks)",
+      "PostgreSQL (Neon) + Prisma",
+      "Cal.com / FullCalendar / Google Calendar sync",
+      "Resend (transactional email)",
+      "GA4",
+      "Vercel + CI",
     ],
     impact: [
-      "Designed, built, and deployed the entire booking + payments platform solo for a client with a ~1.2M-follower audience.",
-      "Integrated Stripe for end-to-end payments, an authenticated admin dashboard, and automated email + calendar confirmations.",
-      "Shipped to production with CI, accessibility tests, and analytics — the platform processes live customer bookings on a revenue-share agreement.",
+      "Replaced a DM-and-phone booking process with a self-serve flow that takes payment at the time of booking, so the business stops chasing no-shows.",
+      "Built the Stripe integration end to end, including webhook handling so a reservation is only confirmed once payment actually settles.",
+      "Shipped an authenticated admin dashboard that turned scattered messages into one reservation list the owner can run the business from.",
+      "Automated confirmation email and calendar invites, removing the manual follow-up that used to happen for every single booking.",
+      "Running in production on a revenue-share agreement, which means the code has to keep working whether or not I am watching it.",
     ],
     coverImage: "/images/tripman/tripman-1.png",
     gallery: [
@@ -63,112 +68,33 @@ export const projects: Project[] = [
       liveDemo: "https://www.trvoo.com",
     },
     confidentialityNote:
-      "The production repository is private due to business confidentiality. Screenshots avoid any sensitive client data.",
+      "The production repository is private for business reasons. Screenshots avoid customer and booking data.",
   },
   {
-    title: "Bloom (Product • Cloud-Synced Life Planner PWA)",
-    slug: "bloom",
-    tags: ["Web"],
-    short:
-      "A cute, cloud-synced life planner — calendar, tasks, habits, notes, journal, goals, and a focus timer in one warm workspace. Sign in with Google and your data follows you: start on your phone, continue on your PC. Live now; web, iOS, and Android launch in the works.",
-    problem:
-      "Students and workers juggle classes, tasks, habits, and notes across a pile of cold, disconnected apps. Bloom pulls daily life into one friendly workspace that stays in sync on every device — and keeps working offline.",
-    role:
-      "Solo: product design and full-stack build — data model, offline-first sync engine, auth, theming, and every screen of the UI.",
-    stack: [
-      "React 18 + TypeScript (Vite)",
-      "Tailwind CSS v4",
-      "Zustand (state + localStorage persistence)",
-      "Supabase (PostgreSQL + Google Auth + Realtime)",
-      "Offline-first PWA (Workbox)",
-      "Row Level Security + DOMPurify sanitization",
-      "Framer Motion",
-      "Vercel",
-    ],
-    impact: [
-      "Built an offline-first sync engine: everything saves locally first, then debounce-syncs to Supabase — Realtime subscriptions keep every signed-in device up to date, theme and notes included.",
-      "Google sign-in with Row Level Security across 10 Postgres tables, so each user's data is isolated at the database level.",
-      "Designed a forgiveness-based habit score (0–100%) instead of punishing streak resets, plus mood–habit correlation stats.",
-      "Quality-of-life details everywhere: global Ctrl/Cmd+K quick-add, a Pomodoro timer that follows you across pages, 3 themes + custom accent colors, and achievements.",
-    ],
-    coverImage: "/images/bloom/bloom-1.png",
-    gallery: [
-      "/images/bloom/bloom-1.png",
-      "/images/bloom/bloom-2.png",
-      "/images/bloom/bloom-3.png",
-      "/images/bloom/bloom-4.png",
-      "/images/bloom/bloom-5.png",
-    ],
-    links: {
-      caseStudy: "/projects/bloom",
-      liveDemo: "https://bloom-cal.vercel.app",
-    },
-    confidentialityNote:
-      "The codebase is private while Bloom prepares for public launch on web, iOS, and Android.",
-  },
-  {
-    title: "Le Pathétique (BearHacks 2026 — AI French Food Critic)",
-    slug: "le-pathetique",
-    tags: ["AI/ML", "Web", "Hackathon"],
-    short:
-      "Solo BearHacks 2026 build. Upload a photo of your sad cooking, get roasted out loud by a pretentious French AI critic, then redeemed with broke / decent / fancy recipes.",
-    problem:
-      "Hackathon prompt: ship something that uses multimodal AI in a way that's actually fun, not a demo with three buttons. Needed an interaction that survives a shaky Wi-Fi judging room and doesn't depend on warm API caches.",
-    role:
-      "Solo developer. Designed the persona, built the pipeline (Vision → Gemini → ElevenLabs), wrote the brutalist newspaper UI, wired the offline mock mode for demo resilience, hid 13 easter eggs across 6 personas.",
-    stack: [
-      "Next.js 16 (App Router)",
-      "React 19",
-      "TypeScript",
-      "Tailwind v4",
-      "Google Cloud Vision API (image labeling)",
-      "Gemini Flash (multimodal critique + recipe generation)",
-      "ElevenLabs (text-to-speech, French accent)",
-      "Web Audio API (in-browser SFX)",
-      "Vercel (hosting)",
-    ],
-    impact: [
-      "Shipped solo at BearHacks 2026 — concept to working multimodal demo in one weekend.",
-      "Built an offline mock mode so the app keeps working when the venue Wi-Fi or an API key dies mid-judging.",
-      "Designed 6 distinct critic personas with 13 hidden easter eggs to reward repeat use.",
-      "Brutalist newspaper aesthetic that stood out from the standard hackathon Tailwind look.",
-    ],
-    coverImage: "/images/le-pathetique/home.jpg",
-    gallery: [
-      "/images/le-pathetique/home.jpg",
-      "/images/le-pathetique/recipes.jpg",
-      "/images/le-pathetique/verdict.jpg",
-    ],
-    links: {
-      caseStudy: "/projects/le-pathetique",
-      github: "https://github.com/Cengizbey-m/Le-Pathetique",
-      liveDemo: "https://devpost.com/software/le-pathetique",
-    },
-    confidentialityNote:
-      "A Vercel deployment exists but has known issues being polished post-hackathon — DevPost link is the source of truth for now.",
-  },
-  {
-    title: "Feather — AI Market Insights Platform (Capstone, Team)",
+    title: "Feather (Capstone • AI Market Insights Platform)",
     slug: "capstone-ai-finance",
     tags: ["AI/ML", "Web"],
+    highlight: "Ranked #1 of 50+ projects",
     short:
-      "Team capstone building an AI-assisted next-day stock prediction workflow with clear evaluation, safeguards, and a web UI. Capstone prototype graded 94/100.",
+      "A next-day stock movement prediction tool with an honest evaluation layer. Judged first overall out of more than fifty projects at Sheridan's 2026 capstone showcase, with the prototype graded 94/100.",
     problem:
-      "Users wanted a simple UI for exploring signals and predictions with transparent evaluation and limits on overconfident outputs.",
+      "Prediction demos usually hide their error rate and present a confident number the user has no way to question. We wanted a tool that shows a forecast next to the evidence for trusting it, and refuses to overstate what the model actually knows.",
     role:
-      "Team contributor: owned ML evaluation + API contract; implemented feature work end‑to‑end and documented trade‑offs.",
+      "Team of five. I owned the model evaluation layer and the API contract between the Python service and the React frontend, and implemented feature work across both sides.",
     stack: [
       "React + TypeScript (Vite)",
       "FastAPI (Python)",
       "SQLAlchemy",
+      "scikit-learn (SVR, Random Forest baselines)",
       "Docker",
-      "ML baselines (SVR/RF)",
-      "Vercel (frontend)",
+      "Vercel",
     ],
     impact: [
-      "Owned the evaluation approach (baselines + metrics) and translated results into clear UI-friendly outputs.",
-      "Defined and implemented the API contract between model code and the web UI for predictable integrations.",
-      "Capstone prototype graded 94/100.",
+      "Judged #1 out of 50+ capstone projects at the 2026 showcase after being selected for the final showcase round.",
+      "Prototype phase graded 94/100.",
+      "Built the evaluation layer that scores every model against baselines, so the UI can show accuracy honestly instead of printing a number with no context.",
+      "Defined the API contract between the Python model service and the React client, which let the frontend and ML work continue in parallel without blocking each other.",
+      "Containerized the service with Docker so the whole team ran an identical environment and demo setup was not a gamble.",
     ],
     coverImage: "/images/feather/feather-1.png",
     gallery: [
@@ -185,19 +111,105 @@ export const projects: Project[] = [
     },
   },
   {
-    title: "Puffy (Client • Local Patisserie Website)",
+    title: "Bloom (Product • Cloud-Synced Life Planner)",
+    slug: "bloom",
+    tags: ["Web"],
+    highlight: "Live · offline-first sync",
+    short:
+      "A planner that holds calendar, tasks, habits, notes, journal, goals, and a focus timer in one place. Sign in with Google and your data follows you: start something on your phone, finish it on your laptop, and keep working with no connection at all.",
+    problem:
+      "Planner apps either sync well and feel like enterprise software, or feel nice and lose your data between devices. I wanted one that does both, and that does not punish you for missing a day.",
+    role:
+      "Sole developer and designer. Data model, sync engine, authentication, theming, and every screen.",
+    stack: [
+      "React 18 + TypeScript (Vite)",
+      "Tailwind CSS v4",
+      "Zustand (local state and persistence)",
+      "Supabase (PostgreSQL, Google Auth, Realtime)",
+      "PWA with Workbox (offline support)",
+      "Row Level Security + DOMPurify",
+      "Framer Motion",
+      "Vercel",
+    ],
+    impact: [
+      "Built an offline-first sync engine: writes land in local state immediately, then sync to Postgres on a debounce, so the interface never waits on the network.",
+      "Wired Realtime subscriptions so a change on one device shows up on every other signed-in device, including theme and settings.",
+      "Secured user data with Row Level Security across 10 Postgres tables, isolating every account at the database level rather than trusting client-side checks.",
+      "Replaced streak counters with a forgiveness-based consistency score, because a single missed day should not erase two months of work.",
+      "Added a global Ctrl/Cmd+K quick-add that creates a task, event, or note from any screen in about two seconds.",
+    ],
+    coverImage: "/images/bloom/bloom-1.png",
+    gallery: [
+      "/images/bloom/bloom-1.png",
+      "/images/bloom/bloom-2.png",
+      "/images/bloom/bloom-3.png",
+      "/images/bloom/bloom-4.png",
+      "/images/bloom/bloom-5.png",
+    ],
+    links: {
+      caseStudy: "/projects/bloom",
+      liveDemo: "https://bloom-cal.vercel.app",
+    },
+    confidentialityNote:
+      "The repository is private while Bloom prepares for a public launch on web, iOS, and Android.",
+  },
+  {
+    title: "Le Pathétique (BearHacks 2026 • AI Food Critic)",
+    slug: "le-pathetique",
+    tags: ["AI/ML", "Web", "Hackathon"],
+    highlight: "Built solo in one weekend",
+    short:
+      "Photograph your questionable cooking and a pretentious French critic reviews it out loud, then hands you three recipes to redeem yourself. A multimodal pipeline wrapped in a brutalist newspaper interface.",
+    problem:
+      "Hackathon judging happens in a loud room on unreliable Wi-Fi, and most AI demos die the moment an API call hangs. I wanted something genuinely fun that would still work if the network or an API key failed mid-presentation.",
+    role:
+      "Solo build over one weekend. Persona design, the Vision to Gemini to ElevenLabs pipeline, the interface, and the offline fallback mode.",
+    stack: [
+      "Next.js 16 (App Router)",
+      "React 19",
+      "TypeScript",
+      "Tailwind v4",
+      "Google Cloud Vision (image labeling)",
+      "Gemini Flash (critique and recipe generation)",
+      "ElevenLabs (speech synthesis)",
+      "Web Audio API",
+      "Vercel",
+    ],
+    impact: [
+      "Chained three separate AI services into one pipeline that turns a photo into spoken audio critique and three tiered recipes.",
+      "Built an offline mock mode that keeps the full demo working when the venue Wi-Fi or an API key fails, which is exactly what a live demo needs.",
+      "Wrote 6 distinct critic personas with 13 hidden easter eggs so repeat use keeps finding new material.",
+      "Went from empty repo to working multimodal demo in a single weekend, solo.",
+    ],
+    coverImage: "/images/le-pathetique/home.jpg",
+    gallery: [
+      "/images/le-pathetique/home.jpg",
+      "/images/le-pathetique/recipes.jpg",
+      "/images/le-pathetique/verdict.jpg",
+    ],
+    links: {
+      caseStudy: "/projects/le-pathetique",
+      github: "https://github.com/Cengizbey-m/Le-Pathetique",
+      liveDemo: "https://devpost.com/software/le-pathetique",
+    },
+    confidentialityNote:
+      "A Vercel deployment exists but is still being cleaned up after the hackathon, so the DevPost entry is the source of truth.",
+  },
+  {
+    title: "Puffy (Client • Patisserie Website)",
     slug: "puffy",
     tags: ["Web"],
+    highlight: "Second paying client",
     short:
-      "Marketing website I designed and built for a local patisserie / dessert shop — a second real client. Proof I can take a small business from zero to a clean, fast online presence.",
+      "A marketing site for a local patisserie that had no web presence at all. Built mobile-first, because nearly everyone finds a dessert shop on a phone.",
     problem:
-      "A local patisserie had no real web presence. They needed a friendly, mobile-first site that tells their story, shows what they offer, and is easy to find on Google.",
-    role:
-      "Solo: design, build, and deployment. Currently adding a QR-code menu for in-store scanning and a Google Business presence.",
+      "The shop existed on foot traffic and word of mouth. Customers could not find hours, location, or what was actually on offer without walking in, and search results pointed nowhere.",
+    role: "Sole developer. Design, build, deployment, and ongoing additions.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     impact: [
-      "Designed and shipped a clean, mobile-first marketing site for a real local dessert business.",
-      "Adding a QR-code menu so customers can scan and browse in-store; Google Business integration in progress.",
+      "Took a business with no web presence to a fast, mobile-first site that answers the three questions customers actually have: what, where, and when.",
+      "Built the layout mobile-first, since a dessert shop is found on a phone far more often than a desktop.",
+      "Currently adding a QR-code menu for in-store scanning and a Google Business listing so the shop shows up in local search.",
     ],
     coverImage: "/images/puffy/puffy-1.png",
     gallery: [
@@ -213,27 +225,29 @@ export const projects: Project[] = [
     },
   },
   {
-    title: "Formally (Prototype) — Fitness + Personal Development Platform",
+    title: "Formally (Prototype • Fitness and Habit Platform)",
     slug: "formally-prototype",
     tags: ["Web", "AI/ML"],
+    highlight: "Design system groundwork",
     short:
-      "Early-stage product prototype exploring onboarding, habit flows, and clean UI patterns. Codebase is private while the product is in development.",
+      "An early product prototype exploring onboarding, habit tracking, and a reusable component system. Private while the product is still in development.",
     problem:
-      "Needed a clean onboarding + habit flow that keeps users focused on next actions, not configuration.",
+      "Fitness apps ask for a lot of configuration before they give you anything useful. The prototype tested how much of that setup could be deferred or removed entirely without losing the plan quality.",
     role:
-      "Product + engineering: UX flows, component library, and front-end architecture that can evolve into a full system.",
+      "Product and engineering. User flows, the component library, and the frontend architecture underneath it.",
     stack: [
       "React",
       "Node.js / Express",
       "MongoDB (Mongoose)",
-      "JWT auth + RBAC",
+      "JWT auth + role-based access",
       "Socket.io",
       "Tailwind",
       "Docker",
     ],
     impact: [
-      "Designed onboarding and habit flows focused on clarity and low cognitive load.",
-      "Built reusable UI patterns that can evolve into a full product design system.",
+      "Designed an onboarding flow that gets a user to their first workout with far less setup than the apps it was compared against.",
+      "Built a reusable component library that later became the starting point for how I structure interfaces in other projects.",
+      "Scaffolded JWT authentication with role-based access so admin and member views could diverge safely.",
     ],
     coverImage: "/images/Formally-Home.png",
     gallery: [
@@ -250,5 +264,3 @@ export const projects: Project[] = [
 ];
 
 export const projectSlugs = projects.map((p) => p.slug);
-
-

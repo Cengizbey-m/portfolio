@@ -65,7 +65,10 @@ export function AchievementsProvider({ children }: { children: React.ReactNode }
   return (
     <>
       {children}
-      <div className="pointer-events-none fixed right-4 top-20 z-[100] flex flex-col items-end gap-2">
+      <div
+        data-print-hide
+        className="pointer-events-none fixed right-4 top-20 z-[100] flex flex-col items-end gap-2"
+      >
         {toasts.map((t) => (
           <AchievementToast
             key={t.key}

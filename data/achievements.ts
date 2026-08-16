@@ -91,7 +91,7 @@ export const achievements: Achievement[] = [
   {
     id: "checkout",
     title: "Hire Initiated",
-    description: "Hit checkout on the Store page (it just opens email — no charges, promise).",
+    description: "Hit checkout on the Store page. It just opens an email, no charges.",
     icon: "credit-card",
     rarity: "rare",
   },

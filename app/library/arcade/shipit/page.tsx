@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 
 export const metadata = {
   title: "Ship It",
-  description: "Reflex mini-game — stop the marker in the deploy zone.",
+  description: "Reflex mini-game. Stop the marker in the deploy zone.",
 };
 
 export default function ShipItPage() {

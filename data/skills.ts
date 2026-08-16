@@ -56,7 +56,7 @@ export const skillGroups: SkillGroup[] = [
     id: "networking",
     title: "Networking & Systems",
     icon: "Network",
-    blurb: "The SDNE edge — I understand the stack underneath the app.",
+    blurb: "The network engineering edge. I understand the stack underneath the app.",
     skills: [
       { name: "IP / subnetting / IPv6", level: 5 },
       { name: "Linux / UNIX", level: 4 },

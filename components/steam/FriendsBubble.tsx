@@ -6,7 +6,7 @@ import { MessageSquareMore, Mail, Linkedin, Github, FileText, Send } from "lucid
 import { profile } from "@/data/profile";
 import { sfx } from "@/lib/sound";
 
-// This used to be a fake "friends list." It's now a real quick-connect panel —
+// This used to be a fake "friends list." It's now a real quick-connect panel:
 // the fastest way for someone to actually reach me without leaving the page.
 type ConnectLink = {
   label: string;
@@ -59,7 +59,7 @@ export function FriendsBubble() {
             <p className="text-sm font-semibold text-foreground">Let&apos;s connect</p>
             <p className="mt-1 inline-flex items-center gap-1.5 text-[11px] text-muted-foreground">
               <span className="status-dot status-dot--online" />
-              Open to opportunities · replies within a day
+              Open to full-time roles · replies within a day
             </p>
           </div>
           <ul>
