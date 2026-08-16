@@ -109,8 +109,10 @@ export const projects: Project[] = [
       "/images/feather/feather-3.png",
       "/images/feather/feather-4.png",
       "/images/feather/feather-5.png",
+      "/images/feather/feather-6.png",
     ],
-    demoVideo: "/demo-videos/Feather-demo-video-2min.mp4",
+    // The old 2-minute demo video showed a previous build and a dead URL, so it
+    // was removed. Add a fresh recording here when there is one.
     links: {
       caseStudy: "/projects/capstone-ai-finance",
       liveDemo: "https://www.feathertrade.org/",

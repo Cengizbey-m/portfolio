@@ -11,12 +11,13 @@ import { FriendsBubble } from "@/components/steam/FriendsBubble";
 import { AccountMenu } from "@/components/steam/AccountMenu";
 import { profile } from "@/data/profile";
 
+// The logo on the left and the account menu on the right both already point
+// home, so a third "CENGIZ" entry here was just the same word three times.
 const nav = [
   { href: "/store", label: "STORE" },
   { href: "/library", label: "LIBRARY" },
   { href: "/library/arcade", label: "ARCADE" },
   { href: "/about", label: "ABOUT" },
-  { href: "/", label: profile.displayName.toUpperCase() },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -47,7 +48,6 @@ export function SteamTopNav() {
                 className="h-full w-full object-cover"
               />
             </span>
-            <span className="hidden font-semibold tracking-tight sm:inline">cengiz</span>
           </Link>
 
           <nav className="hidden items-center gap-1 md:flex">
