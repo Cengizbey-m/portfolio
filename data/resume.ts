@@ -2,13 +2,15 @@
  * Resume content, built for ATS parsing first and a human skim second.
  *
  * Rules this file follows:
- *  - Single column, standard section names (Technical Skills, Work Experience,
- *    Projects, Education, Certifications). Creative headings confuse parsers.
+ *  - Single column, standard section names (Skills, Experience, Projects,
+ *    Education, Certifications). Creative headings confuse parsers.
  *  - Every bullet opens with an action verb and, wherever a real number exists,
  *    states the outcome rather than the activity.
  *  - Technology names are spelled the way postings spell them (TypeScript, not
  *    TS; PostgreSQL, not Postgres) so keyword matching actually hits.
- *  - One A4 page. Nothing goes in without something coming out.
+ *  - Skills lead with the full-stack TypeScript set the applications target.
+ *    Breadth that no posting asks for costs a line and dilutes the signal.
+ *  - One A4 page, filled. Nothing goes in without something coming out.
  */
 
 export const resumeContact = {
@@ -19,8 +21,12 @@ export const resumeContact = {
   github: "github.com/Cengizbey-m",
 };
 
+/** Sits directly under the contact block. In Canada this is a screening gate. */
+export const workAuthorization =
+  "Canadian Permanent Resident — authorized to work in Canada, no sponsorship required.";
+
 export const resumeSummary =
-  "Full-stack developer who ships production software end to end. Built and deployed a live booking and payments platform solo for a client with a 1.2M-follower audience, now processing real customer transactions. Strong in TypeScript, React, Next.js, and PostgreSQL, with a network engineering and application security foundation. Comfortable owning a feature from database schema to production deployment.";
+  "Full-stack developer who ships production software end to end. Built and deployed a live booking and payments platform solo for a client with a 1.2M-follower audience, now taking real customer payments weekly. 2026 Sheridan graduate, capstone ranked #1 of 50+ projects. Strong in TypeScript, React, Next.js, PostgreSQL, and application security.";
 
 export type ResumeLink = { label: string; href: string };
 
@@ -35,51 +41,56 @@ export type ResumeRole = {
   bullets: string[];
 };
 
+/**
+ * Labels are kept short and the values trimmed so every row lands on exactly
+ * one line. A wrapped skills row costs a line and reads as clutter.
+ */
 export const skills: { label: string; items: string }[] = [
   {
     label: "Languages",
-    items: "TypeScript, JavaScript, Python, C#, Java, SQL, Swift, HTML/CSS",
+    items: "TypeScript, JavaScript, Python, SQL, C#, Java, HTML/CSS",
   },
   {
-    label: "Frameworks & Libraries",
-    items: "React, Next.js, Node.js, Express.js, FastAPI, .NET, Spring Boot, Tailwind CSS",
+    label: "Frontend",
+    items: "React, Next.js, Tailwind CSS, Zustand, Vite, shadcn/ui, accessible UI",
   },
   {
-    label: "Databases & Cloud",
-    items: "PostgreSQL, Supabase, Prisma, MongoDB, Oracle, SQL Server, Vercel, Google Cloud Run, Docker",
+    label: "Backend & Data",
+    items: "Node.js, Express.js, FastAPI, .NET, REST APIs, PostgreSQL, Supabase, Prisma",
   },
   {
-    label: "Practices & Tools",
-    items: "REST API design, CI/CD, GitHub Actions, Git, Jest, Vitest, pytest, Agile, Linux/UNIX",
+    label: "Cloud & DevOps",
+    items: "Vercel, Docker, Google Cloud Run, GitHub Actions, CI/CD, Git, Jest, Vitest",
   },
   {
-    label: "Security & Networking",
-    items: "OAuth 2.0, JWT/JWKS verification, Row Level Security, rate limiting, CORS/CSP, TCP/IP, IPv6",
+    label: "Security",
+    items: "OAuth 2.0, JWT/JWKS verification, Row Level Security, rate limiting, TCP/IP, Linux",
   },
 ];
 
 export const experience: ResumeRole[] = [
   {
-    title: "Freelance Full-Stack Developer",
-    org: "TheTripMan (Contract, revenue-share)",
+    title: "Contract Full-Stack Developer",
+    org: "TheTripMan",
     location: "Remote, Ontario",
     period: "Aug 2025 – Present",
     bullets: [
       "Engineered and deployed a booking and payments platform solo for a transportation business with a 1.2M-follower audience, generating $1,000+ in revenue across 11+ bookings in a single month.",
-      "Integrated Stripe checkout with webhook-driven confirmation, eliminating unpaid reservations by committing a booking only after payment settles.",
-      "Built an authenticated admin dashboard that replaced manual phone and direct-message booking management, removing the client's daily dependency on a developer.",
-      "Designed the PostgreSQL schema with Prisma and automated email and calendar confirmations, cutting manual follow-up on every reservation to zero.",
-      "Deployed to production on Vercel with GA4 analytics, jest-axe accessibility tests, and a Husky-enforced CI pipeline.",
+      "Integrated Stripe Checkout with webhook confirmation, ending unpaid reservations by booking only after payment settles.",
+      // No hyphenated compound here on purpose: when one breaks across a line,
+      // the PDF text layer extracts it welded together ("directmessage"), which
+      // is exactly the kind of token an ATS fails to match.
+      "Built an authenticated admin dashboard over a Prisma and PostgreSQL schema, replacing phone and direct message booking management and ending the client's daily dependency on a developer.",
+      "Shipped to production on Vercel with automated email and calendar confirmations, jest-axe accessibility tests, and CI.",
     ],
   },
   {
     title: "Freelance Web Developer",
-    org: "Puffy (Client)",
+    org: "Puffy",
     location: "Oakville, ON",
     period: "2026",
     bullets: [
-      "Designed and shipped a mobile-first marketing site for a local dessert business with no prior web presence, establishing its first search-indexed storefront.",
-      "Implementing a QR-code in-store menu and Google Business listing to convert foot traffic into online discovery.",
+      "Engineered a mobile-first responsive site for a GTA dessert business with no prior online presence, tuning Core Web Vitals and local SEO into its first search-indexed storefront, with a QR-code in-store menu and Google Business listing.",
     ],
   },
 ];
@@ -92,10 +103,9 @@ export const sideProjects: ResumeRole[] = [
     period: "2025 – 2026",
     links: [{ label: "Live Demo", href: "https://www.feathertrade.org/" }],
     bullets: [
-      "Ranked #1 of 50+ projects at the 2026 Sheridan capstone showcase, graded 97/100, delivered across a full academic year.",
-      "Identified a critical authentication vulnerability in the production API that allowed any caller to read or write any user account, and verified it against the live service before designing the fix.",
-      "Architected the API gateway that closed it using Vercel Edge Functions, implementing Firebase ID token verification against Google JWKS, allowlist routing, and dual-window rate limiting on shared PostgreSQL counters.",
-      "Audited the database and remediated 12 tables running without Row Level Security, including user profile data, via SQL migration.",
+      "Ranked #1 of 50+ projects at the 2026 Sheridan capstone showcase, graded 97/100 over a full academic year.",
+      "Identified and resolved a critical authentication vulnerability that let any caller read or write any user account, engineering a Vercel Edge gateway with Firebase ID token verification against Google JWKS and dual-window rate limiting.",
+      "Remediated 12 tables running without Row Level Security, including user profile data, via SQL migration.",
     ],
   },
   {
@@ -105,13 +115,12 @@ export const sideProjects: ResumeRole[] = [
     period: "2026 – Present",
     links: [{ label: "Live Demo", href: "https://bloom-cal.vercel.app" }],
     bullets: [
-      "Launched a production planner covering calendar, tasks, habits, notes, journal, goals, and focus timing, live and in daily use.",
-      "Engineered an offline-first sync layer committing writes to local state before debounced PostgreSQL persistence, keeping the interface responsive with zero network latency and fully functional offline.",
-      "Implemented Realtime subscriptions for cross-device sync and enforced Row Level Security across 10 tables, isolating every account at the database layer.",
+      "Launched a production planner covering calendar, tasks, habits, notes, journal, goals, and focus timing, in daily use.",
+      "Engineered an offline-first sync layer committing writes to local state before debounced PostgreSQL persistence, with Realtime cross-device sync and Row Level Security isolating every account across 10 tables.",
     ],
   },
   {
-    title: "Le Pathétique, Multimodal AI Web App",
+    title: "Le Pathétique, AI Cooking Critic Web App",
     org: "BearHacks 2026, solo build",
     tech: "Next.js, React, TypeScript, Google Cloud Vision, Gemini, ElevenLabs",
     period: "2026",
@@ -120,11 +129,13 @@ export const sideProjects: ResumeRole[] = [
       { label: "DevPost", href: "https://devpost.com/software/le-pathetique" },
     ],
     bullets: [
-      "Built a multimodal pipeline chaining Google Cloud Vision, Gemini, and ElevenLabs to convert a photo into spoken critique and generated recipes, solo, within one weekend.",
-      "Implemented an offline fallback mode that degrades gracefully when a third-party API fails, keeping the live demo functional through venue network outages.",
+      "Built a multimodal pipeline chaining Google Cloud Vision, Gemini, and ElevenLabs to turn a photo of a dish into spoken critique and recipes, with an offline fallback that survived venue network outages.",
     ],
   },
 ];
 
+export const coursework =
+  "Coursework: AI & Machine Learning, Cloud Systems, Database Design, .NET/C#, Enterprise Java, Network Security, Linux/UNIX.";
+
 export const certifications =
-  "CCNA IP Addressing & Subnetting · IPv6 Fundamentals (APNIC) · Cisco Introduction to Cybersecurity · LinkedIn Networking Foundations";
+  "CCNA IP Addressing & Subnetting · IPv6 Fundamentals (APNIC) · Cisco Introduction to Cybersecurity";

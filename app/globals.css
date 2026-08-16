@@ -459,15 +459,25 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
 @media print {
   /* The sheet already paints its own white background and dark ink using fixed
      colours, so printing is mostly a matter of removing the site around it. */
-  /* The resume sheet supplies its own margins, so the page box adds none.
-     Anything else printed still renders, just edge to edge. */
+  /* Margins live here, not on the sheet. Print strips the sheet's padding
+     (see .resume-sheet below), so with margin:0 the text ran to the paper
+     edge. The page box is also what a second page would inherit. */
   @page {
     size: A4;
-    margin: 0;
+    margin: 12mm 14mm;
+  }
+
+  /* The site ships a dark theme, and `color-scheme: dark` makes Chromium paint
+     the page canvas — including the @page margin band around the sheet — dark,
+     no matter what background the elements themselves declare. Printing has to
+     opt back into light or the resume comes out framed in black. */
+  html {
+    color-scheme: light !important;
   }
 
   html,
-  body {
+  body,
+  body > div {
     background: #fff !important;
     padding-bottom: 0 !important;
   }
@@ -495,6 +505,8 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
     margin: 0 !important;
   }
 
+  /* The @page box now owns the margins, so the sheet drops its screen padding
+     to avoid double-indenting the content. */
   .resume-sheet {
     box-shadow: none !important;
     outline: 0 !important;

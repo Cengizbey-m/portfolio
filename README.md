@@ -77,11 +77,36 @@ To add a new project:
 
 ### Resume PDF
 
-Add your resume at:
-- `public/resume.pdf`
+The resume is not a hand-made PDF. It is generated from source:
 
-Then visit:
-- `/resume`
+- Content lives in `data/resume.ts`
+- Layout lives in `components/resume/ResumeDocument.tsx`
+- `/resume/print` renders the bare sheet, `/resume` embeds `public/resume.pdf`
+
+To regenerate `public/resume.pdf` after editing content, run the dev server and
+print the print view headlessly:
+
+```bash
+chrome --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf=public/resume.pdf http://localhost:3000/resume/print
+```
+
+Any Chromium works (`msedge` is fine). `--no-pdf-header-footer` is required, or
+the browser stamps a date, URL, and page number onto the sheet.
+
+Two things to preserve when editing:
+
+- **Sizes are in points, not pixels.** A printed page is measured in points, so
+  `9.2pt` puts 9.2pt on paper regardless of pixel ratio. `T` at the top of
+  `ResumeDocument.tsx` is the single tuning knob for density.
+- **The sheet must stay on one page.** Check it before regenerating: open
+  `/resume/print` and compare the sheet height to A4 (1123px at 96dpi).
+
+  ```js
+  const h = document.querySelector('.resume-sheet').getBoundingClientRect().height;
+  console.log((h / (297 / 25.4 * 96) * 100).toFixed(1) + '% of A4');
+  ```
+
+  Aim for 96–98%. At 100% a one-line reflow silently spills onto page two.
 
 ## Contact form (Resend)
 
