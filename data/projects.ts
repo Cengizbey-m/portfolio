@@ -76,7 +76,7 @@ export const projects: Project[] = [
     tags: ["AI/ML", "Web"],
     highlight: "Ranked #1 of 50+ · a year of work",
     short:
-      "A year-long capstone that became a real market insights platform: live market data, next-session forecasts, portfolio and sector analysis, SEC risk extraction, and news sentiment. Judged first overall out of more than fifty projects at Sheridan's 2026 showcase, graded 97/100. I own the API gateway and the security work behind it.",
+      "A year-long capstone that became a real market insights platform: a live prediction model and simulation engine, portfolio and sector analysis, SEC risk extraction, and news sentiment. Judged first overall out of more than fifty projects at Sheridan's 2026 showcase, graded 97/100. I own the API gateway and the security work behind it.",
     problem:
       "Two problems, and the second one turned out to matter more. Prediction tools usually print a confident number and hide the error rate, so we built an evaluation layer that shows the evidence behind every forecast. Then, auditing the running service, I found the API trusted whatever identity the caller claimed in a header, which meant anyone could read or write any account.",
     role:

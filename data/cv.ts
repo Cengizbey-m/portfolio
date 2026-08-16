@@ -15,6 +15,9 @@ export const education = {
   school: "Sheridan College",
   program: "Software Development & Network Engineering (SDNE)",
   credential: "Advanced Diploma",
+  /** Full credential name as it appears on the transcript. */
+  credentialFull:
+    "Advanced Diploma, Computer Systems Technology, Software Development & Network Engineering",
   location: "Oakville, ON",
   grad: "August 2026",
   status: "Graduated",

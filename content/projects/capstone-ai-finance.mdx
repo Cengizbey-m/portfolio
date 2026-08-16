@@ -31,13 +31,26 @@ A market insights platform, not a single prediction widget. The app covers:
   is saying.
 - **Context / News.** Article sentiment scored and aggregated into an overall tone.
 - **Risk.** SEC filing analysis, running as its own Cloud Run service.
-- **MiroFish.** An event simulation that takes several minutes and returns predicted outcomes
-  for selected events against a chosen ticker.
-- **Interpretations** and a settings surface covering theme, currency, chart defaults, and
-  which tickers appear where.
+- **Interpretations.** The heart of the product. This is where the prediction model and the
+  MiroFish simulation API actually run: you pick a ticker and a set of events, the model
+  returns a forecast, and a confidence score sits next to it rather than being buried. A
+  MiroFish run takes several minutes because it is doing real work, not returning a cached
+  guess.
 
-Model confidence is shown alongside every prediction rather than buried, because the point
-of the evaluation work was to make the number auditable.
+Model confidence is surfaced deliberately, because the point of the evaluation work was to
+make the number auditable rather than impressive.
+
+### Where the model actually stands
+
+The forecast horizon is currently about 30 minutes ahead. The goal is a full 24-hour,
+next-session prediction with a materially higher confidence score, and that is the work
+still in front of us.
+
+The limit is not the code, it is the hardware. Training something that can hold a
+24-hour horizon needs GPU time and storage the team does not have, so the honest position
+is a working pipeline with a short horizon rather than a long horizon we cannot defend.
+That is also why the evaluation layer matters: it keeps the interface truthful about a
+model that is still improving.
 
 ## Architecture
 
@@ -133,9 +146,10 @@ invisible behind it.
 
 ## The honest part
 
-The models are baselines, not a research contribution. We do not have the storage, GPU, or
-hardware budget to train anything serious, and the evaluation layer exists precisely so the
-interface says that rather than dressing a weak model in a confident number.
+The models are baselines, not a research contribution, and the forecast horizon is still
+30 minutes rather than the next session we are aiming for. The evaluation layer exists
+precisely so the interface says that rather than dressing a short-horizon model in a
+confident number.
 
 Some findings are still open, and the plan says so with the owner and the command to
 reproduce each one. Two of the three Cloud Run services sit outside the gateway and have

@@ -1,16 +1,23 @@
 /**
  * Structured resume content, deliberately kept to ONE page.
  *
- * The portfolio case studies carry the depth. A resume gets about six seconds
- * of attention, so every bullet here has to earn its line. When something new
- * goes in, something else comes out.
+ * Layout follows the version that was already working: contact block with a
+ * phone number, then skills near the top where both a recruiter's eye and an
+ * ATS look first, then paid work, then projects, then education.
  *
- * Written for humans first, but keyword coverage is intentional: most postings
- * are filtered by an ATS before a person reads them.
+ * A resume gets about six seconds. Every bullet has to earn its line, so when
+ * something new goes in, something else comes out.
  */
 
+/** Contact details that belong on paper, including the ones the site does not show. */
+export const resumeContact = {
+  phone: "+1 437-260-2183",
+  website: "muhammedcengiz.vercel.app",
+  location: "Oakville, ON, Canada",
+};
+
 export const resumeSummary =
-  "Full-stack developer shipping production software people actually use. Built and maintain a booking and payments platform taking live Stripe transactions for a client with a 1.2M-follower audience. On a year-long capstone ranked #1 of 50+ projects, found a critical authentication flaw in the live API and built the gateway, token verification, and rate limiting that closed it. Canadian permanent resident in the Greater Toronto Area.";
+  "Full-stack developer who ships production software end to end. Built and deployed a live booking and payments platform solo for a client with a 1.2M-follower audience, now processing real customer bookings. Strong in TypeScript, React, and Next.js, with a networking and security foundation. Comfortable owning a feature from database to deployment.";
 
 export type ResumeRole = {
   title: string;
@@ -21,88 +28,67 @@ export type ResumeRole = {
   tech?: string;
 };
 
+export const skills: { label: string; items: string }[] = [
+  { label: "Languages", items: "TypeScript, JavaScript, Python, C#, Java, SQL, Swift" },
+  { label: "Frontend", items: "React, Next.js (App Router), Tailwind CSS, shadcn/ui, Vite" },
+  { label: "Backend", items: ".NET (C#), Node/Express, FastAPI, Spring Boot, REST APIs, Stripe" },
+  { label: "Databases", items: "PostgreSQL (Neon, Supabase), Prisma, MongoDB, Oracle, SQL Server" },
+  { label: "Cloud & DevOps", items: "Vercel, Google Cloud Run, Docker, Git/GitHub, CI/CD, Linux/UNIX" },
+  { label: "Other", items: "Firebase Auth, JWT/JWKS, Row Level Security, Jest/Vitest, Machine Learning, iOS (Swift)" },
+];
+
 export const experience: ResumeRole[] = [
   {
-    title: "Full-Stack Developer (Contract)",
-    org: "TheTripMan / Trvoo",
-    location: "Greater Toronto Area",
-    period: "2025 – Present",
+    title: "Freelance Full-Stack Developer",
+    org: "TheTripMan (Contract, revenue-share)",
+    location: "Remote",
+    period: "Aug 2025 – Present",
     bullets: [
-      "Sole developer of a live booking and payments platform for a transportation business with a 1.2M-follower audience, maintained under a revenue-share agreement.",
-      "Integrated Stripe checkout with webhook-driven confirmation, so a booking commits only after payment settles and unpaid reservations never reach the database.",
-      "Replaced DM and phone-based booking with an authenticated admin dashboard, ending the client's daily dependency on a developer.",
-      "Modelled the PostgreSQL schema with Prisma and ship changes against live traffic, with Jest and jest-axe tests enforced by pre-commit hooks and CI.",
+      "Designed, built, and deployed a full booking and payments platform solo for an influencer-led transportation business with a ~1.2M-follower audience, using Next.js 15, TypeScript, Prisma, and Neon PostgreSQL.",
+      "Integrated Stripe end to end with webhook-driven confirmation, an authenticated admin dashboard for booking management, and automated email and calendar confirmations.",
+      "Shipped to production on Vercel with GA4 analytics, jest-axe accessibility tests, and a Husky CI pipeline. The platform processes live bookings, generating $1,000+ in revenue across 11+ bookings in a recent month.",
     ],
-    tech: "Next.js 15, TypeScript, Tailwind, Stripe, PostgreSQL, Prisma, Vercel, Jest",
   },
   {
-    title: "Software Developer, Capstone (Team of 4)",
-    org: "Feather, Sheridan College",
-    location: "Oakville, ON",
-    period: "2025 – 2026",
-    bullets: [
-      "Ranked #1 of 50+ projects at the 2026 capstone showcase, graded 97/100, delivered over a full academic year.",
-      "Found a critical authentication flaw in the live API: it accepted a client-supplied header as proof of identity, letting any caller read or write any account. Verified it against production before designing the fix.",
-      "Built the API gateway that closed it on Vercel edge functions, verifying Firebase ID tokens against Google's JWKS, discarding client-supplied identity, and adding allowlist routing plus dual-window rate limiting on shared PostgreSQL counters.",
-      "Audited the database, found 12 tables running without Row Level Security including user profiles, and shipped the migration that enabled it.",
-    ],
-    tech: "TypeScript, React, Vercel Edge Functions, Firebase Auth, PostgreSQL, Supabase, FastAPI, Python, Docker, GitHub Actions",
-  },
-  {
-    title: "Web Developer (Contract)",
-    org: "Puffy Patisserie",
+    title: "Freelance Web Developer",
+    org: "Puffy (Client)",
     location: "Greater Toronto Area",
     period: "2026",
     bullets: [
-      "Took a local business with no online presence to a launched, mobile-first site, built at phone width first because that is where local discovery happens.",
+      "Designed and shipped a mobile-first marketing site for a local dessert business with no prior web presence; QR-code menu and Google Business integration in progress.",
     ],
-    tech: "Next.js, TypeScript, Tailwind CSS, Vercel",
   },
 ];
 
 export const sideProjects: ResumeRole[] = [
   {
-    title: "Bloom, Cloud-Synced Life Planner",
-    org: "bloom-cal.vercel.app",
-    location: "Sole developer and designer",
+    title: "Feather · AI Market Insights Platform",
+    org: "Capstone, team of 4 · Ranked #1 of 50+ projects",
+    location: "React · TypeScript · FastAPI · Vercel Edge · Firebase Auth · PostgreSQL · Docker",
+    period: "2025 – 2026",
+    bullets: [
+      "Judged first overall out of 50+ projects at the 2026 capstone showcase, graded 97/100, delivered across a full academic year.",
+      "Found a critical authentication flaw in the live API, which accepted a client-supplied header as proof of identity and let any caller read or write any account. Verified it against production, then built the Vercel edge gateway that closed it: Firebase ID token verification against Google's JWKS, allowlist routing, and dual-window rate limiting on shared PostgreSQL counters.",
+      "Audited the database, found 12 tables running without Row Level Security including user profiles, and shipped the migration that enabled it.",
+    ],
+  },
+  {
+    title: "Bloom · Cloud-Synced Life Planner",
+    org: "Independent product · bloom-cal.vercel.app",
+    location: "React 18 · TypeScript · Supabase · PostgreSQL · Zustand · PWA",
     period: "2026 – Present",
     bullets: [
-      "Launched a complete planner covering calendar, tasks, habits, notes, journal, goals, and a focus timer, live and in daily use.",
-      "Built an offline-first sync layer where writes commit locally and sync to PostgreSQL on a debounce, with Realtime subscriptions propagating edits across every signed-in device and Row Level Security isolating accounts across 10 tables.",
+      "Launched a complete planner covering calendar, tasks, habits, notes, journal, goals, and focus timing, live and in daily use.",
+      "Built an offline-first sync layer where writes commit locally then sync to PostgreSQL on a debounce, with Realtime subscriptions across devices and Row Level Security isolating accounts across 10 tables.",
     ],
-    tech: "React 18, TypeScript, Vite, Supabase, PostgreSQL, Zustand, Tailwind, Workbox (PWA)",
   },
   {
-    title: "Le Pathétique, Multimodal AI Application",
-    org: "BearHacks 2026",
-    location: "Solo build, one weekend",
+    title: "Le Pathétique · Multimodal AI Web App",
+    org: "BearHacks 2026 · Solo",
+    location: "Next.js · TypeScript · Google Vision · Gemini · ElevenLabs",
     period: "2026",
     bullets: [
-      "Chained Google Cloud Vision, Gemini Flash, and ElevenLabs into one pipeline turning a photo into spoken critique and generated recipes, with an offline fallback so the demo survives a failed third-party API.",
+      "Built a solo hackathon app that critiques a photo of your cooking: image to Vision labeling to Gemini critique to ElevenLabs voice, in one weekend. Engineered an offline mock mode so the live demo survives venue Wi-Fi or API failures.",
     ],
-    tech: "Next.js 16, React 19, TypeScript, Google Cloud Vision, Gemini, ElevenLabs",
-  },
-];
-
-export const skills: { label: string; items: string }[] = [
-  {
-    label: "Languages",
-    items: "TypeScript, JavaScript, Python, Java, C#, SQL, HTML, CSS",
-  },
-  {
-    label: "Frontend",
-    items: "React, Next.js (App Router), Tailwind CSS, shadcn/ui, Vite, PWA",
-  },
-  {
-    label: "Backend & Data",
-    items: "Node.js, Express, FastAPI, REST API design, JWT auth, Stripe, PostgreSQL, Prisma, Supabase, MongoDB",
-  },
-  {
-    label: "Infrastructure",
-    items: "Docker, Git, GitHub Actions, CI/CD, Vercel, Google Cloud Run, Linux, Jest, Vitest, pytest",
-  },
-  {
-    label: "Security & Networks",
-    items: "Firebase Auth, JWKS verification, Row Level Security, rate limiting, CORS/CSP, TCP/IP, subnetting, IPv6",
   },
 ];
