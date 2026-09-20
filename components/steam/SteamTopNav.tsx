@@ -11,9 +11,11 @@ import { FriendsBubble } from "@/components/steam/FriendsBubble";
 import { AccountMenu } from "@/components/steam/AccountMenu";
 import { profile } from "@/data/profile";
 
-// The logo on the left and the account menu on the right both already point
-// home, so a third "CENGIZ" entry here was just the same word three times.
+// The logo already points home, but an avatar is not a signpost: people look
+// for the word. HOME is labelled rather than named "CENGIZ" so it does not
+// repeat what the logo beside it is already saying.
 const nav = [
+  { href: "/", label: "HOME" },
   { href: "/store", label: "STORE" },
   { href: "/library", label: "LIBRARY" },
   { href: "/library/arcade", label: "ARCADE" },

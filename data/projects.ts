@@ -65,7 +65,10 @@ export const projects: Project[] = [
     ],
     links: {
       caseStudy: "/projects/thetripman",
-      liveDemo: "https://www.trvoo.com",
+      // The booking platform I built. trvoo.com is the same company's rider-app
+      // marketing site and is linked from the case study instead, so the card
+      // keeps one unambiguous "this is the thing I made" link.
+      liveDemo: "https://www.thetripman.com",
     },
     confidentialityNote:
       "The production repository is private for business reasons. Screenshots avoid customer and booking data.",
@@ -74,13 +77,13 @@ export const projects: Project[] = [
     title: "Feather (Capstone • AI Market Insights Platform)",
     slug: "capstone-ai-finance",
     tags: ["AI/ML", "Web"],
-    highlight: "Ranked #1 of 50+ · a year of work",
+    highlight: "Ranked #1 of 50+ · still building",
     short:
-      "A year-long capstone that became a real market insights platform: a live prediction model and simulation engine, portfolio and sector analysis, SEC risk extraction, and news sentiment. Judged first overall out of more than fifty projects at Sheridan's 2026 showcase, graded 97/100. I own the API gateway and the security work behind it.",
+      "A year-long capstone that became a real market insights platform: a live prediction model and simulation engine, portfolio and sector analysis, SEC risk extraction, and news sentiment. Judged first overall out of more than fifty projects at Sheridan's 2026 showcase, graded 97/100. The team kept going after graduation and is still building on it. I own the API gateway and the security work behind it.",
     problem:
       "Two problems, and the second one turned out to matter more. Prediction tools usually print a confident number and hide the error rate, so we built an evaluation layer that shows the evidence behind every forecast. Then, auditing the running service, I found the API trusted whatever identity the caller claimed in a header, which meant anyone could read or write any account.",
     role:
-      "Team of four, two terms, one full academic year. I own the API gateway that now fronts the backend, the authentication and rate limiting inside it, and the security review of the whole system. Earlier in the project I owned the model evaluation layer and the API contract between the Python service and the React client.",
+      "Team of four, two terms, one full academic year, and still running past it. I own the API gateway that now fronts the backend, the authentication and rate limiting inside it, and the security review of the whole system. Earlier in the project I owned the model evaluation layer and the API contract between the Python service and the React client.",
     stack: [
       "React 18 + TypeScript (Vite), TanStack Query, Zustand, Tailwind",
       "Vercel edge functions (API gateway)",
@@ -210,15 +213,15 @@ export const projects: Project[] = [
     tags: ["Web"],
     highlight: "Second paying client",
     short:
-      "A marketing site for a local patisserie that had no web presence at all. Built mobile-first, because nearly everyone finds a dessert shop on a phone.",
+      "The launch site for a boutique patisserie opening on Spadina in Toronto. Built mobile-first, because nearly everyone finds a dessert shop on a phone.",
     problem:
-      "The shop existed on foot traffic and word of mouth. Customers could not find hours, location, or what was actually on offer without walking in, and search results pointed nowhere.",
+      "A boutique patisserie opening on Spadina in autumn 2026, with nothing online yet. Before a shop opens it has no foot traffic to fall back on, so the site has to do the work a storefront window normally does: say what they make, where they will be, and when they open.",
     role: "Sole developer. Design, build, deployment, and ongoing additions.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     impact: [
-      "Took a business with no web presence to a fast, mobile-first site that answers the three questions customers actually have: what, where, and when.",
+      "Built the launch presence for a business that has no storefront yet, so the site is the only thing a customer can find before opening day.",
       "Built the layout mobile-first, since a dessert shop is found on a phone far more often than a desktop.",
-      "Currently adding a QR-code menu for in-store scanning and a Google Business listing so the shop shows up in local search.",
+      "Currently adding a QR-code menu for in-store scanning and a Google Business listing so the shop shows up in local search the day it opens.",
     ],
     coverImage: "/images/puffy/puffy-1.png",
     gallery: [

@@ -7,12 +7,29 @@ export type Review = {
   postedAgo: string;
   helpful: number;
   funny: number;
+  /**
+   * True only when a real, named person actually said these words and it can be
+   * produced on request. Everything else here is a Steam-style joke, and the
+   * section header says so. Never set this on something invented.
+   */
+  verified?: boolean;
 };
 
-// These "reviews" are a wink, not real testimonials. A little Steam-style fun.
-// The profile section says as much, and the only real way to reach me is the
-// contact form right below them. Swap these out the day I have real quotes to show.
+// Two of these are a wink. The verified one is a real quote from a real client,
+// taken word for word from a signed engagement letter, and is reproducible on
+// request. Do not add unverified quotes attributed to identifiable people.
 export const reviews: Review[] = [
+  {
+    author: "Bekir Ozel",
+    role: "TheTripMan & Trvoo, client",
+    recommended: true,
+    hoursOnRecord: 0,
+    body: "Mr. Cengiz has consistently demonstrated a high level of technical expertise, professionalism, reliability, and commitment. His contributions have been valuable to the continued operation and growth of our platform.",
+    postedAgo: "Signed engagement letter, July 2026",
+    helpful: 0,
+    funny: 0,
+    verified: true,
+  },
   {
     author: "Hiring Manager",
     role: "Definitely a real person",
@@ -24,16 +41,6 @@ export const reviews: Review[] = [
     funny: 88,
   },
   {
-    author: "Capstone Teammate",
-    role: "Team of 4, ranked #1 of 50+",
-    recommended: true,
-    hoursOnRecord: 612,
-    body: "Owned his pieces end to end and caught the problems before demo day. Knew when to call a meeting and when to just open a PR. We finished first for a reason.",
-    postedAgo: "Posted after the showcase",
-    helpful: 298,
-    funny: 14,
-  },
-  {
     author: "Production Server",
     role: "Has been online for 3 months",
     recommended: true,
@@ -42,15 +49,5 @@ export const reviews: Review[] = [
     postedAgo: "Posted from /var/log",
     helpful: 1024,
     funny: 256,
-  },
-  {
-    author: "TheTripMan Client",
-    role: "Paying customer",
-    recommended: true,
-    hoursOnRecord: 184,
-    body: "Took my rough idea and turned it into a real booking site. Communicated clearly the whole way. Would hire again.",
-    postedAgo: "Posted 2 months ago",
-    helpful: 187,
-    funny: 3,
   },
 ];

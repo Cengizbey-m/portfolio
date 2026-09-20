@@ -1,15 +1,13 @@
 import { profile } from "@/data/profile";
 import { education } from "@/data/cv";
 import {
-  resumeSummary,
   resumeContact,
   workAuthorization,
-  experience,
-  sideProjects,
-  skills,
   coursework,
   certifications,
+  getResumeVariant,
   type ResumeRole,
+  type ResumeVariantId,
 } from "@/data/resume";
 
 /**
@@ -132,7 +130,13 @@ function Entry({ title, org, tech, location, period, links, bullets }: ResumeRol
   );
 }
 
-export function ResumeDocument() {
+/**
+ * @param variant which sheet to render. The title line, summary, skills order,
+ *   and bullet emphasis change; the contact block and education do not.
+ */
+export function ResumeDocument({ variant }: { variant?: ResumeVariantId } = {}) {
+  const v = getResumeVariant(variant);
+
   return (
     <article
       className="resume-sheet mx-auto w-full max-w-[210mm] bg-white px-[14mm] py-[12mm] text-black"
@@ -147,7 +151,7 @@ export function ResumeDocument() {
           {profile.realName}
         </h1>
         <p className="mt-[3pt] font-bold text-black" style={{ fontSize: T.role }}>
-          {profile.role}
+          {v.role}
         </p>
         <p className="mt-[4pt] leading-[1.45] text-black" style={{ fontSize: T.contact }}>
           {resumeContact.location} &nbsp;·&nbsp; {resumeContact.phone} &nbsp;·&nbsp;{" "}
@@ -178,13 +182,13 @@ export function ResumeDocument() {
 
       <Section title="Summary">
         <p className="text-justify text-black" style={{ fontSize: T.body, lineHeight: T.leading }}>
-          {resumeSummary}
+          {v.summary}
         </p>
       </Section>
 
       <Section title="Skills">
         <dl className="space-y-[3pt]">
-          {skills.map((s) => (
+          {v.skills.map((s) => (
             <div key={s.label} className="flex gap-[10pt]">
               <dt
                 className="w-[27mm] shrink-0 font-bold text-black"
@@ -204,13 +208,13 @@ export function ResumeDocument() {
       </Section>
 
       <Section title="Experience">
-        {experience.map((r) => (
+        {v.experience.map((r) => (
           <Entry key={r.title + r.org} {...r} />
         ))}
       </Section>
 
       <Section title="Projects">
-        {sideProjects.map((r) => (
+        {v.projects.map((r) => (
           <Entry key={r.title} {...r} />
         ))}
       </Section>

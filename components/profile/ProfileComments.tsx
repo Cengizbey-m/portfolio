@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MessageSquare, Send } from "lucide-react";
+import { BadgeCheck, MessageSquare, Send } from "lucide-react";
 import { reviews } from "@/data/reviews";
 
 const AVATAR_COLORS = [
@@ -27,7 +27,7 @@ export function ProfileComments() {
           {reviews.length}
         </span>
         <span className="ml-auto text-[11px] italic text-muted-foreground">
-          Written in good fun. The real way to reach me is below.
+          The verified one is a real client quote. The rest are written in good fun.
         </span>
       </div>
 
@@ -44,6 +44,14 @@ export function ProfileComments() {
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-baseline gap-x-2">
                 <span className="text-sm font-semibold text-[hsl(var(--steam-link))]">{r.author}</span>
+                {r.verified ? (
+                  <span
+                    className="inline-flex translate-y-[2px] items-center gap-1 rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.06em] text-emerald-300 ring-1 ring-emerald-400/25"
+                    title="A real quote from a real client, reproducible on request"
+                  >
+                    <BadgeCheck className="h-3 w-3" /> Verified
+                  </span>
+                ) : null}
                 <span className="text-[11px] text-muted-foreground">{r.role}</span>
                 <span className="ml-auto text-[11px] text-muted-foreground">{r.postedAgo}</span>
               </div>
