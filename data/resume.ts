@@ -18,6 +18,14 @@
  *
  * Every bullet below is traceable to something that actually happened. If a
  * claim cannot be backed in an interview it does not belong here.
+ *
+ * HEIGHT BUDGET. globals.css sets `@page { size: A4; margin: 12mm 14mm }`, so
+ * printing has 297 - 24 = 273mm of content height. Print also strips the
+ * sheet's own 12mm top and bottom padding, so a sheet measured in the browser
+ * must come in at or under 273 + 24 = **297mm**, and 293mm is the number to
+ * aim for so a font fallback does not tip it over. Do not trust a measurement
+ * alone: after changing content, print the variant and count the pages, because
+ * one page is the whole point.
  */
 
 export const resumeContact = {
@@ -171,7 +179,7 @@ const fullstack: ResumeVariant = {
       "Shipped to production on Vercel with automated email and calendar confirmations, jest-axe accessibility tests, and CI.",
     ]),
     puffy([
-      "Built and still maintain the site for a Toronto patisserie on Spadina, taking it from no web presence to a mobile-first storefront now indexed in Google Search and Maps, with a QR-code in-store menu in progress.",
+      "Built and still maintain the site for a Toronto patisserie, taking it from no web presence to a mobile-first storefront now indexed in Google Search and Maps.",
     ]),
   ],
   projects: [
@@ -180,9 +188,11 @@ const fullstack: ResumeVariant = {
       "Identified and resolved a critical authentication vulnerability that let any caller read or write any user account, engineering a Vercel Edge gateway with Firebase ID token verification against Google JWKS and dual-window rate limiting.",
       "Remediated 12 tables running without Row Level Security, including user profile data, via SQL migration.",
     ]),
+    // One merged bullet rather than two: the sheet was 2mm over the one-page
+    // budget and this is the cheapest line to buy back. See the height note at
+    // the top of the file.
     bloom([
-      "Launched a production planner covering calendar, tasks, habits, notes, journal, goals, and focus timing, in daily use.",
-      "Engineered an offline-first sync layer committing writes to local state before debounced PostgreSQL persistence, with Realtime cross-device sync and Row Level Security isolating every account across 10 tables.",
+      "Launched a production planner across 7 modules with an offline-first sync layer: writes land in local state before debounced PostgreSQL persistence, with Realtime cross-device sync and Row Level Security isolating every account across 10 tables.",
     ]),
     pathetique([
       "Built a multimodal pipeline chaining Google Cloud Vision, Gemini, and ElevenLabs to turn a photo of a dish into spoken critique and recipes, with an offline fallback that survived venue network outages.",
