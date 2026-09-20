@@ -82,9 +82,13 @@ const tripman = (bullets: string[]): ResumeRole => ({
 
 const puffy = (bullets: string[]): ResumeRole => ({
   title: "Freelance Web Developer",
+  // The brand is "Puffy" (the site says so in its title and throughout its
+  // copy). The domain is puuffy.ca, which is not a typo: it is the domain the
+  // owner bought. Keep the two spellings straight.
   org: "Puffy",
   location: "Toronto, ON",
-  period: "2026",
+  period: "2026 - Present",
+  links: [{ label: "puuffy.ca", href: "https://www.puuffy.ca" }],
   bullets,
 });
 
@@ -167,7 +171,7 @@ const fullstack: ResumeVariant = {
       "Shipped to production on Vercel with automated email and calendar confirmations, jest-axe accessibility tests, and CI.",
     ]),
     puffy([
-      "Engineered the launch site for a Toronto patisserie opening in 2026, building its first search-indexed web presence mobile-first, with a QR-code in-store menu and a Google Business listing ready for opening day.",
+      "Built and still maintain the site for a Toronto patisserie on Spadina, taking it from no web presence to a mobile-first storefront now indexed in Google Search and Maps, with a QR-code in-store menu in progress.",
     ]),
   ],
   projects: [
@@ -232,7 +236,7 @@ const qa: ResumeVariant = {
       "Ship and validate every change against live production traffic, where a defect is a failed customer booking rather than a ticket in a backlog.",
     ]),
     puffy([
-      "Built and tested a launch site across device sizes for a Toronto patisserie, tuning Core Web Vitals into its first search-indexed web presence.",
+      "Built and tested the site for a Toronto patisserie across device sizes, tuning Core Web Vitals into its first search-indexed web presence, now live and maintained against an open storefront.",
     ]),
   ],
   projects: [
@@ -295,7 +299,7 @@ const solutions: ResumeVariant = {
       "Built an authenticated admin dashboard so the owner runs the business directly, ending their daily dependency on a developer, and act as their single technical contact for deployment, incident response, and ongoing changes against live traffic.",
     ]),
     puffy([
-      "Scoped and delivered the launch site for a Toronto patisserie, including a QR-code in-store menu and a Google Business listing so the shop appears in local search on opening day.",
+      "Scoped and delivered the site for a Toronto patisserie and still handle its updates, including the Google Business listing that puts it on Maps and a QR-code in-store menu in progress.",
     ]),
   ],
   projects: [

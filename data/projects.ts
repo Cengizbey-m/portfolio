@@ -211,17 +211,19 @@ export const projects: Project[] = [
     title: "Puffy (Client • Patisserie Website)",
     slug: "puffy",
     tags: ["Web"],
-    highlight: "Second paying client",
+    highlight: "Second paying client · still on it",
     short:
-      "The launch site for a boutique patisserie opening on Spadina in Toronto. Built mobile-first, because nearly everyone finds a dessert shop on a phone.",
+      "The site for a boutique patisserie on Spadina in Toronto. I built it before the shop opened and still maintain it now that it has. Mobile-first, because nearly everyone finds a dessert shop on a phone.",
     problem:
-      "A boutique patisserie opening on Spadina in autumn 2026, with nothing online yet. Before a shop opens it has no foot traffic to fall back on, so the site has to do the work a storefront window normally does: say what they make, where they will be, and when they open.",
-    role: "Sole developer. Design, build, deployment, and ongoing additions.",
+      "A boutique patisserie preparing to open on Spadina, with nothing online at all. Before a shop opens it has no foot traffic to fall back on, so the site had to do the work a storefront window normally does: say what they make, where they will be, and when they open. The shop has since opened, and the site's job changed with it.",
+    role:
+      "Sole developer. Design, build, deployment, and the ongoing work since launch: content updates, the Google listing, and what comes next.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     impact: [
-      "Built the launch presence for a business that has no storefront yet, so the site is the only thing a customer can find before opening day.",
+      "Took a business from no web presence at all to a site that carried it through opening, first as the only thing a customer could find and now as the place they check before walking in.",
       "Built the layout mobile-first, since a dessert shop is found on a phone far more often than a desktop.",
-      "Currently adding a QR-code menu for in-store scanning and a Google Business listing so the shop shows up in local search the day it opens.",
+      "Got the shop onto Google Search and Maps, so it turns up in local search rather than only for people already walking past it.",
+      "Still on it: a QR-code menu for in-store scanning, and menu and content updates as the kitchen's offering settles.",
     ],
     coverImage: "/images/puffy/puffy-1.png",
     gallery: [
@@ -233,6 +235,9 @@ export const projects: Project[] = [
     ],
     links: {
       caseStudy: "/projects/puffy",
+      // The brand is "Puffy"; the domain the owner bought is puuffy.ca. Both
+      // spellings are correct, for different things.
+      liveDemo: "https://www.puuffy.ca",
       github: "https://github.com/Cengizbey-m/Puffy",
     },
   },
