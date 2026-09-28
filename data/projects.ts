@@ -32,7 +32,7 @@ export const projects: Project[] = [
     tags: ["Web", "Networking"],
     highlight: "Live · taking real payments",
     short:
-      "A booking and payments platform I built and still run for a transportation business with a 1.2M-follower audience. Customers book and pay online through Stripe, and the owner manages every reservation from an admin dashboard instead of a phone.",
+      "A booking and payments platform I built and still run for a transportation business with a 1.7M-follower audience. Customers book and pay online through Stripe, and the owner manages every reservation from an admin dashboard instead of a phone.",
     problem:
       "The business had a large social following but no way to convert it. Bookings arrived through DMs and phone calls, payment happened in person, and nothing was tracked. They needed customers to browse services, reserve a time, and pay up front without a developer involved day to day.",
     role:

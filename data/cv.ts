@@ -2,14 +2,14 @@
 
 export const bio = [
   "I'm Muhammed Cengiz, a full-stack developer in the Greater Toronto Area. I graduated from Sheridan College in August 2026 with a diploma in Software Development and Network Engineering, where my capstone team's product was ranked first out of more than fifty projects at the year-end showcase.",
-  "Most of what I know came from shipping things people actually use. I built and still maintain a booking and payments platform for a transportation business with a 1.2M-follower audience, where real customers pay through Stripe every week. I designed and launched Bloom, a cloud-synced planner with Google sign-in and offline support. I also built a site for a local patisserie that needed a first real web presence.",
+  "Most of what I know came from shipping things people actually use. I built and still maintain a booking and payments platform for a transportation business with a 1.7M-follower audience, where real customers pay through Stripe every week. I designed and launched Bloom, a cloud-synced planner with Google sign-in and offline support. I also built a site for a local patisserie that needed a first real web presence.",
   "The work I like most is owning a feature from the database up: designing the schema, writing the API, building the interface, and getting it deployed without drama. My networking and security coursework means I understand the layer underneath the app, which helps when something breaks in production at an inconvenient hour.",
   "I'm a Canadian permanent resident, so there's no sponsorship or work-permit paperwork involved. I'm looking for a full-time software developer role on a team where code review is normal and I can keep getting better.",
 ];
 
 /** Short version for tight spaces (store page, meta descriptions, resume summary). */
 export const bioShort =
-  "Full-stack developer in the GTA. Sheridan SDNE graduate whose capstone ranked #1 of 50+ at the 2026 showcase. I ship production web apps: a live booking and payments platform for a client with a 1.2M-follower audience, and Bloom, a cloud-synced planner. Canadian permanent resident.";
+  "Full-stack developer in the GTA. Sheridan SDNE graduate whose capstone ranked #1 of 50+ at the 2026 showcase. I ship production web apps: a live booking and payments platform for a client with a 1.7M-follower audience, and Bloom, a cloud-synced planner. Canadian permanent resident.";
 
 export const education = {
   school: "Sheridan College",
@@ -69,7 +69,7 @@ export const credentials = [
     id: "clients",
     stat: "2 paying",
     title: "Clients shipped for",
-    body: "A transportation business with a 1.2M-follower audience, and a local patisserie.",
+    body: "A transportation business with a 1.7M-follower audience, and a local patisserie.",
     icon: "Briefcase",
   },
   {

@@ -97,7 +97,7 @@ export function StoreHero() {
       <p className="text-sm text-muted-foreground md:text-base">
         Full-stack developer in the Greater Toronto Area. Sheridan College graduate whose capstone
         was ranked first out of more than fifty projects. I build and maintain a live booking and
-        payments platform for a client with a 1.2M-follower audience. Canadian permanent resident,
+        payments platform for a client with a 1.7M-follower audience. Canadian permanent resident,
         available for full-time work now.
       </p>
 

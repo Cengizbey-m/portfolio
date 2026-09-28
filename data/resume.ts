@@ -145,7 +145,7 @@ const fullstack: ResumeVariant = {
   sendWhen:
     "Software Developer, Full-Stack Developer, Web Developer, Junior/Intermediate Developer, Frontend or Backend Developer.",
   summary:
-    "Full-stack developer who ships production software end to end. Built and still runs a live booking and payments platform solo for a client with a 1.2M-follower audience, handling 11 to 13 customer bookings in a peak month. 2026 Sheridan graduate, capstone ranked #1 of 50+ projects. Strong in TypeScript, React, Next.js, PostgreSQL, and application security.",
+    "Full-stack developer who ships production software end to end. Built and still runs a live booking and payments platform solo for a client with a 1.7M-follower audience, handling 11 to 13 customer bookings in a peak month. 2026 Sheridan graduate, capstone ranked #1 of 50+ projects. Strong in TypeScript, React, Next.js, PostgreSQL, and application security.",
   skills: [
     {
       label: "Languages",
@@ -170,7 +170,7 @@ const fullstack: ResumeVariant = {
   ],
   experience: [
     tripman([
-      "Engineered and deployed a booking and payments platform solo for a transportation business with a 1.2M-follower audience, now handling 11 to 13 customer bookings in a peak month under an active revenue-share contract.",
+      "Engineered and deployed a booking and payments platform solo for a transportation business with a 1.7M-follower audience, now handling 11 to 13 customer bookings in a peak month under an active revenue-share contract.",
       "Integrated Stripe Checkout with webhook confirmation, ending unpaid reservations by confirming a booking only after payment settles.",
       // No hyphenated compound here on purpose: when one breaks across a line,
       // the PDF text layer extracts it welded together ("directmessage"), which
@@ -279,7 +279,7 @@ const solutions: ResumeVariant = {
   sendWhen:
     "Solutions Engineer, Implementation Engineer, Integration Engineer, Technical Consultant, Application Support Engineer, Technical Account Manager (associate level).",
   summary:
-    "Engineer who takes a client from requirements to a live system and then supports it. Delivered a booking and payments platform solo for a transportation business with a 1.2M-follower audience, integrating Stripe, calendar sync, and transactional email, and remain their single technical contact. 2026 Sheridan graduate with a networking and Linux background, capstone ranked #1 of 50+ projects.",
+    "Engineer who takes a client from requirements to a live system and then supports it. Delivered a booking and payments platform solo for a transportation business with a 1.7M-follower audience, integrating Stripe, calendar sync, and transactional email, and remain their single technical contact. 2026 Sheridan graduate with a networking and Linux background, capstone ranked #1 of 50+ projects.",
   skills: [
     {
       label: "Integration",

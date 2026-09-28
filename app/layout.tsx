@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s · Muhammed Cengiz",
   },
   description:
-    "Full-stack developer in the Greater Toronto Area. I ship production web apps: a live booking and payments platform for a client with a 1.2M-follower audience, and Bloom, a cloud-synced planner. Capstone ranked #1 of 50+. Canadian permanent resident, open to full-time roles.",
+    "Full-stack developer in the Greater Toronto Area. I ship production web apps: a live booking and payments platform for a client with a 1.7M-follower audience, and Bloom, a cloud-synced planner. Capstone ranked #1 of 50+. Canadian permanent resident, open to full-time roles.",
   keywords: [
     "Muhammed Cengiz",
     "Full-Stack Developer",
