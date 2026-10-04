@@ -4,7 +4,7 @@ import * as React from "react";
 import { usePathname } from "next/navigation";
 import { SteamTopNav } from "@/components/steam/SteamTopNav";
 import { SteamBackground } from "@/components/steam/SteamBackground";
-import { AmbientBackground } from "@/components/steam/AmbientBackground";
+import { StoreSubNav } from "@/components/steam/StoreSubNav";
 import { StatusBar } from "@/components/steam/StatusBar";
 import { Footer } from "@/components/Footer";
 import { AchievementsProvider } from "@/components/steam/AchievementsProvider";
@@ -18,6 +18,9 @@ const FULL_BLEED_ROUTES = ["/replay"];
 /** Pages rendered with no site chrome at all, because they become a PDF. */
 const BARE_ROUTES = ["/resume/print"];
 
+/** Store pages get the blue store bar under the header, as on Steam. */
+const STORE_ROUTES = ["/store", "/projects"];
+
 function matches(pathname: string, routes: string[]) {
   return routes.some((p) => pathname === p || pathname.startsWith(`${p}/`));
 }
@@ -26,6 +29,7 @@ export function SteamShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const fullBleed = matches(pathname, FULL_BLEED_ROUTES);
   const showBackground = pathname === "/";
+  const storeBar = matches(pathname, STORE_ROUTES);
 
   // The print view is the source for the generated PDF, so nothing may wrap it.
   if (matches(pathname, BARE_ROUTES)) {
@@ -36,8 +40,7 @@ export function SteamShell({ children }: { children: React.ReactNode }) {
     <AchievementsProvider>
       <CardDropProvider>
         <div className="relative flex min-h-dvh flex-col">
-          {/* Calm drift behind every page, then the brighter hero backdrop on home. */}
-          <AmbientBackground />
+          {/* Home gets an animated profile background, like a Steam profile. */}
           {showBackground ? <SteamBackground /> : null}
           <SteamTopNav />
 
@@ -48,6 +51,7 @@ export function SteamShell({ children }: { children: React.ReactNode }) {
               </div>
             ) : (
               <div className="mx-auto w-full max-w-[80rem] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+                {storeBar ? <StoreSubNav /> : null}
                 {children}
               </div>
             )}

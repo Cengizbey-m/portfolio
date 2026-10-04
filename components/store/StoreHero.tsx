@@ -16,7 +16,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { ProjectMedia } from "@/components/projects/ProjectMedia";
 import { profile } from "@/data/profile";
 import { sfx } from "@/lib/sound";
 import { unlock } from "@/lib/achievements";
@@ -47,17 +47,17 @@ const features = [
 
 // Real screenshots from shipped work, used as the store gallery.
 const screenshots = [
-  "/images/tripman/tripman-1.png",
-  "/images/bloom/bloom-1.png",
-  "/images/feather/feather-1.png",
-  "/images/tripman/tripman-2.png",
-  "/images/bloom/bloom-3.png",
+  "/images/tripman/tm-1.webp",
+  "/images/feather/ft-1.webp",
+  "/images/bloom/bl-1.webp",
+  "/images/puffy/pf-1.webp",
+  "/images/tripman/tm-2.webp",
+  "/images/bloom/bl-2.webp",
 ];
 
 export function StoreHero() {
   const [inCart, setInCart] = React.useState(false);
   const [wishlisted, setWishlisted] = React.useState(false);
-  const [selected, setSelected] = React.useState(0);
 
   function addToCart() {
     sfx.click();
@@ -103,38 +103,11 @@ export function StoreHero() {
 
       {/* Hero: screenshots + buy box */}
       <div className="grid gap-4 lg:grid-cols-[1fr_360px]">
-        <div className="space-y-3">
-          <div className="overflow-hidden rounded-md border border-border bg-black/30 ring-1 ring-white/5">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={screenshots[selected]}
-              alt=""
-              className="aspect-[16/9] w-full object-cover"
-            />
-          </div>
-          <div className="grid grid-cols-5 gap-2">
-            {screenshots.map((src, i) => (
-              <button
-                key={src}
-                type="button"
-                onClick={() => {
-                  setSelected(i);
-                  sfx.hover();
-                }}
-                className={`overflow-hidden rounded-sm ring-1 ring-white/10 transition ${
-                  selected === i ? "outline outline-2 outline-[hsl(var(--steam-link))]" : ""
-                }`}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="" className="aspect-[16/9] w-full object-cover" />
-              </button>
-            ))}
-          </div>
-        </div>
+        <ProjectMedia gallery={screenshots} title="Cengiz" />
 
         <aside className="space-y-3">
-          <div className="overflow-hidden rounded-md border border-border bg-[hsl(var(--steam-panel))] ring-1 ring-white/5">
-            <div className="border-b border-border p-3">
+          <div className="panel overflow-hidden">
+            <div className="border-b border-black/30 p-3">
               <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                 Product
               </p>
@@ -158,13 +131,13 @@ export function StoreHero() {
 
               <div className="mt-3 flex flex-col gap-2">
                 {!inCart ? (
-                  <Button onClick={addToCart}>
-                    <ShoppingCart className="h-4 w-4" /> Add to cart
-                  </Button>
+                  <button type="button" onClick={addToCart} className="steam-btn-green h-10 text-[15px]">
+                    <ShoppingCart className="h-4 w-4" /> Add to Cart
+                  </button>
                 ) : (
-                  <Button onClick={checkout}>
-                    <Tag className="h-4 w-4" /> Checkout (opens email)
-                  </Button>
+                  <button type="button" onClick={checkout} className="steam-btn-green h-10 text-[15px]">
+                    <Tag className="h-4 w-4" /> Purchase for myself (opens email)
+                  </button>
                 )}
                 <Button
                   variant="secondary"
@@ -216,11 +189,11 @@ export function StoreHero() {
           </div>
 
           {/* Tags */}
-          <div className="rounded-md border border-border bg-[hsl(var(--steam-panel))] p-3 ring-1 ring-white/5">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              Popular tags for this product
+          <div className="panel p-3">
+            <p className="text-[12px] text-[#556772] light:text-muted-foreground">
+              Popular user-defined tags for this product:
             </p>
-            <div className="mt-2 flex flex-wrap gap-2">
+            <div className="mt-2 flex flex-wrap gap-1">
               {[
                 "Full-stack",
                 "Next.js",
@@ -234,7 +207,9 @@ export function StoreHero() {
                 "Canadian PR",
                 "Available now",
               ].map((t) => (
-                <Badge key={t}>{t}</Badge>
+                <span key={t} className="steam-tag">
+                  {t}
+                </span>
               ))}
             </div>
           </div>

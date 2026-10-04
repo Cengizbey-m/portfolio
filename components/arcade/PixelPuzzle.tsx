@@ -20,7 +20,7 @@ import { unlock } from "@/lib/achievements";
 const SIZES = [3, 4, 5] as const;
 type Size = (typeof SIZES)[number];
 
-const DEFAULT_IMAGE = "/images/bloom/bloom-1.png";
+const DEFAULT_IMAGE = "/images/tripman/tm-1.webp";
 const BEST_KEY = "cengiz.puzzle.best.v1";
 
 type Board = number[]; // value = original tile index, last index = blank

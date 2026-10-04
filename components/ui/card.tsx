@@ -10,7 +10,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-md border border-border bg-[linear-gradient(180deg,hsla(0,0%,100%,0.06),transparent_40%),hsl(var(--steam-panel))] text-card-foreground shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]",
+        "panel text-card-foreground",
         className
       )}
       {...props}

@@ -126,11 +126,20 @@ export function LibraryShell() {
   );
   const [query, setQuery] = React.useState("");
   const [category, setCategory] = React.useState<CategoryFilter>("All");
+
+  // The store bar's search box lands here as /library?q=term.
+  React.useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("q");
+    if (q) setQuery(q);
+  }, []);
   const [activeSlug, setActiveSlug] = React.useState<string>(allItems[0]?.slug ?? "");
 
   const filtered = React.useMemo(() => {
     return allItems.filter((it) => {
-      if (query && !it.title.toLowerCase().includes(query.toLowerCase())) return false;
+      if (query) {
+        const haystack = `${it.title} ${it.short} ${it.tags.join(" ")}`.toLowerCase();
+        if (!haystack.includes(query.toLowerCase())) return false;
+      }
       if (category === "All") return true;
       if (category === "Projects") return it.kind === "project";
       if (category === "Arcade") return it.kind === "arcade";

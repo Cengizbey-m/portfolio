@@ -1,19 +1,25 @@
 @import "tailwindcss";
 
-/* Tailwind v4 theme tokens (Steam-inspired palette) */
-:root {
-  /* Steam dark defaults */
-  --background: 215 30% 14%; /* ~#1b2838 */
-  --foreground: 206 28% 83%; /* ~#c7d5e0 */
+/* next-themes puts .light on <html>; `light:` utilities target it. */
+@custom-variant light (&:where(.light, .light *));
 
-  --card: 213 33% 16%; /* ~#16202d */
-  --card-foreground: 206 28% 83%;
+/* Tailwind v4 theme tokens: the Steam store palette, matched to the real thing */
+:root {
+  /* Steam's font is Motiva Sans; anyone with Steam installed gets it, everyone
+     else gets Arial, which is what the store used for years. */
+  --font-steam: "Motiva Sans", Arial, Helvetica, sans-serif;
+
+  --background: 213 35% 16%; /* #1b2838, the store page */
+  --foreground: 206 26% 82%; /* #c6d4df, body text */
+
+  --card: 214 34% 13%; /* #16202d */
+  --card-foreground: 206 26% 82%;
 
   --muted: 213 28% 20%; /* ~#223244 */
-  --muted-foreground: 210 10% 63%; /* ~#8f98a0 */
+  --muted-foreground: 208 8% 59%; /* #8f98a0 */
 
-  --border: 214 18% 28%; /* ~#3b4b5f */
-  --ring: 206 83% 68%; /* ~#66c0f4 */
+  --border: 211 30% 23%; /* ~#2a3f55, Steam keeps edges quiet */
+  --ring: 202 86% 68%; /* #66c0f4 */
 
   --primary: 206 83% 68%; /* accent */
   --primary-foreground: 214 55% 9%;
@@ -22,10 +28,11 @@
   --secondary-foreground: 206 28% 83%;
 
   /* Extra Steam-ish tokens used via utility classes */
-  --steam-topbar: 220 20% 11%; /* ~#171a21 */
+  --steam-topbar: 222 18% 11%; /* #171a21, the global header */
   --steam-panel: 213 33% 16%;
   --steam-panel-2: 212 28% 22%;
-  --steam-link: 206 83% 68%;
+  --steam-link: 202 86% 68%; /* #66c0f4 */
+  --steam-accent: 207 100% 55%; /* #1a9fff, active tab in the client */
   --steam-green: 86 53% 44%; /* online / available */
   --steam-green-soft: 86 40% 56%;
   --steam-gold: 41 78% 51%; /* achievements / badges */
@@ -89,7 +96,7 @@
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
 
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-steam);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -122,30 +129,19 @@ body {
   padding-inline: 1.25rem;
 }
 
-/* Steam-ish global background: subtle, premium, not a cheap glow */
+/* The store background: the blue wash at the top of every Steam page that
+   settles into flat #1b2838 further down. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -50;
   background:
-    radial-gradient(1000px 520px at 15% -5%, color-mix(in oklab, theme(--color-primary) 12%, transparent), transparent 55%),
-    radial-gradient(800px 480px at 92% 0%, color-mix(in oklab, hsl(var(--steam-purple)) 8%, transparent), transparent 60%),
-    linear-gradient(180deg, hsl(var(--steam-topbar)) 0%, theme(--color-background) 22%);
+    radial-gradient(ellipse 1400px 620px at 50% -120px, rgba(42, 71, 94, 0.95), transparent 70%),
+    theme(--color-background);
 }
-/* faint grid texture for depth */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -49;
-  pointer-events: none;
-  opacity: 0.35;
-  background-image:
-    linear-gradient(to right, color-mix(in oklab, theme(--color-foreground) 4%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, theme(--color-foreground) 4%, transparent) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(1200px 700px at 50% -10%, black, transparent 75%);
+.light body::before {
+  background: theme(--color-background);
 }
 
 .steam-container {
@@ -310,44 +306,50 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
 }
 
 /* The core panel surface. Use instead of repeating the inline gradient. */
+/* Steam corners are nearly square and its surfaces are dark glass, not cards. */
 .panel {
-  border: 1px solid hsl(var(--border));
-  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 3px;
   background:
-    linear-gradient(180deg, hsla(0, 0%, 100%, 0.06), transparent 38%),
-    hsl(var(--steam-panel));
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 1px 2px rgba(0, 0, 0, 0.2);
+    linear-gradient(180deg, rgba(42, 71, 94, 0.35), transparent 120px),
+    rgba(16, 24, 34, 0.78);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
 }
 .panel-strong {
   background:
-    linear-gradient(180deg, hsla(0, 0%, 100%, 0.08), transparent 30%),
-    linear-gradient(180deg, hsl(var(--steam-panel)), hsl(var(--steam-panel-2)));
+    linear-gradient(180deg, rgba(42, 71, 94, 0.55), transparent 160px),
+    rgba(16, 24, 34, 0.85);
+}
+.light .panel,
+.light .panel-strong {
+  border-color: hsl(var(--border));
+  background: hsl(var(--steam-panel));
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 /* Inset sub-surface inside a panel */
 .inset {
+  border: 0;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.22);
+}
+.light .inset {
   border: 1px solid hsl(var(--border));
-  border-radius: 0.375rem;
-  background: hsl(0 0% 100% / 0.04);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  background: hsl(var(--muted));
 }
 
 /* Eyebrow / section label */
 .eyebrow {
   font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: hsl(var(--muted-foreground));
 }
 
 /* Accent bar used next to headings */
+/* Steam has no glowing pills beside its headings. */
 .accent-bar {
-  display: inline-block;
-  width: 0.25rem;
-  height: 1em;
-  border-radius: 999px;
-  background: hsl(var(--steam-link));
-  box-shadow: 0 0 10px hsl(var(--steam-link) / 0.6);
+  display: none;
 }
 
 /* Pill links (GitHub / LinkedIn / Resume etc.) */
@@ -397,60 +399,130 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
 }
 .rise-in { animation: rise-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
 
-/* Periodic banner sheen: a subtle light sweep so the hero feels alive */
-@keyframes banner-sheen {
-  0% { transform: translateX(-160%); }
-  55%, 100% { transform: translateX(320%); }
-}
-.banner-sheen::after {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 26%;
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-  filter: blur(4px);
-  animation: banner-sheen 7s ease-in-out infinite;
-}
-
-/* Hero banner network nodes: a soft pulse, like traffic crossing the graph. */
-@keyframes hero-node-twinkle {
-  0%, 100% { opacity: 0.85; transform: scale(1); transform-origin: center; }
-  50% { opacity: 0.3; transform: scale(0.82); transform-origin: center; }
-}
-.hero-node-twinkle { animation: hero-node-twinkle 3.2s ease-in-out infinite; transform-box: fill-box; }
-
-/* Ambient drifting blobs: the slow, calm motion behind the whole site. */
-.ambient-blob {
-  position: absolute;
-  border-radius: 9999px;
-  /* Kept moderate on purpose: huge blur radii tank GPU/battery on phones. */
-  filter: blur(64px);
-  opacity: 0.2;
-  will-change: transform;
-}
-.ambient-blob--1 {
-  width: 34rem; height: 34rem; left: -8rem; top: -6rem;
-  background: radial-gradient(circle, hsl(var(--steam-link) / 0.5), transparent 70%);
-  animation: drift-1 28s ease-in-out infinite;
-}
-.ambient-blob--2 {
-  width: 30rem; height: 30rem; right: -7rem; top: 34%;
-  background: radial-gradient(circle, hsl(var(--steam-purple) / 0.4), transparent 70%);
-  animation: drift-2 34s ease-in-out infinite;
-}
-.ambient-blob--3 {
-  width: 28rem; height: 28rem; left: 18%; bottom: -9rem;
-  background: radial-gradient(circle, hsl(var(--steam-green) / 0.28), transparent 70%);
-  animation: drift-3 31s ease-in-out infinite;
-}
-/* Light mode: keep it as the faintest tint so text stays crisp. */
-.light .ambient-blob { opacity: 0.12; }
-@keyframes drift-1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(60px, 42px); } }
-@keyframes drift-2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-52px, 30px); } }
-@keyframes drift-3 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(34px, -40px); } }
-
 /* Marquee row for skill chips */
 .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+/* ============================================================
+   Steam UI primitives
+   ============================================================ */
+
+/* The green "Install Steam" / "Add to Cart" button */
+.steam-btn-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 2px;
+  padding: 0 14px;
+  color: #d2efa9;
+  background: linear-gradient(to right, #75b022 5%, #588a1b 95%);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15);
+  transition: color 120ms;
+}
+.steam-btn-green:hover {
+  color: #fff;
+  background: linear-gradient(to right, #8ed629 5%, #6aa621 95%);
+}
+
+/* The blue "Play" button */
+.steam-btn-blue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 2px;
+  padding: 0 14px;
+  color: #fff;
+  background: linear-gradient(to right, #47bfff 5%, #1a44c2 95%);
+}
+.steam-btn-blue:hover {
+  background: linear-gradient(to right, #6fcfff 5%, #2a5ad6 95%);
+}
+
+/* The store's quiet secondary button: tinted blue, fills in on hover */
+.steam-btn-soft {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 2px;
+  padding: 0 14px;
+  color: #67c1f5;
+  background: rgba(103, 193, 245, 0.2);
+  transition: color 120ms;
+}
+.steam-btn-soft:hover {
+  color: #fff;
+  background: linear-gradient(-60deg, #417a9b 5%, #67c1f5 95%);
+}
+.light .steam-btn-soft {
+  color: hsl(var(--steam-link));
+  background: hsl(var(--steam-link) / 0.12);
+}
+
+/* User tags on a store page */
+.steam-tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 2px;
+  padding: 2px 7px;
+  font-size: 12px;
+  line-height: 19px;
+  color: #67c1f5;
+  background: rgba(103, 193, 245, 0.2);
+  white-space: nowrap;
+}
+.light .steam-tag {
+  color: hsl(var(--steam-link));
+  background: hsl(var(--steam-link) / 0.12);
+}
+
+/* Store section heading: uppercase and white, with the fading rule underneath */
+.steam-heading {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  padding-bottom: 6px;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(to right, #3b6e8c 5%, rgba(59, 110, 140, 0) 70%) 1;
+}
+.light .steam-heading {
+  color: hsl(var(--foreground));
+}
+
+/* The blue store navigation bar under the header */
+.steam-subnav {
+  border-radius: 3px;
+  background: linear-gradient(90deg, rgba(62, 103, 150, 0.92) 11%, rgba(58, 120, 177, 0.8) 25%, rgb(15, 33, 110) 100%);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+/* The purchase strip on a store page */
+.steam-purchase {
+  border-radius: 4px;
+  background: linear-gradient(-60deg, rgba(226, 244, 255, 0.3) 5%, rgba(84, 107, 115, 0.3) 95%);
+}
+.light .steam-purchase {
+  background: hsl(var(--muted));
+}
+.steam-purchase-action {
+  border-radius: 2px;
+  background: #000;
+  padding: 2px 2px 2px 0;
+}
+
+/* Profile header band, laid over the animated profile background */
+.profile-band {
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+}
+.light .profile-band {
+  background: hsl(var(--steam-panel) / 0.92);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
 
 /* ============================================================
    Print: the /resume page has to come out of Ctrl+P looking like
@@ -542,9 +614,6 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(var(--steam-link) / 0.5); 
   .download-bar,
   .count-pop,
   .rise-in,
-  .banner-sheen::after,
-  .ambient-blob,
-  .hero-node-twinkle,
   .confetti-piece { animation: none !important; }
   .rise-in { opacity: 1 !important; transform: none !important; }
   .game-card:hover { transform: none; }

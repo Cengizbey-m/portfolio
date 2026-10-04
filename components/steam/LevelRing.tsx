@@ -1,75 +1,55 @@
 "use client";
 
-import * as React from "react";
 import { cn } from "@/lib/utils";
 
 type Props = {
   level: number;
-  /** 0..1 progress within the current level */
+  /** Kept for API compatibility; Steam's badge has no progress arc. */
   progress?: number;
   size?: number;
   className?: string;
   badgeLabel?: string;
+  /** Show the word "Level" beside the badge, as on a Steam profile. */
+  withLabel?: boolean;
 };
 
-export function LevelRing({
-  level,
-  progress = 0.62,
-  size = 56,
-  className,
-  badgeLabel,
-}: Props) {
-  const stroke = Math.max(2, Math.round(size * 0.08));
-  const radius = (size - stroke) / 2;
-  const c = 2 * Math.PI * radius;
-  const offsetTarget = c * (1 - Math.min(1, Math.max(0, progress)));
-  const [offset, setOffset] = React.useState(c);
+// Steam colours a level badge by its tens digit.
+const LEVEL_COLORS = [
+  "#9b9b9b", // 0-9
+  "#c02942", // 10-19
+  "#d95b43", // 20-29
+  "#fecc23", // 30-39
+  "#467a3c", // 40-49
+  "#4e8ddb", // 50-59
+  "#7652c9", // 60-69
+  "#c252c9", // 70-79
+  "#542437", // 80-89
+  "#997c52", // 90-99
+];
 
-  React.useEffect(() => {
-    const id = requestAnimationFrame(() => setOffset(offsetTarget));
-    return () => cancelAnimationFrame(id);
-  }, [offsetTarget]);
+export function levelColor(level: number) {
+  return LEVEL_COLORS[Math.min(9, Math.max(0, Math.floor(level / 10)))];
+}
 
+export function LevelRing({ level, size = 36, className, badgeLabel, withLabel = true }: Props) {
+  const color = levelColor(level);
   return (
     <div
-      className={cn("relative grid place-items-center", className)}
-      style={{ width: size, height: size }}
+      className={cn("inline-flex items-center gap-2.5", className)}
       aria-label={badgeLabel ?? `Level ${level}`}
       title={badgeLabel ?? `Level ${level}`}
     >
-      <svg
-        width={size}
-        height={size}
-        viewBox={`0 0 ${size} ${size}`}
-        className="-rotate-90"
-      >
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          stroke="rgba(255,255,255,0.08)"
-          strokeWidth={stroke}
-          fill="rgba(0,0,0,0.35)"
-        />
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          stroke="hsl(var(--steam-link))"
-          strokeWidth={stroke}
-          fill="none"
-          strokeLinecap="round"
-          strokeDasharray={c}
-          strokeDashoffset={offset}
-          style={{
-            transition: "stroke-dashoffset 1.4s cubic-bezier(0.22, 1, 0.36, 1)",
-            filter: "drop-shadow(0 0 6px hsl(var(--steam-link) / 0.55))",
-          }}
-        />
-      </svg>
+      {withLabel ? (
+        <span className="text-[20px] font-light text-white light:text-foreground">Level</span>
+      ) : null}
       <span
-        className="absolute font-semibold text-foreground"
-        style={{ fontSize: Math.max(11, Math.round(size * 0.32)) }}
+        className="grid place-items-center rounded-full font-normal text-white light:text-foreground"
+        style={{
+          width: size,
+          height: size,
+          border: `2px solid ${color}`,
+          fontSize: Math.max(12, Math.round(size * 0.46)),
+        }}
       >
         {level}
       </span>
