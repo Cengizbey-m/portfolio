@@ -161,7 +161,7 @@ const fullstack: ResumeVariant = {
     },
     {
       label: "Cloud & DevOps",
-      items: "AWS, Vercel, Docker, Google Cloud Run, GitHub Actions, CI/CD, Git, Jest, Vitest",
+      items: "AWS, Vercel, Docker, Google Cloud Run, GitHub Actions, CI/CD, Git, Jest, Vitest, Jira, Agile (Scrum)",
     },
     {
       label: "Security",
@@ -223,7 +223,7 @@ const qa: ResumeVariant = {
     },
     {
       label: "CI/CD",
-      items: "GitHub Actions, pipeline debugging, ESLint, pull request gates, Docker",
+      items: "GitHub Actions, pipeline debugging, ESLint, pull request gates, Docker, Jira, Agile (Scrum)",
     },
     {
       label: "Languages",
@@ -287,7 +287,7 @@ const solutions: ResumeVariant = {
     },
     {
       label: "Client delivery",
-      items: "Requirements gathering, scoping, deployment, incident response, documentation",
+      items: "Requirements gathering, scoping, deployment, incident response, documentation, Agile (Scrum), Jira",
     },
     {
       label: "Languages & Frameworks",
