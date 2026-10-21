@@ -2,7 +2,6 @@ import { profile } from "@/data/profile";
 import { education } from "@/data/cv";
 import {
   resumeContact,
-  workAuthorization,
   coursework,
   certifications,
   getResumeVariant,
@@ -169,14 +168,6 @@ export function ResumeDocument({ variant }: { variant?: ResumeVariantId } = {}) 
           <a href={`https://${resumeContact.website}`} className="underline">
             {resumeContact.website}
           </a>
-        </p>
-        {/* Work authorization sits above the fold on purpose: in the Canadian
-            market it is the first filter a recruiter applies. */}
-        <p
-          className="mt-[3pt] font-bold leading-snug text-black"
-          style={{ fontSize: T.contact }}
-        >
-          {workAuthorization}
         </p>
       </header>
 

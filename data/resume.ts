@@ -31,14 +31,13 @@
 export const resumeContact = {
   phone: "+1 437-260-2183",
   website: "muhammedcengiz.vercel.app",
-  location: "Richmond Hill, ON (Greater Toronto Area)",
+  location: "Toronto, ON",
   linkedin: "linkedin.com/in/muhammed-cengiz",
   github: "github.com/Cengizbey-m",
 };
 
-/** Sits directly under the contact block. In Canada this is a screening gate. */
-export const workAuthorization =
-  "Canadian Permanent Resident. Authorized to work in Canada, no sponsorship required.";
+// No work-authorization line on the sheet (Oct 2026 feedback from a referrer and a career specialist): it read as
+// filler. Work status is on the About page and comes up in the first call anyway.
 
 export type ResumeLink = { label: string; href: string };
 
@@ -90,10 +89,11 @@ const tripman = (bullets: string[]): ResumeRole => ({
 
 const puffy = (bullets: string[]): ResumeRole => ({
   title: "Freelance Web Developer",
-  // The brand is "Puffy" (the site says so in its title and throughout its
-  // copy). The domain is puuffy.ca, which is not a typo: it is the domain the
-  // owner bought. Keep the two spellings straight.
-  org: "Puffy",
+  // The registered name is "Puuffy Bakery & Ice Cream" (sign, cups, Google Maps,
+  // Uber Eats and Instagram all spell it that way, and so does puuffy.ca since
+  // the 4 Oct 2026 relaunch). The old "Puffy" spelling was mistaken for an
+  // unrelated company, so the sheet uses the full name.
+  org: "Puuffy Bakery & Ice Cream",
   location: "Toronto, ON",
   period: "2026 - Present",
   links: [{ label: "puuffy.ca", href: "https://www.puuffy.ca" }],
@@ -144,58 +144,43 @@ const fullstack: ResumeVariant = {
   fileSuffix: "Full-Stack-Developer",
   sendWhen:
     "Software Developer, Full-Stack Developer, Web Developer, Junior/Intermediate Developer, Frontend or Backend Developer.",
+  // No school name here: Education already says it, and a summary line spent
+  // repeating it is a line not spent on results.
   summary:
-    "Full-stack developer who ships production software end to end. Built and still runs a live booking and payments platform solo for a client with a 1.7M-follower audience, handling 11 to 13 customer bookings in a peak month. 2026 Sheridan graduate, capstone ranked #1 of 50+ projects. Strong in TypeScript, React, Next.js, PostgreSQL, and application security.",
+    "Full-stack developer with over a year of production experience. As the only engineer on a booking and payments platform for a brand with a 1.7M-follower audience, I replaced manual bookings with Next.js, PostgreSQL and Stripe (11 to 13 bookings in a peak month). Capstone ranked #1 of 50+.",
   skills: [
-    {
-      label: "Languages",
-      items: "TypeScript, JavaScript, Python, SQL, C#, Java, HTML/CSS",
-    },
-    {
-      label: "Frontend",
-      items: "React, Next.js, Tailwind CSS, Zustand, Vite, shadcn/ui, accessible UI",
-    },
-    {
-      label: "Backend & Data",
-      items: "Node.js, Express.js, FastAPI, .NET, REST APIs, PostgreSQL, Supabase, Prisma",
-    },
-    {
-      label: "Cloud & DevOps",
-      items: "AWS, Vercel, Docker, Google Cloud Run, GitHub Actions, CI/CD, Git, Jest, Vitest, Jira, Agile (Scrum)",
-    },
-    {
-      label: "Security",
-      items: "OAuth 2.0, JWT/JWKS verification, Row Level Security, rate limiting, TCP/IP, Linux",
-    },
+    { label: "Languages", items: "TypeScript, JavaScript, Python, SQL, C#, Java, Swift, HTML/CSS" },
+    { label: "Frontend", items: "React, Next.js, Angular, Vite, Tailwind CSS, Zustand, TanStack Query, React Hook Form, Zod, PWA" },
+    { label: "Backend & Data", items: "Node.js, Express.js, FastAPI, .NET, REST APIs, Socket.io, PostgreSQL, MongoDB, Redis, Prisma" },
+    { label: "Cloud & DevOps", items: "Docker, GitHub Actions CI/CD, Vercel, Google Cloud Run, AWS, Firebase, Sentry, Jira, Agile (Scrum)" },
+    { label: "Testing & Security", items: "Jest, Vitest, React Testing Library, pytest, jest-axe, JWT/JWKS, Row Level Security" },
   ],
   experience: [
     tripman([
-      "Engineered and deployed a booking and payments platform solo for a transportation business with a 1.7M-follower audience, now handling 11 to 13 customer bookings in a peak month under an active revenue-share contract.",
-      "Integrated Stripe Checkout with webhook confirmation, ending unpaid reservations by confirming a booking only after payment settles.",
+      "Replaced manual phone and direct message bookings for a brand with a 1.7M-follower audience with a Next.js, TypeScript and PostgreSQL platform built solo, now handling 11 to 13 bookings in a peak month.",
+      "Ended unpaid reservations: a booking is confirmed only after Stripe's signed webhook reports the payment as settled.",
       // No hyphenated compound here on purpose: when one breaks across a line,
       // the PDF text layer extracts it welded together ("directmessage"), which
       // is exactly the kind of token an ATS fails to match.
-      "Built an authenticated admin dashboard over a Prisma and PostgreSQL schema, replacing phone and direct message booking management and ending the client's daily dependency on a developer.",
-      "Shipped to production on Vercel with automated email and calendar confirmations, jest-axe accessibility tests, and CI.",
+      "Built an authenticated admin dashboard over Prisma and PostgreSQL that ended the owner's daily dependency on a developer; paid bookings trigger Resend emails and Google Calendar events.",
+      "Protect releases with Jest, jest-axe and CI before each Vercel deploy, and own production support.",
     ]),
     puffy([
-      "Built and still maintain the site for a Toronto patisserie, taking it from no web presence to a mobile-first storefront now indexed in Google Search and Maps.",
+      "Launched the bakery's first site (Next.js, live hours, 12 unit tests) and fixed five problems an audit found, from a Google block to a form losing every email and an exposed personal phone number.",
     ]),
   ],
   projects: [
     feather([
-      "Ranked #1 of 50+ projects at the 2026 Sheridan capstone showcase, graded 97/100 over a full academic year.",
-      "Identified and resolved a critical authentication vulnerability that let any caller read or write any user account, engineering a Vercel Edge gateway with Firebase ID token verification against Google JWKS and dual-window rate limiting.",
-      "Remediated 12 tables running without Row Level Security, including user profile data, via SQL migration.",
+      "Ranked #1 of 50+ projects at the 2026 capstone showcase, graded 97/100 over a full academic year.",
+      "Closed a hole that let any caller read or write any account: built a Vercel Edge gateway with Firebase ID token verification against Google JWKS, a route allowlist and dual-window rate limiting.",
+      "Revived a CI pipeline that had failed for months (129 lint errors, 5 test failures) and enabled Row Level Security on 12 exposed tables.",
     ]),
-    // One merged bullet rather than two: the sheet was 2mm over the one-page
-    // budget and this is the cheapest line to buy back. See the height note at
-    // the top of the file.
+    // One merged bullet rather than two: the sheet has a one-page budget.
     bloom([
       "Launched a production planner across 7 modules with an offline-first sync layer: writes land in local state before debounced PostgreSQL persistence, with Realtime cross-device sync and Row Level Security isolating every account across 10 tables.",
     ]),
     pathetique([
-      "Built a multimodal pipeline chaining Google Cloud Vision, Gemini, and ElevenLabs to turn a photo of a dish into spoken critique and recipes, with an offline fallback that survived venue network outages.",
+      "Built solo in one weekend: Google Cloud Vision, Gemini and ElevenLabs turn a photo of a dish into spoken critique and recipes, with an offline fallback that survived venue network outages.",
     ]),
   ],
 };
@@ -215,7 +200,7 @@ const qa: ResumeVariant = {
   sendWhen:
     "QA Automation Engineer, SDET, Test Automation Engineer, Quality Engineer, Software Engineer in Test. Skip manual-only QA postings.",
   summary:
-    "Developer who finds defects by testing what is actually running. Found a critical authentication vulnerability in a live service by probing it against production, then built the fix. Repaired a CI pipeline that had failed on every run for months, clearing the 129 lint errors and 5 test failures behind it. 2026 Sheridan graduate, capstone ranked #1 of 50+ projects.",
+    "Developer who finds defects by testing what is actually running. Found a critical authentication vulnerability in a live service by probing it against production, then built the fix. Repaired a CI pipeline that had failed on every run for months, clearing the 129 lint errors and 5 test failures behind it. Capstone ranked #1 of 50+ projects.",
   skills: [
     {
       label: "Testing",
@@ -279,7 +264,7 @@ const solutions: ResumeVariant = {
   sendWhen:
     "Solutions Engineer, Implementation Engineer, Integration Engineer, Technical Consultant, Application Support Engineer, Technical Account Manager (associate level).",
   summary:
-    "Engineer who takes a client from requirements to a live system and then supports it. Delivered a booking and payments platform solo for a transportation business with a 1.7M-follower audience, integrating Stripe, calendar sync, and transactional email, and remain their single technical contact. 2026 Sheridan graduate with a networking and Linux background, capstone ranked #1 of 50+ projects.",
+    "Engineer who takes a client from requirements to a live system and then supports it. Delivered a booking and payments platform solo for a transportation business with a 1.7M-follower audience, integrating Stripe, calendar sync, and transactional email, and remain their single technical contact. Networking and Linux background; capstone ranked #1 of 50+ projects.",
   skills: [
     {
       label: "Integration",

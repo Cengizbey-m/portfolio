@@ -41,7 +41,7 @@ export default async function ResumePage() {
         <div className="flex flex-col gap-3 border-b border-border p-4 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeader
             title="Resume"
-            description="One page. Last updated September 2026."
+            description="One page. Last updated October 2026."
           />
           <div className="flex flex-wrap gap-2">
             {hasResume ? (
